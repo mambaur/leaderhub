@@ -1,12 +1,51 @@
 <!-- partial -->
 <!-- partial:partials/_sidebar.html -->
+{{-- https://mdisearch.com/ --}}
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-        <li class="nav-item">
+        <li class="nav-item @if (@$menu == 'dashboard') active @endif">
             <a class="nav-link" href="/">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
+        </li>
+        <li class="nav-item nav-category">Main</li>
+        <li class="nav-item @if (@$menu == 'products') active @endif">
+            <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="false"
+                aria-controls="products">
+                <i class="menu-icon mdi mdi-archive"></i>
+                <span class="menu-title">Products</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse @if (@$menu == 'products') show @endif" id="products">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-create') active @endif"
+                            href="pages/ui-features/buttons.html">Add
+                            Product</a></li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-list') active @endif"
+                            href="{{ route('product_list') }}">List Products</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item @if (@$menu == 'categories') active @endif">
+            <a class="nav-link" data-bs-toggle="collapse" href="#product-categories" aria-expanded="false"
+                aria-controls="product-categories">
+                <i class="menu-icon mdi mdi-shape-outline"></i>
+                <span class="menu-title">Category</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse @if (@$menu == 'categories') show @endif" id="product-categories">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-category-create') active @endif"
+                            href="{{ route('product_category_create') }}">Add Category</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-category-list') active @endif"
+                            href="{{ route('product_category_list') }}">List
+                            Categories</a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item nav-category">UI Elements</li>
         <li class="nav-item">
@@ -53,7 +92,8 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false"
+                aria-controls="tables">
                 <i class="menu-icon mdi mdi-table"></i>
                 <span class="menu-title">Tables</span>
                 <i class="menu-arrow"></i>
@@ -66,7 +106,8 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
+            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false"
+                aria-controls="icons">
                 <i class="menu-icon mdi mdi-layers-outline"></i>
                 <span class="menu-title">Icons</span>
                 <i class="menu-arrow"></i>
@@ -80,7 +121,8 @@
         </li>
         <li class="nav-item nav-category">pages</li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false"
+                aria-controls="auth">
                 <i class="menu-icon mdi mdi-account-circle-outline"></i>
                 <span class="menu-title">User Pages</span>
                 <i class="menu-arrow"></i>

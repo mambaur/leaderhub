@@ -10,7 +10,7 @@
     <div class="container-scroller">
         @include('admin.layouts.navbar')
         <div class="container-fluid page-body-wrapper">
-            @include('admin.layouts.sidebar')
+            @include('admin.layouts.sidebar', ['menu' => @$menu, 'submenu' => @$submenu])
             <div class="main-panel">
                 @yield('content')
                 @include('admin.layouts.footer')

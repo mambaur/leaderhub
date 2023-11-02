@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Dashboard Leaderhub Administrator'])
+@extends('admin.layouts.main', ['title' => 'Dashboard Leaderhub Administrator', 'menu' => 'dashboard'])
 
 @section('content')
     <div class="content-wrapper">
@@ -183,7 +183,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex ">
-                                                                            <img src="{{ url('/') }}/admin/images/faces/face1.jpg"
+                                                                            <img src="{{ url('/') }}/admin-assets/images/faces/face1.jpg"
                                                                                 alt="">
                                                                             <div>
                                                                                 <h6>Brandon Washington</h6>
@@ -229,7 +229,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex">
-                                                                            <img src="{{ url('/') }}/admin/images/faces/face2.jpg"
+                                                                            <img src="{{ url('/') }}/admin-assets/images/faces/face2.jpg"
                                                                                 alt="">
                                                                             <div>
                                                                                 <h6>Laura Brooks</h6>
@@ -275,7 +275,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex">
-                                                                            <img src="{{ url('/') }}/admin/images/faces/face3.jpg"
+                                                                            <img src="{{ url('/') }}/admin-assets/images/faces/face3.jpg"
                                                                                 alt="">
                                                                             <div>
                                                                                 <h6>Wayne Murphy</h6>
@@ -321,7 +321,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex">
-                                                                            <img src="{{ url('/') }}/admin/images/faces/face4.jpg"
+                                                                            <img src="{{ url('/') }}/admin-assets/images/faces/face4.jpg"
                                                                                 alt="">
                                                                             <div>
                                                                                 <h6>Matthew Bailey</h6>
@@ -367,7 +367,7 @@
                                                                     </td>
                                                                     <td>
                                                                         <div class="d-flex">
-                                                                            <img src="{{ url('/') }}/admin/images/faces/face5.jpg"
+                                                                            <img src="{{ url('/') }}/admin-assets/images/faces/face5.jpg"
                                                                                 alt="">
                                                                             <div>
                                                                                 <h6>Katherine Butler</h6>
@@ -737,7 +737,7 @@
                                                                     class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                                                                     <div class="d-flex">
                                                                         <img class="img-sm rounded-10"
-                                                                            src="{{ url('/') }}/admin/images/faces/face1.jpg"
+                                                                            src="{{ url('/') }}/admin-assets/images/faces/face1.jpg"
                                                                             alt="profile">
                                                                         <div class="wrapper ms-3">
                                                                             <p class="ms-1 mb-1 fw-bold">
@@ -753,7 +753,7 @@
                                                                     class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                                                                     <div class="d-flex">
                                                                         <img class="img-sm rounded-10"
-                                                                            src="{{ url('/') }}/admin/images/faces/face2.jpg"
+                                                                            src="{{ url('/') }}/admin-assets/images/faces/face2.jpg"
                                                                             alt="profile">
                                                                         <div class="wrapper ms-3">
                                                                             <p class="ms-1 mb-1 fw-bold">
@@ -769,7 +769,7 @@
                                                                     class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                                                                     <div class="d-flex">
                                                                         <img class="img-sm rounded-10"
-                                                                            src="{{ url('/') }}/admin/images/faces/face3.jpg"
+                                                                            src="{{ url('/') }}/admin-assets/images/faces/face3.jpg"
                                                                             alt="profile">
                                                                         <div class="wrapper ms-3">
                                                                             <p class="ms-1 mb-1 fw-bold">
@@ -785,7 +785,7 @@
                                                                     class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
                                                                     <div class="d-flex">
                                                                         <img class="img-sm rounded-10"
-                                                                            src="{{ url('/') }}/admin/images/faces/face4.jpg"
+                                                                            src="{{ url('/') }}/admin-assets/images/faces/face4.jpg"
                                                                             alt="profile">
                                                                         <div class="wrapper ms-3">
                                                                             <p class="ms-1 mb-1 fw-bold">
@@ -801,7 +801,7 @@
                                                                     class="wrapper d-flex align-items-center justify-content-between pt-2">
                                                                     <div class="d-flex">
                                                                         <img class="img-sm rounded-10"
-                                                                            src="{{ url('/') }}/admin/images/faces/face5.jpg"
+                                                                            src="{{ url('/') }}/admin-assets/images/faces/face5.jpg"
                                                                             alt="profile">
                                                                         <div class="wrapper ms-3">
                                                                             <p class="ms-1 mb-1 fw-bold">
