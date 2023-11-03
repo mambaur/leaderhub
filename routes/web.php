@@ -46,11 +46,15 @@ Route::middleware(['auth'])->group(function () {
     |
     */
 
-    Route::get('/admin/product-categories', function () {
-        return view('admin.product-categories.index');
-    })->name('product_category_list');
+    Route::get('/admin/product-categories', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'index'])->name('product_category_list');
 
-    Route::get('/admin/product-category/create', function () {
-        return view('admin.product-categories.create');
-    })->name('product_category_create');
+    Route::get('/admin/product-category/create', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'create'])->name('product_category_create');
+
+    Route::post('/admin/product-category/create', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'store'])->name('product_category_store');
+
+    Route::get('/admin/product-category/{id}', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'edit'])->name('product_category_edit');
+
+    Route::put('/admin/product-category/{id}', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'update'])->name('product_category_update');
+
+    Route::delete('/admin/product-category/delete/{id}', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'destroy'])->name('product_category_delete');
 });
