@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class UserManagementController extends Controller
 {
@@ -34,17 +35,23 @@ class UserManagementController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'role' => 'required',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);
+
+        $role = Role::where('name', $request->role)->first();
+        if ($role) {
+            $user->syncRoles([$request->role]);
+        }
 
         toast('New user successfully created', 'success');
         return redirect()->route('user_management_list');
@@ -64,10 +71,17 @@ class UserManagementController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
+
         if (!$user) {
             toast('User not found', 'error');
             return back()->withInput();
         }
+
+        if ($user->email == 'garudafiberapp@gmail.com' && auth()->user()->email != 'garudafiberapp@gmail.com') {
+            toast('You have no access to update this user', 'error');
+            return back()->withInput();
+        }
+
         return view('admin.user-managements.edit', compact('user'));
     }
 
@@ -78,6 +92,7 @@ class UserManagementController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'role' => 'required',
             'email' => 'required|string|email|max:255|unique:users,email,' . $id
         ]);
 
@@ -90,6 +105,11 @@ class UserManagementController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
+
+        $role = Role::where('name', $request->role)->first();
+        if ($role) {
+            $user->syncRoles([$request->role]);
+        }
 
         toast('User successfully updated', 'success');
         return redirect()->route('user_management_list');
@@ -125,6 +145,11 @@ class UserManagementController extends Controller
         $user = User::find($id);
         if (!$user) {
             toast('User not found', 'error');
+            return back()->withInput();
+        }
+
+        if ($user->email == 'garudafiberapp@gmail.com') {
+            toast('This user cannot be deleted', 'error');
             return back()->withInput();
         }
 

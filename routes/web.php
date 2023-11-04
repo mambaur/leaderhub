@@ -65,17 +65,27 @@ Route::middleware(['auth'])->group(function () {
     |
     */
 
-    Route::get('/admin/user-managements', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'index'])->name('user_management_list');
+    Route::middleware('role:superadmin')->group(function () {
+        Route::get('/admin/user-managements', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'index'])->name('user_management_list');
 
-    Route::get('/admin/user-management/create', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'create'])->name('user_management_create');
+        Route::get('/admin/user-management/create', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'create'])->name('user_management_create');
 
-    Route::post('/admin/user-management/create', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'store'])->name('user_management_store');
+        Route::post('/admin/user-management/create', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'store'])->name('user_management_store');
 
-    Route::get('/admin/user-management/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'edit'])->name('user_management_edit');
+        Route::get('/admin/user-management/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'edit'])->name('user_management_edit');
 
-    Route::put('/admin/user-management/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'update'])->name('user_management_update');
+        Route::put('/admin/user-management/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'update'])->name('user_management_update');
 
-    Route::put('/admin/user-management/change-password/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'changePassword'])->name('user_management_change_password');
+        Route::put('/admin/user-management/change-password/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'changePassword'])->name('user_management_change_password');
 
-    Route::delete('/admin/user-management/delete/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'destroy'])->name('user_management_delete');
+        Route::delete('/admin/user-management/delete/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'destroy'])->name('user_management_delete');
+    });
+
+    Route::get('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'index'])->name('profile_update');
+    Route::put('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'update'])->name('profile_update');
 });
+
+// Route::middleware(['auth', 'role:admin'])->group(function () {
+//     Route::get('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'index'])->name('profile_update');
+//     Route::put('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'update'])->name('profile_update');
+// });

@@ -16,7 +16,7 @@
                                 <p class="card-subtitle card-subtitle-dash">Product Categories</p>
                             </div>
                             <div>
-                                <a href="{{route('product_category_create')}}" class="btn btn-primary btn-sm">+ Add
+                                <a href="{{ route('product_category_create') }}" class="btn btn-primary btn-sm">+ Add
                                     Category</a>
                             </div>
                         </div>
@@ -24,7 +24,9 @@
                             <table class="table select-table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th class="w-50">Name</th>
+                                        <th>Created At</th>
+                                        <th>Updated At</th>
                                         <th class="w-25 text-end">Action</th>
                                     </tr>
                                 </thead>
@@ -32,12 +34,21 @@
                                     @foreach ($product_categories as $item)
                                         <tr>
                                             <td>
-                                                <h6>{{$item->name}}</h6>
+                                                <h6>{{ $item->name }}</h6>
+                                            </td>
+                                            <td>
+                                                <h6>{{ $item->created_at->format('d M Y h:i:s') }}</h6>
+                                            </td>
+                                            <td>
+                                                <h6>{{ $item->updated_at->format('d M Y h:i:s') }}</h6>
                                             </td>
                                             <td class="text-end">
-                                                <a class="btn btn-primary py-1" href="{{route('product_category_edit', $item->id)}}">
+                                                <a class="btn btn-primary py-1"
+                                                    href="{{ route('product_category_edit', $item->id) }}">
                                                     Edit</a>
-                                                <a href="#" class="btn btn-danger btn-delete py-1" data-bs-toggle="modal" data-bs-target="#deleteModal" data-url="{{route('product_category_delete', $item->id)}}">
+                                                <a href="#" class="btn btn-danger btn-delete py-1"
+                                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                    data-url="{{ route('product_category_delete', $item->id) }}">
                                                     Delete</a>
                                             </td>
                                         </tr>
@@ -50,20 +61,20 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form class="form-delete" method="post">
                 @csrf
-                @method("delete")
+                @method('delete')
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="deleteModalLabel">Warning!</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Are you sure want to delete?    
+                        Are you sure want to delete?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => @$user->name, 'menu' => 'user-managements', 'submenu' => 'user-management-list'])
+@extends('admin.layouts.main', ['title' => @$user->name, 'menu' => 'profiles', 'submenu' => null])
 
 @section('content')
     <div class="content-wrapper">
@@ -6,8 +6,8 @@
             <div class="col-md-6 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit User</h4>
-                        <form class="forms-sample" method="post" action="{{ route('user_management_update', $user->id) }}">
+                        <h4 class="card-title">Profile</h4>
+                        <form class="forms-sample" method="post" action="{{ route('profile_update', $user->id) }}">
                             @csrf
                             @method('put')
                             <div class="form-group">
@@ -34,41 +34,29 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label for="role">Role</label>
-                                <select name="role" class="form-control  @error('role') is-invalid @enderror"
-                                    id="role">
-                                    <option value="superadmin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'superadmin') selected @endif>Super Admin
-                                    </option>
-                                    <option value="admin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'admin') selected @endif>Admin</option>
-                                </select>
-                                @error('role')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-12 grid-margin stretch-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Change Password</h4>
-                        <form class="forms-sample" method="post"
-                            action="{{ route('user_management_change_password', $user->id) }}">
-                            @csrf
-                            @method('put')
+                            @if (@$user->getRoleNames()[0] == 'superadmin')
+                                <div class="form-group">
+                                    <label for="role">Role</label>
+                                    <select name="role" class="form-control  @error('role') is-invalid @enderror"
+                                        id="role">
+                                        <option value="superadmin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'superadmin') selected @endif>Super
+                                            Admin
+                                        </option>
+                                        <option value="admin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'admin') selected @endif>Admin
+                                        </option>
+                                    </select>
+                                    @error('role')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            @endif
 
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control  @error('password') is-invalid @enderror"
-                                    id="password" value="{{ old('password') }}" name="password" placeholder="Password..."
-                                    required>
+                                    id="password" value="{{ old('password') }}" name="password" placeholder="Password...">
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -81,7 +69,7 @@
                                 <input type="password"
                                     class="form-control  @error('password_confirmation') is-invalid @enderror"
                                     id="password_confirmation" value="{{ old('password_confirmation') }}"
-                                    name="password_confirmation" placeholder="Re-type Password..." required>
+                                    name="password_confirmation" placeholder="Re-type Password...">
                                 @error('password_confirmation')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -26,7 +26,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Verified At</th>
+                                        <th>Role</th>
                                         <th class="w-25 text-end">Action</th>
                                     </tr>
                                 </thead>
@@ -40,17 +40,24 @@
                                                 <h6>{{ $item->email }}</h6>
                                             </td>
                                             <td>
-                                                <h6>{{ @$item->email_verified_at ? @$item->email_verified_at->format('d F Y') : null }}
+                                                <h6>{{ @$item->getRoleNames()[0] }}
                                                 </h6>
                                             </td>
                                             <td class="text-end">
-                                                <a class="btn btn-primary py-1"
-                                                    href="{{ route('user_management_edit', $item->id) }}">
-                                                    Edit</a>
-                                                <a href="#" class="btn btn-danger btn-delete py-1"
-                                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    data-url="{{ route('user_management_delete', $item->id) }}">
-                                                    Delete</a>
+                                                @if ($item->email == 'garudafiberapp@gmail.com' && auth()->user()->email != 'garudafiberapp@gmail.com')
+                                                    <a class="btn btn-primary py-1 disabled" href="#">
+                                                        Edit</a>
+                                                    <a href="#" class="btn btn-danger btn-delete py-1 disabled">
+                                                        Delete</a>
+                                                @else
+                                                    <a class="btn btn-primary py-1"
+                                                        href="{{ route('user_management_edit', $item->id) }}">
+                                                        Edit</a>
+                                                    <a href="#" class="btn btn-danger btn-delete py-1"
+                                                        data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                        data-url="{{ route('user_management_delete', $item->id) }}">
+                                                        Delete</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

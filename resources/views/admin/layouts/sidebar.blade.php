@@ -4,7 +4,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item @if (@$menu == 'dashboard') active @endif">
-            <a class="nav-link" href="/">
+            <a class="nav-link" href="{{ route('home') }}">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -48,43 +48,28 @@
             </div>
         </li>
         <li class="nav-item nav-category">Account</li>
-        <li class="nav-item @if (@$menu == 'user-managements') active @endif">
-            <a class="nav-link" data-bs-toggle="collapse" href="#user-managements" aria-expanded="false"
-                aria-controls="user-managements">
-                <i class="menu-icon mdi mdi-account-multiple-outline"></i>
-                <span class="menu-title">User Management</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse @if (@$menu == 'user-managements') show @endif" id="user-managements">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-create') active @endif"
-                            href="{{ route('user_management_create') }}">Add
-                            User</a></li>
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-list') active @endif"
-                            href="{{ route('user_management_list') }}">List Users</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item @if (@$menu == 'roles') active @endif">
-            <a class="nav-link" data-bs-toggle="collapse" href="#roles" aria-expanded="false" aria-controls="roles">
-                <i class="menu-icon mdi mdi-account-key-outline"></i>
-                <span class="menu-title">Roles</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse @if (@$menu == 'roles') show @endif" id="roles">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'role-create') active @endif"
-                            href="pages/ui-features/buttons.html">Add
-                            Role</a></li>
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'role-list') active @endif"
-                            href="/roles">List Roles</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item @if (@$menu == 'profile') active @endif"">
-            <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
+        @if (auth()->user()->hasRole(['superadmin']))
+            <li class="nav-item @if (@$menu == 'user-managements') active @endif">
+                <a class="nav-link" data-bs-toggle="collapse" href="#user-managements" aria-expanded="false"
+                    aria-controls="user-managements">
+                    <i class="menu-icon mdi mdi-account-multiple-outline"></i>
+                    <span class="menu-title">User Management</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse @if (@$menu == 'user-managements') show @endif" id="user-managements">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-create') active @endif"
+                                href="{{ route('user_management_create') }}">Add
+                                User</a></li>
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-list') active @endif"
+                                href="{{ route('user_management_list') }}">List Users</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        @endif
+        <li class="nav-item @if (@$menu == 'profile') active @endif">
+            <a class="nav-link" href="{{ route('profile_update') }}">
                 <i class="menu-icon mdi mdi-account-circle-outline"></i>
                 <span class="menu-title">Profile</span>
             </a>
