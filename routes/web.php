@@ -57,4 +57,25 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/product-category/{id}', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'update'])->name('product_category_update');
 
     Route::delete('/admin/product-category/delete/{id}', [App\Http\Controllers\Admin\Products\ProductCategoryController::class, 'destroy'])->name('product_category_delete');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users Routes
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::get('/admin/user-managements', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'index'])->name('user_management_list');
+
+    Route::get('/admin/user-management/create', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'create'])->name('user_management_create');
+
+    Route::post('/admin/user-management/create', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'store'])->name('user_management_store');
+
+    Route::get('/admin/user-management/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'edit'])->name('user_management_edit');
+
+    Route::put('/admin/user-management/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'update'])->name('user_management_update');
+
+    Route::put('/admin/user-management/change-password/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'changePassword'])->name('user_management_change_password');
+
+    Route::delete('/admin/user-management/delete/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'destroy'])->name('user_management_delete');
 });

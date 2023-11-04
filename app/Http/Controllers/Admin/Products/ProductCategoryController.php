@@ -31,15 +31,8 @@ class ProductCategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:product_categories',
         ]);
-
-        $category = ProductCategory::where('name', $request->name)->first();
-
-        if ($category) {
-            toast('Product category already exist', 'error');
-            return back()->withInput();
-        }
 
         ProductCategory::create([
             'name' => $request->name,
@@ -65,7 +58,7 @@ class ProductCategoryController extends Controller
     {
         $product_category = ProductCategory::find($id);
         if (!$product_category) {
-            toast('Product not found', 'error');
+            toast('Product category not found', 'error');
             return back()->withInput();
         }
         return view('admin.product-categories.edit', compact('product_category'));
@@ -82,7 +75,7 @@ class ProductCategoryController extends Controller
 
         $product_category = ProductCategory::find($id);
         if (!$product_category) {
-            toast('Product not found', 'error');
+            toast('Product category not found', 'error');
             return back()->withInput();
         }
 
@@ -101,7 +94,7 @@ class ProductCategoryController extends Controller
     {
         $product_category = ProductCategory::find($id);
         if (!$product_category) {
-            toast('Product not found', 'error');
+            toast('Product category not found', 'error');
             return back()->withInput();
         }
 
