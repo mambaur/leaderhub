@@ -60,6 +60,25 @@ Route::middleware(['auth'])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Download Centers Routes
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::get('/admin/download-centers', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'index'])->name('download_center_list');
+
+    Route::get('/admin/download-center/create', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'create'])->name('download_center_create');
+
+    Route::post('/admin/download-center/create', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'store'])->name('download_center_store');
+
+    Route::get('/admin/download-center/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'edit'])->name('download_center_edit');
+
+    Route::put('/admin/download-center/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'update'])->name('download_center_update');
+
+    Route::delete('/admin/download-center/delete/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'destroy'])->name('download_center_delete');
+
+    /*
+    |--------------------------------------------------------------------------
     | Users Routes
     |--------------------------------------------------------------------------
     |

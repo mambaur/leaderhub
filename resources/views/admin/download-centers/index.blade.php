@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Product Categories', 'menu' => 'categories', 'submenu' => 'product-category-list'])
+@extends('admin.layouts.main', ['title' => 'Download Center', 'menu' => 'download-centers', 'submenu' => 'download-center-list'])
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
@@ -12,12 +12,12 @@
                     <div class="card-body">
                         <div class="d-sm-flex justify-content-between align-items-start">
                             <div>
-                                <h4 class="card-title card-title-dash">Category</h4>
-                                <p class="card-subtitle card-subtitle-dash">Product Categories</p>
+                                <h4 class="card-title card-title-dash">Download Center</h4>
+                                <p class="card-subtitle card-subtitle-dash">List of download centers</p>
                             </div>
                             <div>
-                                <a href="{{ route('product_category_create') }}" class="btn btn-primary btn-sm">+ Add
-                                    Category</a>
+                                <a href="{{ route('download_center_create') }}" class="btn btn-primary btn-sm">+ Add
+                                    Download Center</a>
                             </div>
                         </div>
                         <div class="table-responsive mt-1">
@@ -25,16 +25,22 @@
                                 <thead>
                                     <tr>
                                         <th class="w-50">Name</th>
+                                        <th class="w-50">Url</th>
                                         <th>Created At</th>
                                         <th>Updated At</th>
                                         <th class="w-25 text-end">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($product_categories as $item)
+                                    @foreach ($download_centers as $item)
                                         <tr>
                                             <td>
                                                 <h6>{{ $item->name }}</h6>
+                                            </td>
+                                            <td>
+                                                <h6>
+                                                    <a href="{{ $item->url }}" target="_blank">Open Link</a>
+                                                </h6>
                                             </td>
                                             <td>
                                                 <h6>{{ $item->created_at->format('Y-m-d h:i:s') }}</h6>
@@ -44,11 +50,11 @@
                                             </td>
                                             <td class="text-end">
                                                 <a class="btn btn-primary py-1"
-                                                    href="{{ route('product_category_edit', $item->id) }}">
+                                                    href="{{ route('download_center_edit', $item->id) }}">
                                                     Edit</a>
                                                 <a href="#" class="btn btn-danger btn-delete py-1"
                                                     data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    data-url="{{ route('product_category_delete', $item->id) }}">
+                                                    data-url="{{ route('download_center_delete', $item->id) }}">
                                                     Delete</a>
                                             </td>
                                         </tr>
@@ -94,7 +100,7 @@
     <script>
         $(document).ready(function() {
             $('.table').DataTable({
-                order: [[2, 'desc']]
+                order: [[3, 'desc']] // updated_at
             });
         });
 

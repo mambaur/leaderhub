@@ -11,7 +11,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control  @error('name') is-invalid @enderror" id="name" value="{{old('name')}}" name="name"
+                                <input type="text" class="form-control h-100 @error('name') is-invalid @enderror" id="name" value="{{old('name')}}" name="name"
                                     placeholder="Category Name..." required>
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">

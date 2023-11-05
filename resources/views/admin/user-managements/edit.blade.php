@@ -12,7 +12,7 @@
                             @method('put')
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control  @error('name') is-invalid @enderror"
+                                <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
                                     id="name" value="{{ old('name') ?? @$user->name }}" name="name"
                                     placeholder="Name..." required>
                                 @error('name')
@@ -24,7 +24,7 @@
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control  @error('email') is-invalid @enderror"
+                                <input type="email" class="form-control h-100 @error('email') is-invalid @enderror"
                                     id="email" value="{{ old('email') ?? @$user->email }}" name="email"
                                     placeholder="Email..." required>
                                 @error('email')
@@ -36,7 +36,7 @@
 
                             <div class="form-group">
                                 <label for="role">Role</label>
-                                <select name="role" class="form-control  @error('role') is-invalid @enderror"
+                                <select name="role" class="form-control @error('role') is-invalid @enderror" style="height: 46px"
                                     id="role">
                                     <option value="superadmin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'superadmin') selected @endif>Super Admin
                                     </option>
@@ -66,7 +66,7 @@
 
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control  @error('password') is-invalid @enderror"
+                                <input type="password" class="form-control h-100 @error('password') is-invalid @enderror"
                                     id="password" value="{{ old('password') }}" name="password" placeholder="Password..."
                                     required>
                                 @error('password')
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="password_confirmation">Re-type Password</label>
                                 <input type="password"
-                                    class="form-control  @error('password_confirmation') is-invalid @enderror"
+                                    class="form-control h-100 @error('password_confirmation') is-invalid @enderror"
                                     id="password_confirmation" value="{{ old('password_confirmation') }}"
                                     name="password_confirmation" placeholder="Re-type Password..." required>
                                 @error('password_confirmation')

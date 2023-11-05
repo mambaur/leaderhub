@@ -47,6 +47,25 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item @if (@$menu == 'download-centers') active @endif">
+            <a class="nav-link" data-bs-toggle="collapse" href="#download-centers" aria-expanded="false"
+                aria-controls="download-centers">
+                <i class="menu-icon mdi mdi-download"></i>
+                <span class="menu-title">Download Center</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse @if (@$menu == 'download-centers') show @endif" id="download-centers">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-create') active @endif"
+                            href="{{ route('download_center_create') }}">Add Download Center</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-list') active @endif"
+                            href="{{ route('download_center_list') }}">List
+                            Download Centers</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li class="nav-item nav-category">Account</li>
         @if (auth()->user()->hasRole(['superadmin']))
             <li class="nav-item @if (@$menu == 'user-managements') active @endif">
