@@ -27,6 +27,14 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.home.index');
     })->name('home');
 
+    /*
+    |--------------------------------------------------------------------------
+    | Images Routes
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::post('/upload-image', [App\Http\Controllers\Admin\Images\ImageController::class, 'uploadImage']);
 
     /*
     |--------------------------------------------------------------------------
@@ -35,9 +43,11 @@ Route::middleware(['auth'])->group(function () {
     |
     */
 
-    Route::get('/admin/products', function () {
-        return view('admin.products.index');
-    })->name('product_list');
+    Route::get('/admin/products', [App\Http\Controllers\Admin\Products\ProductController::class, 'index'])->name('product_list');
+
+    Route::get('/admin/product/create', [App\Http\Controllers\Admin\Products\ProductController::class, 'create'])->name('product_create');
+
+    Route::post('/admin/product/create', [App\Http\Controllers\Admin\Products\ProductController::class, 'store'])->name('product_store');
 
     /*
     |--------------------------------------------------------------------------

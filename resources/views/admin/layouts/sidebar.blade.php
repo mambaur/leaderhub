@@ -20,7 +20,7 @@
             <div class="collapse @if (@$menu == 'products') show @endif" id="products">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-create') active @endif"
-                            href="pages/ui-features/buttons.html">Add
+                            href="{{ route('product_create') }}">Add
                             Product</a></li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-list') active @endif"
                             href="{{ route('product_list') }}">List Products</a>
