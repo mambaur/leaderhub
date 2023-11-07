@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/upload-image', [App\Http\Controllers\Admin\Images\ImageController::class, 'uploadImage']);
 
+    Route::get('/get-images/{id}', [App\Http\Controllers\Admin\Images\ImageController::class, 'getImages']);
+
     /*
     |--------------------------------------------------------------------------
     | Products Routes
@@ -48,6 +50,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/product/create', [App\Http\Controllers\Admin\Products\ProductController::class, 'create'])->name('product_create');
 
     Route::post('/admin/product/create', [App\Http\Controllers\Admin\Products\ProductController::class, 'store'])->name('product_store');
+
+    Route::get('/admin/product/{id}', [App\Http\Controllers\Admin\Products\ProductController::class, 'edit'])->name('product_edit');
+
+    Route::put('/admin/product/{id}', [App\Http\Controllers\Admin\Products\ProductController::class, 'update'])->name('product_update');
+
+    Route::delete('/admin/product/delete/{id}', [App\Http\Controllers\Admin\Products\ProductController::class, 'destroy'])->name('product_delete');
 
     /*
     |--------------------------------------------------------------------------

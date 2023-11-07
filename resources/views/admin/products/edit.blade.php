@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Create Product', 'menu' => 'products', 'submenu' => 'product-create'])
+@extends('admin.layouts.main', ['title' => 'Edit Product', 'menu' => 'products', 'submenu' => 'product-list'])
 
 @section('styles')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -12,15 +12,16 @@
             <div class="col-md-6 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create Product</h4>
-                        <form class="forms-sample" method="post" action="{{ route('product_store') }}"
+                        <h4 class="card-title">Edit Product</h4>
+                        <form class="forms-sample" method="post" action="{{ route('product_update', $product->id) }}"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('put')
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
-                                    id="name" value="{{ old('name') }}" name="name" placeholder="Product Name..."
-                                    required>
+                                    id="name" value="{{ old('name') ?? $product->name }}" name="name"
+                                    placeholder="Product Name..." required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,7 +34,8 @@
                                 <select class="form-control @error('product_category_id') is-invalid @enderror"
                                     style="height: 46px" name="product_category_id" id="product_category_id">
                                     @foreach ($product_categories as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}"
+                                            @if (old('product_category_id') == $item->id || $product->product_category_id == $item->id) selected @endif>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                                 @error('product_category_id')
@@ -50,7 +52,7 @@
                                 </div>
                             </div>
 
-                            <div id="editor" class="mb-4" style="min-height: 400px"></div>
+                            <div id="editor" class="mb-4" style="min-height: 400px">{!! $product->description !!}</div>
                             <input type="hidden" name="description" id="description" value="">
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
@@ -137,12 +139,23 @@
             };
         });
 
+        document.getElementById('description').value = quill.root.innerHTML;
         quill.on('text-change', function() {
             document.getElementById('description').value = quill.root.innerHTML;
         });
 
-        $('.input-images').imageUploader({
-            imagesInputName: 'galleries',
+        $.ajax({
+            url: "/get-images/{{ $product->id }}?type=product",
+            type: 'get',
+            dataType: "json",
+            success: function(data) {
+                console.log(data)
+                $('.input-images').imageUploader({
+                    preloaded: data,
+                    imagesInputName: 'galleries',
+                    preloadedInputName: 'imagesold'
+                });
+            }
         })
     </script>
 @endsection

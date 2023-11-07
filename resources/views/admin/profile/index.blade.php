@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => @$user->name, 'menu' => 'profiles', 'submenu' => null])
+@extends('admin.layouts.main', ['title' => @$user->name, 'menu' => 'profile', 'submenu' => null])
 
 @section('content')
     <div class="content-wrapper">
@@ -38,8 +38,7 @@
                                 <div class="form-group">
                                     <label for="role">Role</label>
                                     <select name="role" class="form-control @error('role') is-invalid @enderror"
-                                    style="height: 46px"
-                                        id="role">
+                                        style="height: 46px" id="role">
                                         <option value="superadmin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'superadmin') selected @endif>Super
                                             Admin
                                         </option>
