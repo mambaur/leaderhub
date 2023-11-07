@@ -19,12 +19,12 @@
             </a>
             <div class="collapse @if (@$menu == 'products') show @endif" id="products">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-create') active @endif"
-                            href="{{ route('product_create') }}">Add
-                            Product</a></li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-list') active @endif"
                             href="{{ route('product_list') }}">List Products</a>
                     </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-create') active @endif"
+                            href="{{ route('product_create') }}">Add
+                            Product</a></li>
                 </ul>
             </div>
         </li>
@@ -37,12 +37,12 @@
             </a>
             <div class="collapse @if (@$menu == 'categories') show @endif" id="product-categories">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-category-create') active @endif"
-                            href="{{ route('product_category_create') }}">Add Category</a>
-                    </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-category-list') active @endif"
                             href="{{ route('product_category_list') }}">List
                             Categories</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-category-create') active @endif"
+                            href="{{ route('product_category_create') }}">Add Category</a>
                     </li>
                 </ul>
             </div>
@@ -56,12 +56,12 @@
             </a>
             <div class="collapse @if (@$menu == 'download-centers') show @endif" id="download-centers">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-create') active @endif"
-                            href="{{ route('download_center_create') }}">Add Download Center</a>
-                    </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-list') active @endif"
                             href="{{ route('download_center_list') }}">List
                             Download Centers</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-create') active @endif"
+                            href="{{ route('download_center_create') }}">Add Download Center</a>
                     </li>
                 </ul>
             </div>
@@ -77,12 +77,12 @@
                 </a>
                 <div class="collapse @if (@$menu == 'user-managements') show @endif" id="user-managements">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-create') active @endif"
-                                href="{{ route('user_management_create') }}">Add
-                                User</a></li>
                         <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-list') active @endif"
                                 href="{{ route('user_management_list') }}">List Users</a>
                         </li>
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-create') active @endif"
+                                href="{{ route('user_management_create') }}">Add
+                                User</a></li>
                     </ul>
                 </div>
             </li>

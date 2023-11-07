@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('guarantees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->string('serial_number')->nullable();
+            $table->unsignedBigInteger('product_id')->index()->nullable();
+            $table->string('serial_number')->index()->nullable();
             $table->string('buyer_name')->nullable();
             $table->string('period')->nullable();
             $table->date('date')->nullable();
             $table->date('expired_date')->nullable();
-            $table->unsignedBigInteger('created_by')->nullable();
-            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('created_by')->index()->nullable();
+            $table->unsignedBigInteger('updated_by')->index()->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

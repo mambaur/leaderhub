@@ -9,16 +9,49 @@ use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        return view('admin.products.index', compact('products'));
+        if ($request->ajax()) {
+            $product = Product::select('products.*')->with(['product_category']);
+            return DataTables::eloquent($product)
+                ->editColumn('name', function (Product $product) {
+                    return "<h6>$product->name</h6>";
+                })
+                ->editColumn('created_at', function (Product $product) {
+                    return "<h6>" . $product->created_at->format('Y-m-d h:i:s') . "</h6>";
+                })
+                ->editColumn('product_category.name', function (Product $product) {
+                    return "<h6>" . @$product->product_category->name ?? '-' . "</h6>";
+                })
+                ->addColumn('action', function (Product $product) {
+                    $action = "
+                    <div class='text-end'>
+                        <a class='btn btn-primary py-1'
+                            href='" . route('product_edit', $product->id) . "'>
+                            Edit</a>
+                        <a href='#' class='btn btn-danger btn-delete py-1'
+                            data-bs-toggle='modal' data-bs-target='#deleteModal'
+                            data-url='" . route('product_delete', $product->id) . "'>
+                            Delete</a>
+                    </div>
+                    ";
+
+                    return $action;
+                })
+                ->rawColumns(['action', 'name', 'created_at', 'product_category.name'])
+                ->toJson();
+        }
+
+        $total_product = Product::count();
+
+        return view('admin.products.index', compact('total_product'));
     }
 
     /**

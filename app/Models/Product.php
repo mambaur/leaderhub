@@ -16,4 +16,9 @@ class Product extends Model
     {
         return $this->morphToMany(Media::class, 'sourceable', 'model_has_media');
     }
+
+    public function product_category()
+    {
+        return $this->belongsTo(ProductCategory::class, 'product_category_id');
+    }
 }

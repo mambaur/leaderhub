@@ -12,10 +12,14 @@
                     <div class="card-body">
                         <div class="d-sm-flex justify-content-between align-items-start">
                             <div>
-                                <h4 class="card-title card-title-dash">Pending
-                                    Requests</h4>
+                                <h4 class="card-title card-title-dash">Products</h4>
                                 <p class="card-subtitle card-subtitle-dash">You
-                                    have 50+ new requests</p>
+                                    have {{ @$total_product }} @if (@$total_product > 1)
+                                        products
+                                    @else
+                                        product
+                                    @endif
+                                </p>
                             </div>
                             <div>
                                 <a href="{{ route('product_create') }}" class="btn btn-primary btn-sm">+ Add
@@ -26,58 +30,12 @@
                             <table class="table select-table">
                                 <thead>
                                     <tr>
-                                        <th>Customer</th>
-                                        <th>Company</th>
-                                        <th>Progress</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th style="width: 10%">Created At</th>
                                         <th class="w-25 text-end">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    @foreach ($products as $item)
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex ">
-                                                    <img src="{{ url('/') }}/admin-assets/images/faces/face1.jpg"
-                                                        alt="">
-                                                    <div>
-                                                        <h6>{{ $item->name }}</h6>
-                                                        <p>Head admin</p>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <h6>Company name 1</h6>
-                                                <p>company type</p>
-                                            </td>
-                                            <td>
-                                                <div>
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                        <p class="text-success">79%
-                                                        </p>
-                                                        <p>85/162</p>
-                                                    </div>
-                                                    <div class="progress progress-md">
-                                                        <div class="progress-bar bg-success" role="progressbar"
-                                                            style="width: 85%" aria-valuenow="25" aria-valuemin="0"
-                                                            aria-valuemax="100">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-end">
-                                                <a class="btn btn-primary py-1"
-                                                    href="{{ route('product_edit', $item->id) }}">
-                                                    Edit</a>
-                                                <a href="#" class="btn btn-danger btn-delete py-1"
-                                                    data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                    data-url="{{ route('product_delete', $item->id) }}">
-                                                    Delete</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-
-                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -119,8 +77,30 @@
         $(document).ready(function() {
             $('.table').DataTable({
                 order: [
-                    [3, 'desc']
-                ] // updated_at
+                    [1, 'desc']
+                ],
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('product_list') }}",
+                columns: [{
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'product_category.name',
+                        name: 'product_category.name'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'action',
+                        name: 'created_at',
+                        orderable: false,
+                        searchable: false
+                    },
+                ]
             });
         });
 
