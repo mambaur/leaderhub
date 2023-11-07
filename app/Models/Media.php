@@ -11,4 +11,19 @@ class Media extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function posts()
+    {
+        return $this->morphToMany(Post::class, 'sourceable', 'model_has_media');
+    }
+
+    public function products()
+    {
+        return $this->morphToMany(Product::class, 'sourceable', 'model_has_media');
+    }
+
+    public function downloadCenters()
+    {
+        return $this->morphToMany(DownloadCenter::class, 'sourceable', 'model_has_media');
+    }
 }

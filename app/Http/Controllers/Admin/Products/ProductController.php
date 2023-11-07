@@ -44,7 +44,6 @@ class ProductController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        $media_ids = [];
         if ($request->hasFile('galleries')) {
             $fileimages = $request->file('galleries');
             foreach ($fileimages as $image) {
@@ -63,12 +62,10 @@ class ProductController extends Controller
                         'updated_by' => auth()->user()->id,
                     ]);
 
-                    $media_ids[] = $media->id;
+                    $product->media()->save($media);
                 } catch (\Throwable $th) {
                 }
             }
-
-            $product->media()->attach([$media->id]);
         }
 
         toast('Product successfully created', 'success');

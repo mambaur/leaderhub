@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('company_has_media', function (Blueprint $table) {
+        Schema::create('model_has_media', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('companies');
-            $table->foreignId('media_id')->constrained('media');
+            $table->unsignedBigInteger('media_id')->nullable()->index();
+            $table->unsignedBigInteger('sourceable_id')->nullable()->index();
+            $table->string('sourceable_type')->index()->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_has_media');
+        Schema::dropIfExists('model_has_media');
     }
 };

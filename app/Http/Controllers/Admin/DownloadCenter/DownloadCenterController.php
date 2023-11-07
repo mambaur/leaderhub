@@ -55,7 +55,7 @@ class DownloadCenterController extends Controller
             $path_image = null;
 
             try {
-                $path_image = @$request->file('image')->store('download-centers/images');
+                $path_image = @$request->file('image')->store('images');
             } catch (\Throwable $th) {
             }
 
@@ -70,7 +70,7 @@ class DownloadCenterController extends Controller
                 'updated_by' => auth()->user()->id,
             ]);
 
-            $download_center->media()->attach([$media->id]);
+            $download_center->media()->save($media);
         }
 
 
@@ -132,7 +132,7 @@ class DownloadCenterController extends Controller
             $download_center->media()->detach();
 
             try {
-                $path_image = @$request->file('image')->store('download-centers/images');
+                $path_image = @$request->file('image')->store('images');
             } catch (\Throwable $th) {
             }
 
@@ -147,13 +147,7 @@ class DownloadCenterController extends Controller
                 'updated_by' => auth()->user()->id,
             ]);
 
-            $download_center->media()->attach([$media->id]);
-
-            // if ($property->furnish_level == '3') {
-            //     $property->furnishes()->detach();
-            // } else {
-            //     $property->furnishes()->sync(@$request->furnishes ?? []);
-            // }
+            $download_center->media()->save($media);
         }
 
 

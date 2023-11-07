@@ -14,11 +14,6 @@ class DownloadCenter extends Model
 
     public function media()
     {
-        return $this->belongsToMany(
-            Media::class,
-            'download_center_has_media',
-            'download_center_id',
-            'media_id'
-        )->withTimestamps();
+        return $this->morphToMany(Media::class, 'sourceable', 'model_has_media');
     }
 }
