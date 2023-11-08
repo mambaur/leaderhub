@@ -66,6 +66,24 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item @if (@$menu == 'posts') active @endif">
+            <a class="nav-link" data-bs-toggle="collapse" href="#posts" aria-expanded="false" aria-controls="posts">
+                <i class="menu-icon mdi mdi-pencil-box-outline"></i>
+                <span class="menu-title">Post</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse @if (@$menu == 'posts') show @endif" id="posts">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'post-list') active @endif"
+                            href="{{ route('post_list') }}">List
+                            Posts</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'post-create') active @endif"
+                            href="{{ route('post_create') }}">Add Post</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
         <li class="nav-item nav-category">Account</li>
         @if (auth()->user()->hasRole(['superadmin']))
             <li class="nav-item @if (@$menu == 'user-managements') active @endif">

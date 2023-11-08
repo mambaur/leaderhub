@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('product_urls', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id')->index()->nullable();
             $table->string('title')->nullable();
-            $table->text('body')->nullable();
-            $table->string('type')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->text('url')->nullable();
             $table->unsignedBigInteger('created_by')->index()->nullable();
             $table->unsignedBigInteger('updated_by')->index()->nullable();
-            $table->timestamp('published_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('product_urls');
     }
 };

@@ -6,18 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class ProductUrl extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
-    protected $casts = [
-        'published_at' => 'datetime'
-    ];
-
-    public function media()
+    public function product()
     {
-        return $this->morphToMany(Media::class, 'sourceable', 'model_has_media');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

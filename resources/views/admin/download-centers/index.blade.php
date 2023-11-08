@@ -100,7 +100,9 @@
     <script>
         $(document).ready(function() {
             $('.table').DataTable({
-                order: [[3, 'desc']] // updated_at
+                order: [
+                    [3, 'desc']
+                ] // updated_at
             });
         });
 

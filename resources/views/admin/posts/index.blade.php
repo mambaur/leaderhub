@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Products', 'menu' => 'products', 'submenu' => 'product-list'])
+@extends('admin.layouts.main', ['title' => 'Posts', 'menu' => 'posts', 'submenu' => 'post-list'])
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
@@ -10,20 +10,13 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card card-rounded">
                     <div class="card-body">
-                        <div class="d-sm-flex justify-content-between align-items-start">
+                        <div class="d-sm-flex justify-content-between align-items-start mb-3">
                             <div>
-                                <h4 class="card-title card-title-dash">Products</h4>
-                                <p class="card-subtitle card-subtitle-dash">You
-                                    have {{ @$total_product }} @if (@$total_product > 1)
-                                        products
-                                    @else
-                                        product
-                                    @endif
-                                </p>
+                                <h4 class="card-title card-title-dash">Post</h4>
                             </div>
                             <div>
-                                <a href="{{ route('product_create') }}" class="btn btn-primary btn-sm">+ Add
-                                    Product</a>
+                                <a href="{{ route('post_create') }}" class="btn btn-primary btn-sm">+ Add
+                                    Post</a>
                             </div>
                         </div>
                         <div class="table-responsive  mt-1">
@@ -31,9 +24,9 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Category</th>
+                                        <th>Type</th>
                                         <th>Status</th>
-                                        <th style="width: 10%">Created At</th>
+                                        <th style="width: 10%">Published</th>
                                         <th class="w-25 text-end">Action</th>
                                     </tr>
                                 </thead>
@@ -82,22 +75,22 @@
                 ],
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('product_list') }}",
+                ajax: "{{ route('post_list') }}",
                 columns: [{
-                        data: 'name',
-                        name: 'name'
+                        data: 'title',
+                        name: 'title'
                     },
                     {
-                        data: 'product_category.name',
-                        name: 'product_category.name'
+                        data: 'type',
+                        name: 'type'
                     },
                     {
                         data: 'is_active',
                         name: 'is_active'
                     },
                     {
-                        data: 'created_at',
-                        name: 'created_at'
+                        data: 'published_at',
+                        name: 'published_at'
                     },
                     {
                         data: 'action',

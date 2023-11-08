@@ -61,7 +61,7 @@ class DownloadCenterController extends Controller
 
             $media = Media::create([
                 'name' => $request->name,
-                'type' => 'download_center',
+                'type' => @$request->file('image')->getClientMimeType(),
                 'url' => $path_image,
                 'alt' => "$request->name - $request->description",
                 'title' => $request->name,
@@ -138,7 +138,7 @@ class DownloadCenterController extends Controller
 
             $media = Media::create([
                 'name' => $request->name,
-                'type' => 'download_center',
+                'type' => @$request->file('image')->getClientMimeType(),
                 'url' => $path_image,
                 'alt' => "$request->name - $request->description",
                 'title' => $request->name,

@@ -59,6 +59,25 @@ Route::middleware(['auth'])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Posts Routes
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    Route::get('/admin/posts', [App\Http\Controllers\Admin\Posts\PostController::class, 'index'])->name('post_list');
+
+    Route::get('/admin/post/create', [App\Http\Controllers\Admin\Posts\PostController::class, 'create'])->name('post_create');
+
+    Route::post('/admin/post/create', [App\Http\Controllers\Admin\Posts\PostController::class, 'store'])->name('post_store');
+
+    Route::get('/admin/post/{id}', [App\Http\Controllers\Admin\Posts\PostController::class, 'edit'])->name('post_edit');
+
+    Route::put('/admin/post/{id}', [App\Http\Controllers\Admin\Posts\PostController::class, 'update'])->name('post_update');
+
+    Route::delete('/admin/post/delete/{id}', [App\Http\Controllers\Admin\Posts\PostController::class, 'destroy'])->name('post_delete');
+
+    /*
+    |--------------------------------------------------------------------------
     | Product Categories Routes
     |--------------------------------------------------------------------------
     |

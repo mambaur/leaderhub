@@ -21,4 +21,9 @@ class Product extends Model
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
+
+    public function urls()
+    {
+        return $this->hasMany(ProductUrl::class, 'product_id');
+    }
 }

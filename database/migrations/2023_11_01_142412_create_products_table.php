@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('product_category_id')->index()->nullable();
             $table->string('name')->nullable();
             $table->text('description')->nullable();
+            $table->text('gallery_description')->nullable();
+            $table->boolean('is_active')->nullable();
             $table->unsignedBigInteger('created_by')->index()->nullable();
             $table->unsignedBigInteger('updated_by')->index()->nullable();
             $table->softDeletes();

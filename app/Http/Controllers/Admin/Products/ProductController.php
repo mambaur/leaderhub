@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Media;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductUrl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -19,10 +20,14 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $product = Product::select('products.*')->with(['product_category']);
-            return DataTables::eloquent($product)
+            $products = Product::select('products.*')->with(['product_category']);
+            return DataTables::eloquent($products)
                 ->editColumn('name', function (Product $product) {
                     return "<h6>$product->name</h6>";
+                })
+                ->editColumn('is_active', function (Product $product) {
+                    $status = @$product->is_active ? "Active" : "Inactive";
+                    return "<h6>" . $status . "</h6>";
                 })
                 ->editColumn('created_at', function (Product $product) {
                     return "<h6>" . $product->created_at->format('Y-m-d h:i:s') . "</h6>";
@@ -45,7 +50,7 @@ class ProductController extends Controller
 
                     return $action;
                 })
-                ->rawColumns(['action', 'name', 'created_at', 'product_category.name'])
+                ->rawColumns(['action', 'name', 'created_at', 'product_category.name', 'is_active'])
                 ->toJson();
         }
 
@@ -73,13 +78,29 @@ class ProductController extends Controller
             'galleries.*' => 'image|file|max:8192',
         ]);
 
+        DB::beginTransaction();
+
         $product = Product::create([
             'product_category_id' => $request->product_category_id,
             'name' => $request->name,
+            'is_active' => $request->is_active,
+            'gallery_description' => $request->gallery_description,
             'description' => $request->description,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
         ]);
+
+        foreach ($request->url as $key => $item) {
+            if ($item) {
+                ProductUrl::create([
+                    'product_id' => $product->id,
+                    'title' => @$request->url_title[$key],
+                    'url' => $item,
+                    'created_by' => auth()->user()->id,
+                    'updated_by' => auth()->user()->id,
+                ]);
+            }
+        }
 
         if ($request->hasFile('galleries')) {
             $fileimages = $request->file('galleries');
@@ -90,7 +111,7 @@ class ProductController extends Controller
 
                     $media = Media::create([
                         'name' => $request->name,
-                        'type' => 'product',
+                        'type' => @$image->getClientMimeType(),
                         'url' => $path_image,
                         'alt' => $request->name,
                         'title' => $request->name,
@@ -104,6 +125,8 @@ class ProductController extends Controller
                 }
             }
         }
+
+        DB::commit();
 
         toast('Product successfully created', 'success');
         return redirect()->route('product_list');
@@ -143,10 +166,26 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         $product->name = $request->name;
+        $product->is_active = $request->is_active;
         $product->product_category_id = $request->product_category_id;
         $product->description = $request->description;
+        $product->gallery_description = $request->gallery_description;
         $product->updated_by = auth()->user()->id;
         $product->save();
+
+        ProductUrl::where('product_id', $product->id)->delete();
+
+        foreach (@$request->url ?? [] as $key => $item) {
+            if ($item) {
+                ProductUrl::create([
+                    'product_id' => $product->id,
+                    'title' => @$request->url_title[$key],
+                    'url' => $item,
+                    'created_by' => auth()->user()->id,
+                    'updated_by' => auth()->user()->id,
+                ]);
+            }
+        }
 
         $pathimage = @$request->imagesold ?? [];
 
@@ -167,7 +206,7 @@ class ProductController extends Controller
 
                     $media = Media::create([
                         'name' => $request->name,
-                        'type' => 'product',
+                        'type' => @$image->getClientMimeType(),
                         'url' => $path_image,
                         'alt' => $request->name,
                         'title' => $request->name,
