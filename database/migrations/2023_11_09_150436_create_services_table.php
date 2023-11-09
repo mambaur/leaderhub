@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guarantees', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id')->index()->nullable();
-            $table->string('serial_number')->index()->index()->nullable();
-            $table->string('period')->nullable();
-            $table->date('purchase_date')->nullable();
-            $table->date('expired_date')->nullable();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('created_by')->index()->nullable();
             $table->unsignedBigInteger('updated_by')->index()->nullable();
             $table->softDeletes();
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('guarantees');
+        Schema::dropIfExists('services');
     }
 };

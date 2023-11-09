@@ -203,6 +203,8 @@ class PostController extends Controller
             return back()->withInput();
         }
 
+        DB::beginTransaction();
+
         $post->updated_by = auth()->user()->id;
         $post->save();
 
@@ -218,6 +220,8 @@ class PostController extends Controller
         $post->media()->detach();
 
         $post->delete();
+
+        DB::commit();
 
         toast('Your post successfully deleted', 'success');
         return redirect()->route('post_list');

@@ -227,6 +227,31 @@ class ProductController extends Controller
         return redirect()->route('product_list');
     }
 
+    public function getDataProduct(Request $request)
+    {
+        $districts = Product::where(function ($q) use ($request) {
+            $q->where('name', 'like', '%' . $request->search . '%');
+        })
+            ->limit(20)
+            ->get();
+
+        $data = [];
+        foreach ($districts as $item) {
+            $data[] = [
+                'id' => $item->id,
+                'value' => $item->name,
+            ];
+        }
+
+        if (!count($data)) {
+            $data[] = [
+                'id' => null,
+                'value' => "Product not found",
+            ];
+        }
+        return $data;
+    }
+
     /**
      * Remove the specified resource from storage.
      */
@@ -237,6 +262,8 @@ class ProductController extends Controller
             toast('Product not found', 'error');
             return back()->withInput();
         }
+
+        DB::beginTransaction();
 
         $product->updated_by = auth()->user()->id;
         $product->save();
@@ -253,6 +280,8 @@ class ProductController extends Controller
         $product->media()->detach();
 
         $product->delete();
+
+        DB::commit();
 
         toast('Download center successfully deleted', 'success');
         return redirect()->route('product_list');

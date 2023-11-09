@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Products;
 use App\Http\Controllers\Controller;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductCategoryController extends Controller
 {
@@ -98,9 +99,13 @@ class ProductCategoryController extends Controller
             return back()->withInput();
         }
 
+        DB::beginTransaction();
+
         $product_category->updated_by = auth()->user()->id;
         $product_category->save();
         $product_category->delete();
+
+        DB::commit();
 
         toast('Product category successfully deleted', 'success');
         return redirect()->route('product_category_list');

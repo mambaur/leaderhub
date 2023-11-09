@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Guarantee extends Model
+class Service extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
-    public function product()
+    public function media()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->morphToMany(Media::class, 'sourceable', 'model_has_media');
     }
 }

@@ -84,6 +84,76 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item @if (@$menu == 'guarantees') active @endif">
+            <a class="nav-link" data-bs-toggle="collapse" href="#guarantees" aria-expanded="false"
+                aria-controls="guarantees">
+                <i class="menu-icon mdi mdi-security"></i>
+                <span class="menu-title">Guarantees</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse @if (@$menu == 'guarantees') show @endif" id="guarantees">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'guarantee-list') active @endif"
+                            href="{{ route('guarantee_list') }}">List
+                            Guarantees</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'guarantee-create') active @endif"
+                            href="{{ route('guarantee_create') }}">Add Guarantee</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item nav-category">About</li>
+        <li class="nav-item @if (@$menu == 'services') active @endif">
+            <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false"
+                aria-controls="services">
+                <i class="menu-icon mdi mdi-face-agent"></i>
+                <span class="menu-title">Services</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse @if (@$menu == 'services') show @endif" id="services">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-list') active @endif"
+                            href="{{ route('service_list') }}">List
+                            Services</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-create') active @endif"
+                            href="{{ route('service_create') }}">Add Service</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item @if (@$menu == 'certificates') active @endif">
+            <a class="nav-link" data-bs-toggle="collapse" href="#certificates" aria-expanded="false"
+                aria-controls="certificates">
+                <i class="menu-icon mdi mdi-certificate"></i>
+                <span class="menu-title">Certificate</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse @if (@$menu == 'certificates') show @endif" id="certificates">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-list') active @endif"
+                            href="{{ route('certificate_list') }}">List
+                            Certificate</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-create') active @endif"
+                            href="{{ route('certificate_create') }}">Add Certificate</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item @if (@$menu == 'company') active @endif">
+            <a class="nav-link" href="{{ route('company') }}">
+                <i class="menu-icon mdi mdi-domain"></i>
+                <span class="menu-title">Company</span>
+            </a>
+        </li>
+        <li class="nav-item @if (@$menu == 'locations') active @endif">
+            <a class="nav-link" href="{{ route('location') }}">
+                <i class="menu-icon mdi mdi-map-marker"></i>
+                <span class="menu-title">Location</span>
+            </a>
+        </li>
         <li class="nav-item nav-category">Account</li>
         @if (auth()->user()->hasRole(['superadmin']))
             <li class="nav-item @if (@$menu == 'user-managements') active @endif">
@@ -109,102 +179,6 @@
             <a class="nav-link" href="{{ route('profile_update') }}">
                 <i class="menu-icon mdi mdi-account-circle-outline"></i>
                 <span class="menu-title">Profile</span>
-            </a>
-        </li>
-        <li class="nav-item nav-category">UI Elements</li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
-                <i class="menu-icon mdi mdi-floor-plan"></i>
-                <span class="menu-title">UI Elements</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item nav-category">Forms and Datas</li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                aria-controls="form-elements">
-                <i class="menu-icon mdi mdi-card-text-outline"></i>
-                <span class="menu-title">Form elements</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic
-                            Elements</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false"
-                aria-controls="charts">
-                <i class="menu-icon mdi mdi-chart-line"></i>
-                <span class="menu-title">Charts</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false"
-                aria-controls="tables">
-                <i class="menu-icon mdi mdi-table"></i>
-                <span class="menu-title">Tables</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="tables">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic
-                            table</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false"
-                aria-controls="icons">
-                <i class="menu-icon mdi mdi-layers-outline"></i>
-                <span class="menu-title">Icons</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="icons">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Mdi icons</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item nav-category">pages</li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false"
-                aria-controls="auth">
-                <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                <span class="menu-title">User Pages</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item nav-category">help</li>
-        <li class="nav-item">
-            <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
-                <i class="menu-icon mdi mdi-file-document"></i>
-                <span class="menu-title">Documentation</span>
             </a>
         </li>
     </ul>

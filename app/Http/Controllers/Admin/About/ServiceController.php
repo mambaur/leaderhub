@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin\DownloadCenter;
+namespace App\Http\Controllers\Admin\About;
 
 use App\Http\Controllers\Controller;
-use App\Models\DownloadCenter;
 use App\Models\Media;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
-class DownloadCenterController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $download_centers = DownloadCenter::orderBy('name', 'asc')->get();
-        return view('admin.download-centers.index', compact('download_centers'));
+        $services = Service::orderBy('title', 'asc')->get();
+        return view('admin.services.index', compact('services'));
     }
 
     /**
@@ -26,7 +25,7 @@ class DownloadCenterController extends Controller
      */
     public function create()
     {
-        return view('admin.download-centers.create');
+        return view('admin.services.create');
     }
 
     /**
@@ -35,16 +34,14 @@ class DownloadCenterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:product_categories',
-            'url' => 'required',
+            'title' => 'required',
             'image' => 'file|mimes:jpeg,jpg,png|max:1024', // 1MB = 1024 kilobytes,
         ]);
 
         DB::beginTransaction();
 
-        $download_center = DownloadCenter::create([
-            'name' => $request->name,
-            'url' => $request->url,
+        $service = Service::create([
+            'title' => $request->title,
             'description' => $request->description,
             'created_by' => auth()->user()->id,
             'updated_by' => auth()->user()->id,
@@ -60,24 +57,24 @@ class DownloadCenterController extends Controller
             }
 
             $media = Media::create([
-                'name' => $request->name,
+                'name' => $request->title,
                 'type' => @$request->file('image')->getClientMimeType(),
                 'url' => $path_image,
-                'alt' => "$request->name - $request->description",
-                'title' => $request->name,
+                'alt' => $request->title,
+                'title' => $request->title,
                 'description' => $request->description,
                 'created_by' => auth()->user()->id,
                 'updated_by' => auth()->user()->id,
             ]);
 
-            $download_center->media()->save($media);
+            $service->media()->save($media);
         }
 
 
         DB::commit();
 
-        toast('Download center successfully created', 'success');
-        return redirect()->route('download_center_list');
+        toast('Service successfully created', 'success');
+        return redirect()->route('service_list');
     }
 
     /**
@@ -85,12 +82,12 @@ class DownloadCenterController extends Controller
      */
     public function edit(string $id)
     {
-        $download_center = DownloadCenter::find($id);
-        if (!$download_center) {
-            toast('Download center not found', 'error');
+        $service = Service::find($id);
+        if (!$service) {
+            toast('Service not found', 'error');
             return back()->withInput();
         }
-        return view('admin.download-centers.edit', compact('download_center'));
+        return view('admin.services.edit', compact('service'));
     }
 
     /**
@@ -99,27 +96,25 @@ class DownloadCenterController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required',
-            'url' => 'required',
+            'title' => 'required',
             'image' => 'file|mimes:jpeg,jpg,png|max:1024', // 1MB = 1024 kilobytes,
         ]);
 
-        $download_center = DownloadCenter::find($id);
-        if (!$download_center) {
-            toast('Download center not found', 'error');
+        $service = Service::find($id);
+        if (!$service) {
+            toast('Service not found', 'error');
             return back()->withInput();
         }
 
-        $download_center->name = $request->name;
-        $download_center->url = $request->url;
-        $download_center->description = $request->description;
-        $download_center->updated_by = auth()->user()->id;
-        $download_center->save();
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->updated_by = auth()->user()->id;
+        $service->save();
 
         $path_image = null;
 
         if (@$request->file('image')) {
-            foreach (@$download_center->media ?? [] as $item) {
+            foreach (@$service->media ?? [] as $item) {
                 if (@$item->url) {
                     if (Storage::exists(@$item->url)) {
                         Storage::delete(@$item->url);
@@ -129,7 +124,7 @@ class DownloadCenterController extends Controller
                 $item->delete();
             }
 
-            $download_center->media()->detach();
+            $service->media()->detach();
 
             try {
                 $path_image = @$request->file('image')->store('images');
@@ -137,22 +132,22 @@ class DownloadCenterController extends Controller
             }
 
             $media = Media::create([
-                'name' => $request->name,
+                'name' => $request->title,
                 'type' => @$request->file('image')->getClientMimeType(),
                 'url' => $path_image,
-                'alt' => "$request->name - $request->description",
-                'title' => $request->name,
+                'alt' => $request->title,
+                'title' => $request->title,
                 'description' => $request->description,
                 'created_by' => auth()->user()->id,
                 'updated_by' => auth()->user()->id,
             ]);
 
-            $download_center->media()->save($media);
+            $service->media()->save($media);
         }
 
 
-        toast('Download center successfully updated', 'success');
-        return redirect()->route('download_center_list');
+        toast('Service successfully updated', 'success');
+        return redirect()->route('service_list');
     }
 
     /**
@@ -160,18 +155,18 @@ class DownloadCenterController extends Controller
      */
     public function destroy(string $id)
     {
-        $download_center = DownloadCenter::find($id);
-        if (!$download_center) {
-            toast('Download center not found', 'error');
+        $service = Service::find($id);
+        if (!$service) {
+            toast('Service not found', 'error');
             return back()->withInput();
         }
 
         DB::beginTransaction();
 
-        $download_center->updated_by = auth()->user()->id;
-        $download_center->save();
+        $service->updated_by = auth()->user()->id;
+        $service->save();
 
-        foreach (@$download_center->media ?? [] as $item) {
+        foreach (@$service->media ?? [] as $item) {
             if (@$item->url) {
                 if (Storage::exists(@$item->url)) {
                     Storage::delete(@$item->url);
@@ -180,13 +175,13 @@ class DownloadCenterController extends Controller
             $item->delete();
         }
 
-        $download_center->media()->detach();
+        $service->media()->detach();
 
-        $download_center->delete();
+        $service->delete();
 
         DB::commit();
 
-        toast('Download center successfully deleted', 'success');
-        return redirect()->route('download_center_list');
+        toast('Service successfully deleted', 'success');
+        return redirect()->route('service_list');
     }
 }

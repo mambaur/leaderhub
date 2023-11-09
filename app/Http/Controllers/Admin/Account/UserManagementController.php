@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Account;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
@@ -153,10 +154,14 @@ class UserManagementController extends Controller
             return back()->withInput();
         }
 
+        DB::beginTransaction();
+
         $user->updated_by = auth()->user()->id;
         $user->email = Str::random(5) . $user->email;
         $user->save();
         $user->delete();
+
+        DB::commit();
 
         toast('User successfully deleted', 'success');
         return redirect()->route('user_management_list');
