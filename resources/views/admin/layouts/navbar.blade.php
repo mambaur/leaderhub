@@ -7,10 +7,10 @@
             </button>
         </div>
         <div>
-            <a class="navbar-brand brand-logo" href="index.html">
-                <img src="{{ url('/') }}/admin-assets/images/logo.svg" alt="logo" />
+            <a class="navbar-brand brand-logo" href="{{url('/')}}">
+                <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" style="object-fit: contain" alt="logo" />
             </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html">
+            <a class="navbar-brand brand-logo-mini" href="{{url('/')}}">
                 <img src="{{ url('/') }}/admin-assets/images/logo-mini.svg" alt="logo" />
             </a>
         </div>

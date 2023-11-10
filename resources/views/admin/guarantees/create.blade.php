@@ -8,7 +8,7 @@
 @section('content')
     <div class="content-wrapper">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-6 col-12 grid-margin stretch-card">
+            <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Create Guarantee</h4>

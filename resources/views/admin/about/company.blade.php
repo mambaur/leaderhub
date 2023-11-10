@@ -7,7 +7,7 @@
 @section('content')
     <div class="content-wrapper">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-6 col-12 grid-margin stretch-card">
+            <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">About Company</h4>
@@ -15,8 +15,8 @@
                             enctype="multipart/form-data">
                             @csrf
 
-                            <div id="editor" class="mb-4" style="min-height: 600px"></div>
-                            <input type="hidden" name="description" id="description" value="">
+                            <div id="editor" class="mb-4" style="min-height: 600px">{!! @$company->value !!}</div>
+                            <input type="hidden" name="description" id="description" value="{{@$company->value}}">
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
                             <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
