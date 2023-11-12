@@ -2,10 +2,11 @@
 
 @section('styles')
     <style>
-        .product-item{
+        .product-item {
             color: black;
         }
-        .product-item:hover{
+
+        .product-item:hover {
             background-color: #00CCD9;
             color: white;
         }
@@ -17,21 +18,30 @@
     <div id="leaderhub-carousel" class="carousel slide" data-bs-ride="carousel">
         <!-- Indicators/dots -->
         <div class="carousel-indicators mb-4">
-            <button type="button" data-bs-target="#leaderhub-carousel" data-bs-slide-to="0" class="active" style="height: 10px; width: 60px; border-radius:5px;border-top: 0px; border-bottom:0px"></button>
-            <button type="button" data-bs-target="#leaderhub-carousel" data-bs-slide-to="1" style="height: 10px; width: 60px;border-radius:5px;border-top: 0px; border-bottom:0px"></button>
-            <button type="button" data-bs-target="#leaderhub-carousel" data-bs-slide-to="2" style="height: 10px; width: 60px;border-radius:5px;border-top: 0px; border-bottom:0px"></button>
+            <button type="button" data-bs-target="#leaderhub-carousel" data-bs-slide-to="0" class="active"
+                style="height: 10px; width: 60px; border-radius:5px;border-top: 0px; border-bottom:0px"></button>
+            <button type="button" data-bs-target="#leaderhub-carousel" data-bs-slide-to="1"
+                style="height: 10px; width: 60px;border-radius:5px;border-top: 0px; border-bottom:0px"></button>
+            <button type="button" data-bs-target="#leaderhub-carousel" data-bs-slide-to="2"
+                style="height: 10px; width: 60px;border-radius:5px;border-top: 0px; border-bottom:0px"></button>
         </div>
-            
-            <!-- The slideshow/carousel -->
+
+        <!-- The slideshow/carousel -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{url('/')}}/images/slides/1.jpg" style="height: 100vh; width: 100%; object-fit:cover; object-position:top" alt="Los Angeles" class="d-block" style="width:100%">
+                <img src="{{ url('/') }}/images/slides/1.jpg"
+                    style="height: 100vh; width: 100%; object-fit:cover; object-position:top" alt="Los Angeles"
+                    class="d-block" style="width:100%">
             </div>
             <div class="carousel-item">
-                <img src="{{url('/')}}/images/slides/1.jpg" style="height: 100vh; width: 100%; object-fit:cover; object-position:top" alt="Chicago" class="d-block" style="width:100%">
+                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$"
+                    style="height: 100vh; width: 100%; object-fit:cover; object-position:top" alt="Chicago" class="d-block"
+                    style="width:100%">
             </div>
             <div class="carousel-item">
-                <img src="{{url('/')}}/images/slides/1.jpg" style="height: 100vh; width: 100%; object-fit:cover; object-position:top" alt="New York" class="d-block" style="width:100%">
+                <img src="{{ url('/') }}/images/slides/1.jpg"
+                    style="height: 100vh; width: 100%; object-fit:cover; object-position:top" alt="New York" class="d-block"
+                    style="width:100%">
             </div>
         </div>
     </div>
@@ -46,7 +56,7 @@
                     <li class="col-md-3 col-12 mb-4">
                         <a href="" class="text-decoration-none">
                             <div class="product-item border rounded p-5 text-center fw-bold h-100">
-                                {{$item->name}}
+                                {{ $item->name }}
                             </div>
                         </a>
                     </li>
