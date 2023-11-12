@@ -19,7 +19,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ url('/') }}/admin-assets/images/favicon.png" />
+    <link rel="shortcut icon" href="{{ url('/') }}/admin-assets/images/leaderhub/mini-logo.png" />
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="{{ url('/') }}/admin-assets/images/logo.svg" alt="logo">
+                                <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" alt="logo">
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="fw-light">Sign in to continue.</h6>

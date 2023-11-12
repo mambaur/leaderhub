@@ -181,5 +181,16 @@
                 <span class="menu-title">Profile</span>
             </a>
         </li>
+        <li class="nav-item @if (@$menu == 'logout') active @endif">
+            <a class="nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                      document.getElementById('logout-form').submit();">
+                <i class="menu-icon mdi mdi-logout"></i>
+                <span class="menu-title">Logout</span>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </li>
     </ul>
 </nav>
