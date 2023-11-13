@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\Main\Home\HomeController::class, 'index'])->name('dashboard');
 
+Route::get('/tentang-kami', [App\Http\Controllers\Main\About\AboutController::class, 'index'])->name('about');
+
+Route::get('/berita', [App\Http\Controllers\Main\Post\PostController::class, 'index'])->name('post');
+
+Route::get('/berita/{id}', [App\Http\Controllers\Main\Post\PostController::class, 'show'])->name('show_post');
+
+Route::get('/kontak-kami', [App\Http\Controllers\Main\Contact\ContactController::class, 'index'])->name('contacts');
+
 Route::get('/register', function () {
     return redirect()->route('login');
 });

@@ -1,4 +1,4 @@
-@extends('layouts.main', ['title' => 'Selamat Datang! - Leaderhub'])
+@extends('layouts.main', ['title' => 'Selamat Datang! - Leaderhub', 'menu' => 'dashboard'])
 
 @section('styles')
     <style>
@@ -47,21 +47,27 @@
     </div>
     {{-- End Carousel --}}
 
-    @if (count(@$product_categories ?? []))
-        {{-- Products --}}
-        <section class="container my-5">
-            <h2 class="text-center mb-5">Product <span style="color: #00CCD9">Leaderhub</span></h2>
-            <ul class="row p-0 d-flex justify-content-center" style="list-style: none">
-                @foreach ($product_categories as $item)
-                    <li class="col-md-3 col-12 mb-4">
-                        <a href="" class="text-decoration-none">
-                            <div class="product-item border rounded p-5 text-center fw-bold h-100">
-                                {{ $item->name }}
-                            </div>
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        </section>
-    @endif
+    @include('shared.product_category', ['product_categories' => @$product_categories])
+
+    @include('shared.jumbotron')
+
+    <article class="container my-5">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6 col-12 pe-md-5 pe-0">
+                <h2>Berita</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus consequuntur magnam
+                    quis, labore
+                    molestias sint veniam quibusdam aperiam, accusamus sequi, cum dolore repudiandae illo nam delectus?
+                    Dolorem
+                    ipsam, provident facere quidem tempore voluptate voluptatem esse nihil eos, incidunt mollitia iste.</p>
+                <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">12 Agustus 2023</div>
+                <a href="" class="btn btn-primary rounded-0 border-0" style="background-color: #00CCD9">Baca
+                    Selengkapnya</a>
+            </div>
+            <div class="col-md-6 col-12 p-3">
+                <img class="w-100 rounded"
+                    src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" alt="" />
+            </div>
+        </div>
+    </article>
 @endsection

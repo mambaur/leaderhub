@@ -11,16 +11,21 @@
         <div class="collapse navbar-collapse" id="navbarsMain">
             <ul class="navbar-nav m-auto mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">BERANDA</a>
+                    <a class="nav-link @if (@$menu == 'dashboard') active fw-bold @endif" aria-current="page"
+                        href="{{ route('dashboard') }}">BERANDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">TENTANG KAMI</a>
+                    <a class="nav-link @if (@$menu == 'about') active fw-bold @endif"
+                        href="{{ route('about') }}">TENTANG KAMI</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">BERITA</a>
+                    <a class="nav-link @if (@$menu == 'posts') active fw-bold @endif"
+                        href="{{ route('post') }}">BERITA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">KONTAK KAMI</a>
+                    <a class="nav-link @if (@$menu == 'contacts') active fw-bold @endif"
+                        href="{{ route('contacts') }}">KONTAK
+                        KAMI</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">DOWNLOAD</a>
