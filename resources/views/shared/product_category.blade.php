@@ -1,4 +1,17 @@
-@if (count(@$product_categories ?? []))
+@if (count(@$product_categories ?? []))    
+    @section('styles')
+        <style>
+            .product-item {
+                color: black;
+            }
+
+            .product-item:hover {
+                background-color: #00CCD9;
+                color: white;
+            }
+        </style>
+    @endsection
+    
     {{-- Products --}}
     <section class="container my-5">
         <div class="row d-flex align-items-center">

@@ -24,6 +24,12 @@ Route::get('/berita/{id}', [App\Http\Controllers\Main\Post\PostController::class
 
 Route::get('/kontak-kami', [App\Http\Controllers\Main\Contact\ContactController::class, 'index'])->name('contacts');
 
+Route::get('/download-centers', [App\Http\Controllers\Main\DownloadCenter\DownloadCenterController::class, 'index'])->name('download_centers');
+
+Route::get('/garansi', [App\Http\Controllers\Main\Guarantee\GuaranteeController::class, 'index'])->name('guarantees');
+
+Route::get('/produk/{id}', [App\Http\Controllers\Main\Product\ProductController::class, 'show'])->name('product_show');
+
 Route::get('/register', function () {
     return redirect()->route('login');
 });

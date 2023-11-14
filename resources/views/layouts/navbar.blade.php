@@ -28,10 +28,10 @@
                         KAMI</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">DOWNLOAD</a>
+                    <a class="nav-link @if (@$menu == 'download_centers') active fw-bold @endif" href="{{route('download_centers')}}">DOWNLOAD</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">GARANSI</a>
+                    <a class="nav-link @if (@$menu == 'guarantees') active fw-bold @endif" href="{{route('guarantees')}}">GARANSI</a>
                 </li>
                 {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>

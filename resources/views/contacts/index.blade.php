@@ -1,18 +1,5 @@
 @extends('layouts.main', ['title' => 'Kontak Kami - Leaderhub', 'menu' => 'contacts'])
 
-@section('styles')
-    <style>
-        .product-item {
-            color: black;
-        }
-
-        .product-item:hover {
-            background-color: #00CCD9;
-            color: white;
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="container mt-5 pt-5 mb-5">
         <div class="row d-flex justify-content-center">

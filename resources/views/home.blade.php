@@ -1,18 +1,5 @@
 @extends('layouts.main', ['title' => 'Selamat Datang! - Leaderhub', 'menu' => 'dashboard'])
 
-@section('styles')
-    <style>
-        .product-item {
-            color: black;
-        }
-
-        .product-item:hover {
-            background-color: #00CCD9;
-            color: white;
-        }
-    </style>
-@endsection
-
 @section('content')
     <!-- Carousel -->
     <div id="leaderhub-carousel" class="carousel slide" data-bs-ride="carousel">

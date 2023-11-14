@@ -1,14 +1,22 @@
-@extends('layouts.main', ['title' => 'Berita - Leaderhub', 'menu' => 'posts'])
+@extends('layouts.main', ['title' => 'Product - Leaderhub', 'menu' => 'products'])
+
 
 @section('content')
     <div class="container mt-5 pt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 col-12">
-                <span class="h4 fw-bold">Berita</span>
-                <div class="text-center py-3">
-                    <img class="w-100 rounded"
-                        src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" alt="" />
+                <div class="d-flex align-items-center">
+                    <img class="mb-1"
+                        src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" height="24"
+                        alt="Logo Leaderhub" />
+                    <i class="fa-solid fa-chevron-right mx-3" style="color: #00CCD9"></i>
+                    <h1 class="h4 fw-bold d-inline-block">Products</span>
                 </div>
+                
+                <div class="w-100">
+                    
+                </div>
+                
                 <h1 class="h4 fw-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
                 <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">12 Agustus 2023</div>
                 <p>
