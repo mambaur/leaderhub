@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function () {
     |
     */
 
+    Route::get('/get-images/sliders', [App\Http\Controllers\Admin\Images\ImageController::class, 'getImageSliders']);
+
     Route::post('/upload-image', [App\Http\Controllers\Admin\Images\ImageController::class, 'uploadImage']);
 
     Route::get('/get-images/{id}', [App\Http\Controllers\Admin\Images\ImageController::class, 'getImages']);
@@ -168,6 +170,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/admin/location', [App\Http\Controllers\Admin\About\AboutController::class, 'updateLocation'])->name('location_store');
 
+    Route::get('/admin/sliders', [App\Http\Controllers\Admin\About\AboutController::class, 'sliders'])->name('sliders');
+
+    Route::put('/admin/sliders', [App\Http\Controllers\Admin\About\AboutController::class, 'updateSliders'])->name('sliders_update');
+
     /*
     |--------------------------------------------------------------------------
     | Certificates Routes
@@ -232,8 +238,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'index'])->name('profile_update');
     Route::put('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'update'])->name('profile_update');
 });
-
-// Route::middleware(['auth', 'role:admin'])->group(function () {
-//     Route::get('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'index'])->name('profile_update');
-//     Route::put('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'update'])->name('profile_update');
-// });

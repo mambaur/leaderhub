@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin\About;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -106,5 +108,68 @@ class AboutController extends Controller
 
         toast('Company location successfully updated', 'success');
         return redirect()->route('location');
+    }
+
+
+    public function sliders(Request $request)
+    {
+        return view('admin.about.sliders');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateSliders(Request $request)
+    {
+        $request->validate([
+            'images.*' => 'image|file|max:8192',
+        ]);
+
+        $slider = Company::where('key', 'sliders')->first();
+        if (!$slider) {
+            toast('Sliders not found', 'error');
+            return back()->withInput();
+        }
+
+        DB::beginTransaction();
+
+        $pathimage = @$request->imagesold ?? [];
+
+        foreach (@$slider->media ?? [] as $item) {
+            if (!in_array($item->url, $pathimage)) {
+                if (Storage::exists(@$item->url)) {
+                    Storage::delete(@$item->url);
+                }
+                $item->delete();
+            }
+        }
+
+        if ($request->hasFile('images')) {
+            $fileimages = $request->file('images');
+            foreach ($fileimages as $key => $image) {
+                try {
+                    $path_image = @$image->store('images');
+
+                    $media = Media::create([
+                        'name' => "Sliders Leaderhub $key",
+                        'type' => @$image->getClientMimeType(),
+                        'url' => $path_image,
+                        'alt' =>  "Sliders Leaderhub $key",
+                        'title' =>  "Sliders Leaderhub $key",
+                        // 'description' => ,
+                        'created_by' => auth()->user()->id,
+                        'updated_by' => auth()->user()->id,
+                    ]);
+
+                    $slider->media()->save($media);
+                } catch (\Throwable $th) {
+                }
+            }
+        }
+
+        DB::commit();
+
+        toast('Sliders successfully updated', 'success');
+        return redirect()->route('sliders');
     }
 }

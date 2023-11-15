@@ -26,4 +26,9 @@ class Media extends Model
     {
         return $this->morphToMany(DownloadCenter::class, 'sourceable', 'model_has_media');
     }
+
+    public function company()
+    {
+        return $this->morphToMany(Company::class, 'sourceable', 'model_has_media');
+    }
 }

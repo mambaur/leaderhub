@@ -37,5 +37,11 @@ class CompanySeeder extends Seeder
             'created_by' => 1,
             'updated_by' => 1,
         ]);
+        Company::create([
+            'key' => 'sliders',
+            'title' => 'Sliders',
+            'created_by' => 1,
+            'updated_by' => 1,
+        ]);
     }
 }

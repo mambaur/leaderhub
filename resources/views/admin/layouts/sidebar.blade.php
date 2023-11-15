@@ -104,6 +104,12 @@
             </div>
         </li>
         <li class="nav-item nav-category">About</li>
+        <li class="nav-item @if (@$menu == 'sliders') active @endif">
+            <a class="nav-link" href="{{ route('sliders') }}">
+                <i class="menu-icon mdi mdi-image-multiple"></i>
+                <span class="menu-title">Sliders</span>
+            </a>
+        </li>
         <li class="nav-item @if (@$menu == 'services') active @endif">
             <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false"
                 aria-controls="services">
@@ -183,7 +189,7 @@
         </li>
         <li class="nav-item @if (@$menu == 'logout') active @endif">
             <a class="nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
+                onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
                 <i class="menu-icon mdi mdi-logout"></i>
                 <span class="menu-title">Logout</span>

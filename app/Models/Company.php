@@ -11,4 +11,9 @@ class Company extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    public function media()
+    {
+        return $this->morphToMany(Media::class, 'sourceable', 'model_has_media');
+    }
 }
