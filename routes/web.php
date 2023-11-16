@@ -20,7 +20,7 @@ Route::get('/tentang-kami', [App\Http\Controllers\Main\About\AboutController::cl
 
 Route::get('/berita', [App\Http\Controllers\Main\Post\PostController::class, 'index'])->name('post');
 
-Route::get('/berita/{id}', [App\Http\Controllers\Main\Post\PostController::class, 'show'])->name('show_post');
+Route::get('/berita/{slug}', [App\Http\Controllers\Main\Post\PostController::class, 'show'])->name('show_post');
 
 Route::get('/kontak-kami', [App\Http\Controllers\Main\Contact\ContactController::class, 'index'])->name('contacts');
 

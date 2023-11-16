@@ -9,3 +9,14 @@
 <link rel="shortcut icon" href="{{ url('/') }}/admin-assets/images/leaderhub/mini-logo.png" />
 
 <title>{{ @$title ?? 'Leaderhub' }}</title>
+
+<style>
+    .page-item.active .page-link {
+        background-color: #00CCD9;
+        border-color: #00CCD9;
+    }
+
+    .page-link {
+        color: #00CCD9;
+    }
+</style>

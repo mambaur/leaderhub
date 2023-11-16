@@ -1,27 +1,27 @@
 @extends('layouts.main', ['title' => 'Kontak Kami - Leaderhub', 'menu' => 'contacts'])
 
+
 @section('content')
     <div class="container mt-5 pt-5 mb-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 col-12">
                 <h1 class="h4 fw-bold">Kontak Kami</h1>
                 <div class="text-center py-3">
-                    <img class="w-100 rounded"
-                        src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" alt="" />
+                    <div id="map-container-google-1" class="z-depth-1-half map-container">
+                        <iframe src="{{ @$src }}" frameborder="0" style="border:0" width="100%" height="500px"
+                            allowfullscreen></iframe>
+                    </div>
+                    {{-- <img class="w-100 rounded"
+                        src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" alt="" /> --}}
                 </div>
-                <p class="text-center">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi vero, ducimus, excepturi fuga
-                    explicabo
-                    maxime, est omnis iusto unde dolorem modi veritatis magni nesciunt neque alias eos quam! Reiciendis
-                    consequuntur
-                    ex quo? Dolorum eum repellat tenetur voluptatibus, error dolores laudantium sint aut illum fugiat dolore
-                    harum
+                <p class="text-center mb-4">
+                    {{ @$company['address'][0]->value }}
                 </p>
-                <p class="text-center fw-bold">
+                <h2 class="text-center h4 fw-bold">
                     Layanan Pelanggan
-                </p>
+                </h2>
                 <p class="text-center">
-                    +62 813-3010-2880
+                    {{ @$company['contact'][0]->value }}
                 </p>
             </div>
         </div>
@@ -29,9 +29,5 @@
 
     @include('shared.jumbotron')
 
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-6 col-12">
-            @include('shared.product_category', ['product_categories' => @$product_categories])
-        </div>
-    </div>
+    @include('shared.product_category', ['product_categories' => @$product_categories])
 @endsection

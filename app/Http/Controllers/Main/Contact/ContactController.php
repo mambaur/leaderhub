@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main\Contact;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
@@ -13,55 +14,15 @@ class ContactController extends Controller
      */
     public function index()
     {
+        $company = Company::all()->groupBy('key');
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('contacts.index', compact('product_categories'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        $map = @$company['map'][0]->value;
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $start = strpos($map, 'src="') + 5; // Cari posisi awal nilai src
+        $end = strpos($map, '"', $start); // Cari posisi akhir nilai src
+        $src = substr($map, $start, $end - $start); // Ambil nilai src dari string HTML
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('contacts.index', compact('product_categories', 'company', 'src'));
     }
 }

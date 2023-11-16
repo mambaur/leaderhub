@@ -37,8 +37,8 @@
                                 @enderror
                             </div>
 
-                            <div id="editor" class="mb-4" style="min-height: 600px"></div>
-                            <input type="hidden" name="description" id="description" value="">
+                            <div id="editor" class="mb-4" style="min-height: 600px">{!! old('description') !!}</div>
+                            <input type="hidden" name="description" id="description" value="{{ old('description') }}">
 
                             <div class="row">
                                 <div class="col-md-6">

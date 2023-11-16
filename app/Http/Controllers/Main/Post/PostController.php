@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main\Post;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
@@ -13,56 +14,22 @@ class PostController extends Controller
      */
     public function index()
     {
+        $posts = Post::latest()->paginate(10);
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('posts.index', compact('product_categories'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('posts.index', compact('product_categories', 'posts'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
+        $post = Post::where('slug', $slug)->first();
+        if (!$post) {
+            return abort(404);
+        }
+
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('posts.detail', compact('product_categories'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('posts.detail', compact('product_categories', 'post'));
     }
 }

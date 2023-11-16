@@ -42,8 +42,9 @@
                                 @enderror
                             </div>
 
-                            <div id="editor" class="mb-4" style="min-height: 600px">{!! $post->body !!}</div>
-                            <input type="hidden" name="description" id="description" value="">
+                            <div id="editor" class="mb-4" style="min-height: 600px">{!! old('description') ?? $post->body !!}</div>
+                            <input type="hidden" name="description" id="description"
+                                value="{{ old('description') ?? $post->body }}">
 
                             <div class="row">
                                 <div class="col-md-6">

@@ -12,6 +12,11 @@ class Guarantee extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'purchase_date' => 'datetime',
+        'expired_date' => 'datetime',
+    ];
+
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');

@@ -10,38 +10,44 @@
                         <form class="forms-sample" method="post" action="{{ route('location_store') }}"
                             enctype="multipart/form-data">
                             @csrf
-                            
+
                             <div class="form-group">
                                 <label for="contact">Contact</label>
-                                <input type="text" class="form-control h-100 @error('contact') is-invalid @enderror" id="contact" value="{{ old('contact') ?? @$contact->value}}" name="contact"
+                                <input type="text" class="form-control h-100 @error('contact') is-invalid @enderror"
+                                    id="contact" value="{{ old('contact') ?? @$contact->value }}" name="contact"
                                     placeholder="Contact..." required>
-                                    @error('contact')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @error('contact')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control h-100 @error('address') is-invalid @enderror" id="address" value="{{ old('address') ?? @$address->value}}" name="address"
+                                <input type="text" class="form-control h-100 @error('address') is-invalid @enderror"
+                                    id="address" value="{{ old('address') ?? @$address->value }}" name="address"
                                     placeholder="Address..." required>
-                                    @error('address')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="form-group">
-                                <label for="map">Map URL</label>
-                                <input type="text" class="form-control h-100 @error('map') is-invalid @enderror" id="map" value="{{ old('map') ?? @$map->value}}" name="map"
+                                <label for="map">Map URL (Embed)</label>
+                                <input type="text" class="form-control h-100 @error('map') is-invalid @enderror"
+                                    id="map" value="{{ old('map') ?? @$map->value }}" name="map"
                                     placeholder="Map URL..." required>
-                                    @error('map')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <small>Example: <span
+                                        class="text-muted fw-bold fst-italic">{{ '<iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>' }}</span>
+                                </small>
+                                @error('map')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>

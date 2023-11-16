@@ -1,4 +1,4 @@
-@if (count(@$product_categories ?? []))    
+@if (count(@$product_categories ?? []))
     @section('styles')
         <style>
             .product-item {
@@ -11,9 +11,9 @@
             }
         </style>
     @endsection
-    
+
     {{-- Products --}}
-    <section class="container my-5">
+    <section class="container my-5 py-5">
         <div class="row d-flex align-items-center">
             <div class="col-12">
                 <h2 class="text-center mb-5 d-flex align-items-center justify-content-center">
@@ -23,17 +23,18 @@
                     <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" height="24"
                         alt="Logo Leaderhub" />
                 </h2>
-                <ul class="row p-0 d-flex justify-content-center" style="list-style: none">
+                <div class="row d-flex justify-content-center">
                     @foreach ($product_categories as $item)
-                        <li class="col-md-3 col-12 mb-4">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
                             <a href="" class="text-decoration-none">
-                                <div class="product-item border rounded p-5 text-center fw-bold h-100">
+                                <div class="product-item border rounded text-center fw-bold d-flex align-items-center justify-content-center"
+                                    style="height: 100px">
                                     {{ $item->name }}
                                 </div>
                             </a>
-                        </li>
+                        </div>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
     </section>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\ProductCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class ProductSeeder extends Seeder
 {
@@ -22,5 +23,7 @@ class ProductSeeder extends Seeder
                 'updated_by' => 1,
             ]);
         }
+
+        Storage::deleteDirectory('images');
     }
 }
