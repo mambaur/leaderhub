@@ -15,8 +15,37 @@
                             enctype="multipart/form-data">
                             @csrf
 
+                            <div class="form-group">
+                                <label for="name">Company Name</label>
+                                <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
+                                    id="name" value="{{ old('name') ?? @$name->value }}" name="name"
+                                    placeholder="Name..." required>
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Logo</label>
+                                @if (@$logo->media[0])
+                                    <div class="my-3">
+                                        <img style="width: 80px" src="{{ asset('storage/' . @$logo->media[0]->url) }}"
+                                            alt="{{ @$logo->media[0]->alt }}">
+                                    </div>
+                                @endif
+                                <input type="file" class="form-control h-100 @error('image') is-invalid @enderror"
+                                    name="image" id="image">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                             <div id="editor" class="mb-4" style="min-height: 600px">{!! @$company->value !!}</div>
-                            <input type="hidden" name="description" id="description" value="{{@$company->value}}">
+                            <input type="hidden" name="description" id="description" value="{{ @$company->value }}">
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
                             <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>

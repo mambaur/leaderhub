@@ -17,7 +17,9 @@ class AboutController extends Controller
     public function company(Request $request)
     {
         $company = Company::where('key', 'about')->first();
-        return view('admin.about.company', compact('company'));
+        $logo = Company::where('key', 'logo')->first();
+        $name = Company::where('key', 'name')->first();
+        return view('admin.about.company', compact('company', 'name', 'logo'));
     }
     /**
      * Store a newly created resource in storage.
@@ -35,6 +37,66 @@ class AboutController extends Controller
             ]);
         } else {
             $company->value = $request->description;
+            $company->updated_by = @auth()->user()->id;
+            $company->save();
+        }
+
+        $logo = Company::where('key', 'logo')->first();
+        if (!$logo) {
+            $logo = Company::create([
+                'key' => 'logo',
+                'title' => 'logo',
+                'created_by' => @auth()->user()->id,
+                'updated_by' => @auth()->user()->id,
+            ]);
+        } else {
+            $logo->updated_by = @auth()->user()->id;
+            $logo->save();
+        }
+
+        if (@$request->file('image')) {
+            foreach (@$logo->media ?? [] as $item) {
+                if (@$item->url) {
+                    if (Storage::exists(@$item->url)) {
+                        Storage::delete(@$item->url);
+                    }
+                }
+
+                $item->delete();
+            }
+
+            $logo->media()->detach();
+
+            try {
+                $path_image = @$request->file('image')->store('images');
+            } catch (\Throwable $th) {
+            }
+
+            $media = Media::create([
+                'name' => $request->name,
+                'type' => @$request->file('image')->getClientMimeType(),
+                'url' => $path_image,
+                'alt' => $request->name,
+                'title' => $request->name,
+                // 'description' => $request->description,
+                'created_by' => auth()->user()->id,
+                'updated_by' => auth()->user()->id,
+            ]);
+
+            $logo->media()->save($media);
+        }
+
+        $company = Company::where('key', 'name')->first();
+        if (!$company) {
+            $company = Company::create([
+                'key' => 'name',
+                'title' => 'Name',
+                'value' => $request->name,
+                'created_by' => @auth()->user()->id,
+                'updated_by' => @auth()->user()->id,
+            ]);
+        } else {
+            $company->value = $request->name;
             $company->updated_by = @auth()->user()->id;
             $company->save();
         }
