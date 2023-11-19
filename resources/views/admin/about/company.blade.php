@@ -44,6 +44,23 @@
                                 @enderror
                             </div>
 
+                            <div class="form-group">
+                                <label for="mini_image">Mini Logo</label>
+                                @if (@$mini_logo->media[0])
+                                    <div class="my-3">
+                                        <img style="width: 80px" src="{{ asset('storage/' . @$mini_logo->media[0]->url) }}"
+                                            alt="{{ @$mini_logo->media[0]->alt }}">
+                                    </div>
+                                @endif
+                                <input type="file" class="form-control h-100 @error('mini_image') is-invalid @enderror"
+                                    name="mini_image" id="mini_image">
+                                @error('mini_image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
                             <div id="editor" class="mb-4" style="min-height: 600px">{!! @$company->value !!}</div>
                             <input type="hidden" name="description" id="description" value="{{ @$company->value }}">
 

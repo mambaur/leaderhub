@@ -12,13 +12,11 @@
           <div class="col-12 col-md-4 mb-3">
             <h5 class="text-white">Lokasi</h5>
             <ul class="nav flex-column mb-3">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pergudangan Ritzgate Industrial Park BC 6,
-                Jalan Muncul Bohar Timur, Kecamatan Taman,
-                Kabupaten Sidoarjo, Jawa Timur</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">{{get_locations()}}</a></li>
             </ul>
             <h5 class="text-white">Layanan Pelanggan</h5>
             <ul class="nav flex-column">
-              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+62 813-3010-2880</a></li>
+              <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">{{get_contacts()}}</a></li>
             </ul>
           </div>
         </footer>

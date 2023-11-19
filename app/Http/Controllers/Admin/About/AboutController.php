@@ -18,8 +18,9 @@ class AboutController extends Controller
     {
         $company = Company::where('key', 'about')->first();
         $logo = Company::where('key', 'logo')->first();
+        $mini_logo = Company::where('key', 'mini_logo')->first();
         $name = Company::where('key', 'name')->first();
-        return view('admin.about.company', compact('company', 'name', 'logo'));
+        return view('admin.about.company', compact('company', 'name', 'logo', 'mini_logo'));
     }
     /**
      * Store a newly created resource in storage.
@@ -84,6 +85,51 @@ class AboutController extends Controller
             ]);
 
             $logo->media()->save($media);
+        }
+
+        $mini_logo = Company::where('key', 'mini_logo')->first();
+        if (!$mini_logo) {
+            $mini_logo = Company::create([
+                'key' => 'mini_logo',
+                'title' => 'Mini Logo',
+                'created_by' => @auth()->user()->id,
+                'updated_by' => @auth()->user()->id,
+            ]);
+        } else {
+            $mini_logo->updated_by = @auth()->user()->id;
+            $mini_logo->save();
+        }
+
+        if (@$request->file('mini_image')) {
+            foreach (@$mini_logo->media ?? [] as $item) {
+                if (@$item->url) {
+                    if (Storage::exists(@$item->url)) {
+                        Storage::delete(@$item->url);
+                    }
+                }
+
+                $item->delete();
+            }
+
+            $mini_logo->media()->detach();
+
+            try {
+                $path_image = @$request->file('mini_image')->store('images');
+            } catch (\Throwable $th) {
+            }
+
+            $media = Media::create([
+                'name' => $request->name,
+                'type' => @$request->file('mini_image')->getClientMimeType(),
+                'url' => $path_image,
+                'alt' => $request->name,
+                'title' => $request->name,
+                // 'description' => $request->description,
+                'created_by' => auth()->user()->id,
+                'updated_by' => auth()->user()->id,
+            ]);
+
+            $mini_logo->media()->save($media);
         }
 
         $company = Company::where('key', 'name')->first();

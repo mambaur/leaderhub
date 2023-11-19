@@ -24,7 +24,7 @@
                         alt="Logo Leaderhub" />
                 </h2>
                 <div class="row d-flex justify-content-center">
-                    @foreach ($product_categories as $item)
+                    @foreach (get_product_categories() as $item)
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
                             <a href="" class="text-decoration-none">
                                 <div class="product-item border rounded text-center fw-bold d-flex align-items-center justify-content-center"
