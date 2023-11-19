@@ -3,7 +3,7 @@
         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 mt-5 d-flex justify-content-center">
           <div class="col-12 col-md-4 mb-3">
             <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" height="32" alt="logo" />
+                <img src="{{get_logo()}}" height="32" alt="logo" />
             </a>
             <p class="text-muted">&copy; {{date('Y')}} All Rights Reserved.</p>
           </div>

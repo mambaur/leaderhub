@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Third navbar example">
     <div class="container" style="font-size:13px">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" height="24" alt="logo" />
+            <img src="{{get_logo()}}" height="24" alt="logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain"
             aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">

@@ -31,7 +31,7 @@ if (!function_exists('get_logo')) {
     function get_logo()
     {
         $company = Company::where('key', 'logo')->first();
-        if (@$company->value) {
+        if (@$company) {
             return asset('storage/' . @$company->media[0]->url);
         }
         return '';
@@ -42,7 +42,7 @@ if (!function_exists('get_mini_logo')) {
     function get_mini_logo()
     {
         $company = Company::where('key', 'mini_logo')->first();
-        if (@$company->value) {
+        if (@$company) {
             return asset('storage/' . @$company->media[0]->url);
         }
         return '';
