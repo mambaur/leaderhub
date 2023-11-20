@@ -2,6 +2,7 @@
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>
         html,
         body {
@@ -90,116 +91,66 @@
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 col-12">
                 <div class="d-flex align-items-center">
-                    <img class="mb-1" src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" height="24"
-                        alt="Logo Leaderhub" />
+                    <img class="mb-2" src="{{ get_logo() }}" height="24" alt="Logo Leaderhub" />
                     <i class="fa-solid fa-chevron-right mx-3" style="color: #00CCD9"></i>
-                    <h1 class="h4 fw-bold d-inline-block">Products</span>
+                    <h1 class="h4 fw-bold d-inline-block mt-1">Products</span>
                 </div>
 
-                <div class="w-100 my-4">
-                    <!-- Swiper -->
-                    <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
+                @if (count(@$product->media ?? []))
+                    <div class="w-100 my-4">
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                            class="swiper mySwiper2">
+                            <div class="swiper-wrapper">
+                                @foreach ($product->media as $item)
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('storage/' . @$item->url) }}" alt="{{ @$item->alt }}"
+                                            title="{{ @$item->title }}" />
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
+                        </div>
+                        <div thumbsSlider="" class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                @foreach ($product->media as $item)
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('storage/' . @$item->url) }}" alt="{{ @$item->alt }}"
+                                            title="{{ @$item->title }}" />
+                                    </div>
+                                @endforeach
                             </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
+                            <div class="swiper-button-next">
+                                <i class="fa-solid fa-chevron-right" style="color: #0A9AA4"></i>
                             </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
+                            <div class="swiper-button-prev">
+                                <i class="fa-solid fa-chevron-left" style="color: #0A9AA4"></i>
                             </div>
                         </div>
                     </div>
-                    <div thumbsSlider="" class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$" />
-                            </div>
-                        </div>
-                        <div class="swiper-button-next">
-                            <i class="fa-solid fa-chevron-right" style="color: #0A9AA4"></i>
-                        </div>
-                        <div class="swiper-button-prev">
-                            <i class="fa-solid fa-chevron-left" style="color: #0A9AA4"></i>
-                        </div>
+                @endif
+
+                @if (@$product->gallery_description)
+                    <p class="h5 text-muted text-center fst-italic mb-4">{{ @$product->gallery_description }}</p>
+                @endif
+                <h2 class="h4 fw-bold">{{ @$product->name }}</h2>
+                <div class="ql-snow">
+                    <div class="ql-editor" style="white-space:normal; padding-left: 0px; padding-right: 0px">
+                        {!! @$product->description !!}
                     </div>
                 </div>
+                {{-- <div class="w-100 bg-danger">
+                    {!! @$product->description !!}
+                </div> --}}
 
-                <p class="h5 text-muted text-center fst-italic mb-4">Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit</p>
-                <h2 class="h4 fw-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit</h2>
-                <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">12 Agustus 2023</div>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi vero, ducimus, excepturi fuga
-                    explicabo
-                    maxime, est omnis iusto unde dolorem modi veritatis magni nesciunt neque alias eos quam! Reiciendis
-                    consequuntur
-                    ex quo? Dolorum eum repellat tenetur voluptatibus, error dolores laudantium sint aut illum fugiat dolore
-                    harum
-                    ullam sed, recusandae deserunt mollitia eveniet nobis magni blanditiis id ducimus inventore iusto ipsam.
-                    Ab,
-                    illum similique. Cum distinctio pariatur dolor fuga inventore facere voluptatem earum similique! Aliquam
-                    mollitia dicta nobis libero enim corrupti eius repellendus magni ut facilis laborum id sunt veniam ipsum
-                    cupiditate, omnis explicabo veritatis distinctio! Architecto esse aperiam sunt exercitationem.
-                </p>
-
-                <div class="w-100 d-flex justify-content-center">
-                    <div class="mt-4">
-                        <button class="btn btn-primary rounded-0 border-0 me-2" style="background-color: #00CCD9">Download
-                            PDF</button>
-                        <button class="btn btn-primary rounded-0 border-0 me-2" style="background-color: #00CCD9">Download
-                            PDF</button>
+                @if (count(@$product->urls ?? []))
+                    <div class="w-100 d-flex justify-content-center">
+                        <div class="mt-4">
+                            @foreach ($product->urls as $item)
+                                <a class="btn btn-primary rounded-0 border-0 me-2" href="{{ $item->url }}"
+                                    style="background-color: #00CCD9">{{ $item->title }}</a>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -213,6 +164,7 @@
 
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <script>
         var swiper = new Swiper(".mySwiper", {

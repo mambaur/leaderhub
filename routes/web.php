@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Route;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
 Route::get('/', [App\Http\Controllers\Main\Home\HomeController::class, 'index'])->name('dashboard');
@@ -28,7 +24,7 @@ Route::get('/download-centers', [App\Http\Controllers\Main\DownloadCenter\Downlo
 
 Route::get('/garansi', [App\Http\Controllers\Main\Guarantee\GuaranteeController::class, 'index'])->name('guarantees');
 
-Route::get('/produk/{id}', [App\Http\Controllers\Main\Product\ProductController::class, 'show'])->name('product_show');
+Route::get('/produk/{slu}', [App\Http\Controllers\Main\Product\ProductController::class, 'show'])->name('product_show');
 
 Route::get('/register', function () {
     return redirect()->route('login');

@@ -8,7 +8,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="shortcut icon" href="{{ url('/') }}/admin-assets/images/leaderhub/mini-logo.png" />
 
-<title>{{ @$title ?? 'Leaderhub' }}</title>
+<title>{{ @$title ?? get_company_name() }}</title>
 
 <style>
     .page-item.active .page-link {

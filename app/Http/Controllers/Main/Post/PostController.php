@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(10);
+        $limit = 10;
+        $posts = Post::latest()->paginate($limit);
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
         return view('posts.index', compact('product_categories', 'posts'));
     }

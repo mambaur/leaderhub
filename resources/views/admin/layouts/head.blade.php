@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>{{ @$title ?? 'Leaderhub Administrator' }}</title>
+<title>{{ @$title ?? get_company_name() . ' Administrator' }}</title>
 <!-- plugins:css -->
 <link rel="stylesheet" href="{{ url('/') }}/admin-assets/vendors/feather/feather.css">
 <link rel="stylesheet" href="{{ url('/') }}/admin-assets/vendors/mdi/css/materialdesignicons.min.css">

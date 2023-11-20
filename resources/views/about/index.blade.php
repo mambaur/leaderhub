@@ -19,8 +19,7 @@
             <div class="col-md-8 col-12">
                 <h1 class="h4 fw-bold">Tentang Kami</h1>
                 <div class="text-center px-3 py-5">
-                    <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" height="50"
-                        alt="logo leaderhub" />
+                    <img src="{{ get_logo() }}" height="50" alt="logo leaderhub" />
                 </div>
                 <p>
                     {!! $about->value !!}
