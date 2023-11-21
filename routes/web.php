@@ -30,11 +30,11 @@ Route::post('/produk/data', [App\Http\Controllers\Main\Product\ProductController
 Route::get('/produk/{slu}', [App\Http\Controllers\Main\Product\ProductController::class, 'show'])->name('product_show');
 
 
-Route::get('/register', function () {
-    return redirect()->route('login');
-});
+// Route::get('/register', function () {
+//     return redirect()->route('login');
+// });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/admin', function () {
     return redirect()->route('home');
