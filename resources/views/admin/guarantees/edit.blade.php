@@ -3,6 +3,11 @@
 @section('styles')
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/css/jquery/jquery-ui.theme.min.css" />
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/css/jquery/jquery-ui.min.css" />
+    <style>
+        .ui-autocomplete-loading {
+            background: url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/images/ui-anim_basic_16x16.gif) no-repeat right center
+        }
+    </style>
 @endsection
 
 @section('content')

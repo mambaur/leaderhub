@@ -24,7 +24,11 @@ Route::get('/download-centers', [App\Http\Controllers\Main\DownloadCenter\Downlo
 
 Route::get('/garansi', [App\Http\Controllers\Main\Guarantee\GuaranteeController::class, 'index'])->name('guarantees');
 
+Route::post('/produk/data', [App\Http\Controllers\Main\Product\ProductController::class, 'getDataProduct'])
+    ->name('produk_data');
+
 Route::get('/produk/{slu}', [App\Http\Controllers\Main\Product\ProductController::class, 'show'])->name('product_show');
+
 
 Route::get('/register', function () {
     return redirect()->route('login');

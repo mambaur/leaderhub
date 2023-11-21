@@ -30,7 +30,7 @@
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
                             <div class="brand-logo">
-                                <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" alt="logo">
+                                <img src="{{ get_logo() }}" alt="logo">
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="fw-light">Sign in to continue.</h6>
@@ -53,12 +53,20 @@
                                         name="password" id="password" placeholder="Password" required
                                         autocomplete="current-password">
 
-
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                                <div class="my-2 d-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                        <label class="form-check-label text-muted">
+                                            <input type="checkbox" class="form-check-input" name="show_password"
+                                                id="show_password">
+                                            Show Password
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
@@ -68,9 +76,9 @@
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
                                         <label class="form-check-label text-muted">
-                                            <input type="checkbox" class="form-check-input" name="remember"
+                                            {{-- <input type="checkbox" class="form-check-input" name="remember"
                                                 id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                            Keep me signed in
+                                            Keep me signed in --}}
                                         </label>
                                     </div>
                                     @if (Route::has('password.request'))
@@ -87,6 +95,19 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+
+    <script>
+        const passwordField = document.getElementById('password');
+        const showPasswordCheckbox = document.getElementById('show_password');
+
+        showPasswordCheckbox.addEventListener('change', function() {
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        });
+    </script>
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="{{ url('/') }}/admin-assets/vendors/js/vendor.bundle.base.js"></script>

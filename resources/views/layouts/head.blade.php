@@ -8,6 +8,10 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="shortcut icon" href="{{ url('/') }}/admin-assets/images/leaderhub/mini-logo.png" />
 
+
+<link rel="stylesheet" href="{{ url('/') }}/admin-assets/css/jquery/jquery-ui.theme.min.css" />
+<link rel="stylesheet" href="{{ url('/') }}/admin-assets/css/jquery/jquery-ui.min.css" />
+
 <title>{{ @$title ?? get_company_name() }}</title>
 
 <style>
@@ -18,5 +22,13 @@
 
     .page-link {
         color: #00CCD9;
+    }
+
+    .ui-autocomplete {
+        z-index: 9999999 !important;
+    }
+
+    .ui-autocomplete-loading {
+        background: url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/images/ui-anim_basic_16x16.gif) no-repeat right center
     }
 </style>

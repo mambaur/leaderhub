@@ -240,6 +240,7 @@ class ProductController extends Controller
         foreach ($districts as $item) {
             $data[] = [
                 'id' => $item->id,
+                'slug' => $item->slug,
                 'value' => $item->name,
             ];
         }

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="Third navbar example">
     <div class="container" style="font-size:13px">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{get_logo()}}" height="24" alt="logo" />
+            <img src="{{ get_logo() }}" height="24" alt="logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMain"
             aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,10 +28,12 @@
                         KAMI</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if (@$menu == 'download_centers') active fw-bold @endif" href="{{route('download_centers')}}">DOWNLOAD</a>
+                    <a class="nav-link @if (@$menu == 'download_centers') active fw-bold @endif"
+                        href="{{ route('download_centers') }}">DOWNLOAD</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @if (@$menu == 'guarantees') active fw-bold @endif" href="{{route('guarantees')}}">GARANSI</a>
+                    <a class="nav-link @if (@$menu == 'guarantees') active fw-bold @endif"
+                        href="{{ route('guarantees') }}">GARANSI</a>
                 </li>
                 {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
@@ -42,9 +44,11 @@
             </ul>
           </li> --}}
             </ul>
-            <form>
-                <input class="form-control" type="text" style="font-family: system-ui, FontAwesome; font-size:12px"
-                    placeholder="&#xf002 Cari produk disini..." aria-label="Cari produk disini...">
+            <form class="position-relative" style="width: 200px;">
+                <input class="form-control w-100" type="text"
+                    style="font-family: system-ui, FontAwesome; font-size:12px"
+                    placeholder="&#xf002 Cari produk disini..." name="product_name" id="product_name"
+                    aria-label="Cari produk disini...">
             </form>
         </div>
     </div>

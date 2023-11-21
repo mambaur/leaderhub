@@ -8,12 +8,10 @@
         </div>
         <div>
             <a class="navbar-brand brand-logo" href="{{ route('home') }}">
-                <img src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png" style="object-fit: contain"
-                    alt="logo" />
+                <img src="{{ get_logo() }}" style="object-fit: contain" alt="logo" />
             </a>
             <a class="navbar-brand brand-logo-mini" href="{{ route('home') }}">
-                <img src="{{ url('/') }}/admin-assets/images/leaderhub/mini-logo.png" style="width: 100%"
-                    alt="logo" />
+                <img src="{{ get_mini_logo() }}" style="width: 100%" alt="logo" />
             </a>
         </div>
     </div>

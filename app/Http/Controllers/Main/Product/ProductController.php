@@ -20,4 +20,30 @@ class ProductController extends Controller
 
         return view('products.detail', compact('product'));
     }
+
+    public function getDataProduct(Request $request)
+    {
+        $districts = Product::where(function ($q) use ($request) {
+            $q->where('name', 'like', '%' . $request->search . '%');
+        })
+            ->limit(20)
+            ->get();
+
+        $data = [];
+        foreach ($districts as $item) {
+            $data[] = [
+                'id' => $item->id,
+                'slug' => $item->slug,
+                'value' => $item->name,
+            ];
+        }
+
+        if (!count($data)) {
+            $data[] = [
+                'id' => null,
+                'value' => "Produk tidak ditemukan",
+            ];
+        }
+        return $data;
+    }
 }
