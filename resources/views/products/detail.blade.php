@@ -137,9 +137,6 @@
                         {!! @$product->description !!}
                     </div>
                 </div>
-                {{-- <div class="w-100 bg-danger">
-                    {!! @$product->description !!}
-                </div> --}}
 
                 @if (count(@$product->urls ?? []))
                     <div class="w-100 d-flex justify-content-center">

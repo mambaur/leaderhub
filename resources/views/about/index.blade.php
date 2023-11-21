@@ -1,6 +1,7 @@
 @extends('layouts.main', ['title' => 'Tentang Kami - Leaderhub', 'menu' => 'about'])
 
 @section('styles')
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>
         .product-item {
             color: black;
@@ -21,9 +22,11 @@
                 <div class="text-center px-3 py-5">
                     <img src="{{ get_logo() }}" height="50" alt="logo leaderhub" />
                 </div>
-                <p>
-                    {!! $about->value !!}
-                </p>
+                <div class="ql-snow">
+                    <div class="ql-editor" style="white-space:normal; padding-left: 0px; padding-right: 0px">
+                        {!! $about->value !!}
+                    </div>
+                </div>
             </div>
         </div>
         @if (count(@$services ?? []))
@@ -68,4 +71,8 @@
     @endif
 
     @include('shared.product_category', ['product_categories' => @$product_categories])
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 @endsection

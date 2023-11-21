@@ -1,6 +1,5 @@
 @extends('layouts.main', ['title' => 'Kontak Kami - Leaderhub', 'menu' => 'contacts'])
 
-
 @section('content')
     <div class="container mt-5 pt-5 mb-5">
         <div class="row d-flex justify-content-center">

@@ -1,5 +1,5 @@
 <div class="text-center bg-image"
-    style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');height: 50vh; background-size: cover;">
+    style="background-image: url('{{ url('/') }}/images/leaderhub-background.jpg');height: 50vh; background-size: cover;">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.7); height: 100%">
         <div class="d-flex justify-content-center align-items-center h-100">
             <div class="text-white">

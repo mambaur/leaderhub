@@ -33,9 +33,8 @@
                                 <thead class="table-dark">
                                     <tr>
                                         <th scope="col" class="py-3 px-4">
-                                            <img class="px-2"
-                                                src="{{ url('/') }}/admin-assets/images/leaderhub/logo.png"
-                                                height="24" alt="Logo Leaderhub" />
+                                            <img class="px-2" src="{{ get_logo() }}" height="24"
+                                                alt="Logo Leaderhub" />
                                         </th>
                                         <th scope="col" class="w-50 text-end py-3 px-4" style="font-size: 18px">
                                             {{ @$guarantee->serial_number }}</th>
