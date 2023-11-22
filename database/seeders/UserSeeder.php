@@ -19,20 +19,6 @@ class UserSeeder extends Seeder
             'password' => bcrypt('HpwZy2X9')
         ]);
 
-        $superadmin = User::create([
-            'name' => 'Superadmin',
-            'email' => 'superadmin@gmail.com',
-            'password' => bcrypt('mambaur123')
-        ]);
-
-        $admin = User::create([
-            'name' => 'Admin',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('mambaur123')
-        ]);
-
         $garudafiber->assignRole('superadmin');
-        $superadmin->assignRole('superadmin');
-        $admin->assignRole('admin');
     }
 }
