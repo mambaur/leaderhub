@@ -17,11 +17,14 @@ class ContactController extends Controller
         $company = Company::all()->groupBy('key');
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
 
+        $src = null;
         $map = @$company['map'][0]->value;
 
-        $start = strpos($map, 'src="') + 5; // Cari posisi awal nilai src
-        $end = strpos($map, '"', $start); // Cari posisi akhir nilai src
-        $src = substr($map, $start, $end - $start); // Ambil nilai src dari string HTML
+        if ($map) {
+            $start = strpos($map, 'src="') + 5; // Cari posisi awal nilai src
+            $end = strpos($map, '"', $start); // Cari posisi akhir nilai src
+            $src = substr($map, $start, $end - $start); // Ambil nilai src dari string HTML
+        }
 
         return view('contacts.index', compact('product_categories', 'company', 'src'));
     }
