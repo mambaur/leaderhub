@@ -76,7 +76,7 @@
     <!-- inject:js -->
     <script src="{{ url('/') }}/admin-assets/js/off-canvas.js"></script>
     <script src="{{ url('/') }}/admin-assets/js/hoverable-collapse.js"></script>
-    <script src="{{ url('/') }}/admin-assets/js/template.js"></script>
+    {{-- <script src="{{ url('/') }}/admin-assets/js/template.js"></script> --}}
     <script src="{{ url('/') }}/admin-assets/js/settings.js"></script>
     <script src="{{ url('/') }}/admin-assets/js/todolist.js"></script>
     <!-- endinject -->

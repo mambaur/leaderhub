@@ -1,7 +1,9 @@
 @extends('admin.layouts.main', ['title' => 'Tambah Produk', 'menu' => 'products', 'submenu' => 'product-create'])
 
 @section('styles')
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.snow.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/quill-table-ui@1.0.5/dist/index.css" rel="stylesheet">
+
     <link type="text/css" rel="stylesheet"
         href="{{ url('/') }}/admin-assets/vendors/image-uploader/dist/image-uploader.min.css">
 @endsection
@@ -63,6 +65,8 @@
                                 @enderror
                             </div>
 
+                            {{-- <button id="insert-table">Insert Table</button> --}}
+
                             <div id="editor" class="mb-4" style="min-height: 400px"></div>
                             <input type="hidden" name="description" id="description" value="">
 
@@ -105,12 +109,17 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="{{ url('') }}/admin-assets/js/image-resize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.min.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/quill-table-ui@1.0.5/dist/umd/index.js" type="text/javascript"></script>
+
     <script type="text/javascript"
         src="{{ url('/') }}/admin-assets/vendors/image-uploader/dist/image-uploader.min.js"></script>
 
     <script>
+        Quill.register({
+            'modules/tableUI': quillTableUI.default
+        }, true)
+
         var quill;
         $("#editor").length && (quill = new Quill("#editor", {
             modules: {
@@ -134,11 +143,11 @@
                     }, {
                         align: []
                     }],
-                    ["link", "image", "code-block", "video"]
+                    ["link", "image", "code-block", "video"],
+                    ["table"]
                 ],
-                imageResize: {
-                    displaySize: true
-                },
+                table: true,
+                tableUI: true
             },
             placeholder: 'Deskripsi...',
             theme: "snow"
