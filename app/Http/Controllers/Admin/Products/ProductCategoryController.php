@@ -41,7 +41,7 @@ class ProductCategoryController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        toast('Product category successfully created', 'success');
+        toast('Kategori produk berhasil ditambahkan.', 'success');
         return redirect()->route('product_category_list');
     }
 
@@ -59,7 +59,7 @@ class ProductCategoryController extends Controller
     {
         $product_category = ProductCategory::find($id);
         if (!$product_category) {
-            toast('Product category not found', 'error');
+            toast('Kategori produk tidak ditemukan.', 'error');
             return back()->withInput();
         }
         return view('admin.product-categories.edit', compact('product_category'));
@@ -76,7 +76,7 @@ class ProductCategoryController extends Controller
 
         $product_category = ProductCategory::find($id);
         if (!$product_category) {
-            toast('Product category not found', 'error');
+            toast('Kategori produk tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -84,7 +84,7 @@ class ProductCategoryController extends Controller
         $product_category->updated_by = auth()->user()->id;
         $product_category->save();
 
-        toast('Product category successfully updated', 'success');
+        toast('Kategori produk berhasil diupdate.', 'success');
         return redirect()->route('product_category_list');
     }
 
@@ -95,7 +95,7 @@ class ProductCategoryController extends Controller
     {
         $product_category = ProductCategory::find($id);
         if (!$product_category) {
-            toast('Product category not found', 'error');
+            toast('Kategori produk tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -107,7 +107,7 @@ class ProductCategoryController extends Controller
 
         DB::commit();
 
-        toast('Product category successfully deleted', 'success');
+        toast('Kategori produk berhasil dihapus.', 'success');
         return redirect()->route('product_category_list');
     }
 }

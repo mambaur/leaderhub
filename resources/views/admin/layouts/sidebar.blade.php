@@ -14,17 +14,16 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#products" aria-expanded="false"
                 aria-controls="products">
                 <i class="menu-icon mdi mdi-archive"></i>
-                <span class="menu-title">Products</span>
+                <span class="menu-title">Produk</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse @if (@$menu == 'products') show @endif" id="products">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-list') active @endif"
-                            href="{{ route('product_list') }}">List Products</a>
+                            href="{{ route('product_list') }}">Daftar Produk</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-create') active @endif"
-                            href="{{ route('product_create') }}">Add
-                            Product</a></li>
+                            href="{{ route('product_create') }}">Tambah Produk</a></li>
                 </ul>
             </div>
         </li>
@@ -32,17 +31,16 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#product-categories" aria-expanded="false"
                 aria-controls="product-categories">
                 <i class="menu-icon mdi mdi-shape-outline"></i>
-                <span class="menu-title">Category</span>
+                <span class="menu-title">Kategori</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse @if (@$menu == 'categories') show @endif" id="product-categories">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-category-list') active @endif"
-                            href="{{ route('product_category_list') }}">List
-                            Categories</a>
+                            href="{{ route('product_category_list') }}">Daftar Kategori</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'product-category-create') active @endif"
-                            href="{{ route('product_category_create') }}">Add Category</a>
+                            href="{{ route('product_category_create') }}">Tambah Kategori</a>
                     </li>
                 </ul>
             </div>
@@ -57,11 +55,11 @@
             <div class="collapse @if (@$menu == 'download-centers') show @endif" id="download-centers">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-list') active @endif"
-                            href="{{ route('download_center_list') }}">List
+                            href="{{ route('download_center_list') }}">Daftar
                             Download Centers</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-create') active @endif"
-                            href="{{ route('download_center_create') }}">Add Download Center</a>
+                            href="{{ route('download_center_create') }}">Tambah Download Center</a>
                     </li>
                 </ul>
             </div>
@@ -69,17 +67,16 @@
         <li class="nav-item @if (@$menu == 'posts') active @endif">
             <a class="nav-link" data-bs-toggle="collapse" href="#posts" aria-expanded="false" aria-controls="posts">
                 <i class="menu-icon mdi mdi-pencil-box-outline"></i>
-                <span class="menu-title">Post</span>
+                <span class="menu-title">Berita</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse @if (@$menu == 'posts') show @endif" id="posts">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'post-list') active @endif"
-                            href="{{ route('post_list') }}">List
-                            Posts</a>
+                            href="{{ route('post_list') }}">Daftar Berita</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'post-create') active @endif"
-                            href="{{ route('post_create') }}">Add Post</a>
+                            href="{{ route('post_create') }}">Tambah Berita</a>
                     </li>
                 </ul>
             </div>
@@ -88,22 +85,21 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#guarantees" aria-expanded="false"
                 aria-controls="guarantees">
                 <i class="menu-icon mdi mdi-security"></i>
-                <span class="menu-title">Guarantees</span>
+                <span class="menu-title">Garansi</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse @if (@$menu == 'guarantees') show @endif" id="guarantees">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'guarantee-list') active @endif"
-                            href="{{ route('guarantee_list') }}">List
-                            Guarantees</a>
+                            href="{{ route('guarantee_list') }}">Daftar Garansi</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'guarantee-create') active @endif"
-                            href="{{ route('guarantee_create') }}">Add Guarantee</a>
+                            href="{{ route('guarantee_create') }}">Tambah Garansi</a>
                     </li>
                 </ul>
             </div>
         </li>
-        <li class="nav-item nav-category">About</li>
+        <li class="nav-item nav-category">Tentang</li>
         <li class="nav-item @if (@$menu == 'sliders') active @endif">
             <a class="nav-link" href="{{ route('sliders') }}">
                 <i class="menu-icon mdi mdi-image-multiple"></i>
@@ -114,17 +110,16 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false"
                 aria-controls="services">
                 <i class="menu-icon mdi mdi-face-agent"></i>
-                <span class="menu-title">Services</span>
+                <span class="menu-title">Layanan</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse @if (@$menu == 'services') show @endif" id="services">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-list') active @endif"
-                            href="{{ route('service_list') }}">List
-                            Services</a>
+                            href="{{ route('service_list') }}">Daftar Layanan</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-create') active @endif"
-                            href="{{ route('service_create') }}">Add Service</a>
+                            href="{{ route('service_create') }}">Tambah Layanan</a>
                     </li>
                 </ul>
             </div>
@@ -133,17 +128,16 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#certificates" aria-expanded="false"
                 aria-controls="certificates">
                 <i class="menu-icon mdi mdi-certificate"></i>
-                <span class="menu-title">Certificate</span>
+                <span class="menu-title">Sertifikat</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse @if (@$menu == 'certificates') show @endif" id="certificates">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-list') active @endif"
-                            href="{{ route('certificate_list') }}">List
-                            Certificate</a>
+                            href="{{ route('certificate_list') }}">Daftar Sertifikat</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-create') active @endif"
-                            href="{{ route('certificate_create') }}">Add Certificate</a>
+                            href="{{ route('certificate_create') }}">Tambah Sertifikat</a>
                     </li>
                 </ul>
             </div>
@@ -151,31 +145,31 @@
         <li class="nav-item @if (@$menu == 'company') active @endif">
             <a class="nav-link" href="{{ route('company') }}">
                 <i class="menu-icon mdi mdi-domain"></i>
-                <span class="menu-title">Company</span>
+                <span class="menu-title">Perusahaan</span>
             </a>
         </li>
         <li class="nav-item @if (@$menu == 'locations') active @endif">
             <a class="nav-link" href="{{ route('location') }}">
                 <i class="menu-icon mdi mdi-map-marker"></i>
-                <span class="menu-title">Location</span>
+                <span class="menu-title">Lokasi</span>
             </a>
         </li>
-        <li class="nav-item nav-category">Account</li>
+        <li class="nav-item nav-category">Akun</li>
         @if (auth()->user()->hasRole(['superadmin']))
             <li class="nav-item @if (@$menu == 'user-managements') active @endif">
                 <a class="nav-link" data-bs-toggle="collapse" href="#user-managements" aria-expanded="false"
                     aria-controls="user-managements">
                     <i class="menu-icon mdi mdi-account-multiple-outline"></i>
-                    <span class="menu-title">User Management</span>
+                    <span class="menu-title">Manajemen User</span>
                     <i class="menu-arrow"></i>
                 </a>
                 <div class="collapse @if (@$menu == 'user-managements') show @endif" id="user-managements">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-list') active @endif"
-                                href="{{ route('user_management_list') }}">List Users</a>
+                                href="{{ route('user_management_list') }}">Daftar User</a>
                         </li>
                         <li class="nav-item"> <a class="nav-link @if (@$submenu == 'user-management-create') active @endif"
-                                href="{{ route('user_management_create') }}">Add
+                                href="{{ route('user_management_create') }}">Tambah
                                 User</a></li>
                     </ul>
                 </div>
@@ -184,7 +178,7 @@
         <li class="nav-item @if (@$menu == 'profile') active @endif">
             <a class="nav-link" href="{{ route('profile_update') }}">
                 <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                <span class="menu-title">Profile</span>
+                <span class="menu-title">Profil</span>
             </a>
         </li>
         <li class="nav-item @if (@$menu == 'logout') active @endif">

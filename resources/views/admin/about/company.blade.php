@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Company', 'menu' => 'company', 'submenu' => null])
+@extends('admin.layouts.main', ['title' => 'Perusahaan', 'menu' => 'company', 'submenu' => null])
 
 @section('styles')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -10,16 +10,16 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">About Company</h4>
+                        <h4 class="card-title">Tentang Perusahaan</h4>
                         <form class="forms-sample" method="post" action="{{ route('company_store') }}"
                             enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
-                                <label for="name">Company Name</label>
+                                <label for="name">Nama Perusahaan</label>
                                 <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
                                     id="name" value="{{ old('name') ?? @$name->value }}" name="name"
-                                    placeholder="Name..." required>
+                                    placeholder="Nama perusahaan..." required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
                             <input type="hidden" name="description" id="description" value="{{ @$company->value }}">
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     displaySize: true
                 },
             },
-            placeholder: 'Description...',
+            placeholder: 'Deskripsi...',
             theme: "snow"
         }));
 

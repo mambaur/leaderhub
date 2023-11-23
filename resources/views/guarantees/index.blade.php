@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Garansi - Leaderhub', 'menu' => 'guarantees'])
+@extends('layouts.main', ['title' => 'Garansi - ' . get_company_name(), 'menu' => 'guarantees'])
+
+@section('meta')
+    <meta name="title" content="Garansi - {{ get_company_name() }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="garansi, {{ get_company_name() }}">
+
+    <meta property="og:title" content="Garansi - {{ get_company_name() }}" />
+    <meta property="og:image" content="{{ get_logo() }}" />
+@endsection
 
 @section('content')
     <div class="container mt-5 pt-5 mb-5">
@@ -11,12 +20,13 @@
                         <form action="{{ route('guarantees') }}" method="get">
                             @csrf
                             <div class="input-group mb-3">
-                                <span class="input-group-text rounded-0 bg-dark text-light py-3 px-5" id="serial">Serial
+                                <span class="input-group-text rounded-0 bg-dark text-light py-3 px-md-5 px-3"
+                                    id="serial">Serial
                                     Number
                                     :</span>
                                 <input type="text" class="form-control rounded-0 py-3 text-end" id="serial_number"
                                     value="{{ @$serial_number }}" aria-describedby="serial" name="serial_number"
-                                    placeholder="Masukkan serial number produk anda disini..." required>
+                                    placeholder="Masukkan serial number produk anda disini" required>
                             </div>
                             <div class="w-100 text-end">
                                 <button type="submit" class="btn btn-primary rounded-0 border-0"
@@ -28,7 +38,7 @@
                 </div>
                 @if (@$guarantee)
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 table-responsive">
                             <table class="table">
                                 <thead class="table-dark">
                                     <tr>

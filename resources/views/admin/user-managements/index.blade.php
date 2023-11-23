@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'User Managements', 'menu' => 'user-managements', 'submenu' => 'user-management-list'])
+@extends('admin.layouts.main', ['title' => 'Manajemen User', 'menu' => 'user-managements', 'submenu' => 'user-management-list'])
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
@@ -12,11 +12,11 @@
                     <div class="card-body">
                         <div class="d-sm-flex justify-content-between align-items-start">
                             <div>
-                                <h4 class="card-title card-title-dash">User Managements</h4>
-                                <p class="card-subtitle card-subtitle-dash">List user who can access admin panel</p>
+                                <h4 class="card-title card-title-dash">Manajemen User</h4>
+                                <p class="card-subtitle card-subtitle-dash">Daftar user yang dapat mengakses admin panel</p>
                             </div>
                             <div>
-                                <a href="{{ route('user_management_create') }}" class="btn btn-primary btn-sm">+ Add
+                                <a href="{{ route('user_management_create') }}" class="btn btn-primary btn-sm">+ Tambah
                                     User</a>
                             </div>
                         </div>
@@ -24,10 +24,10 @@
                             <table class="table select-table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Nama</th>
                                         <th>Email</th>
                                         <th>Role</th>
-                                        <th class="w-25 text-end">Action</th>
+                                        <th class="w-25 text-end">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,7 +48,7 @@
                                                     <a class="btn btn-primary py-1 disabled" href="#">
                                                         Edit</a>
                                                     <a href="#" class="btn btn-danger btn-delete py-1 disabled">
-                                                        Delete</a>
+                                                        Hapus</a>
                                                 @else
                                                     <a class="btn btn-primary py-1"
                                                         href="{{ route('user_management_edit', $item->id) }}">
@@ -56,7 +56,7 @@
                                                     <a href="#" class="btn btn-danger btn-delete py-1"
                                                         data-bs-toggle="modal" data-bs-target="#deleteModal"
                                                         data-url="{{ route('user_management_delete', $item->id) }}">
-                                                        Delete</a>
+                                                        Hapus</a>
                                                 @endif
                                             </td>
                                         </tr>
@@ -78,15 +78,15 @@
                 @method('delete')
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Warning!</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">Peringatan!</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Are you sure want to delete?
+                        Apakah anda yakin ingin manghapus?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
                     </div>
                 </div>
             </form>

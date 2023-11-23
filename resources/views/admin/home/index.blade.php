@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Dashboard Leaderhub Administrator', 'menu' => 'dashboard'])
+@extends('admin.layouts.main', ['title' => 'Dashboard ' . get_company_name() . ' Administrator', 'menu' => 'dashboard'])
 
 @section('styles')
     <style>
@@ -28,7 +28,7 @@
                                     <div class="d-flex align-items-center justify-content-center">
                                         <div class="images">
                                             <img src="{{ url('/') }}/admin-assets/images/leaderhub/dashboard.png"
-                                                alt="Dashboard leaderhub" class="w-100">
+                                                alt="Dashboard {{ get_company_name() }}" class="w-100">
                                         </div>
                                     </div>
                                 </div>
@@ -37,16 +37,16 @@
                                 <div class="col-sm-12">
                                     <div class="statistics-details d-flex align-items-start justify-content-center gap-5">
                                         <div>
-                                            <p class="statistics-title">Total Products</p>
+                                            <p class="statistics-title">Total Produk</p>
                                             <h3 class="rate-percentage">{{ @$total_products }}</h3>
                                         </div>
                                         <div>
-                                            <p class="statistics-title">Total Posts</p>
+                                            <p class="statistics-title">Total Berita</p>
                                             <h3 class="rate-percentage">{{ @$total_posts }}</h3>
                                             </p>
                                         </div>
                                         <div>
-                                            <p class="statistics-title">Total Guarantees</p>
+                                            <p class="statistics-title">Total Garansi</p>
                                             <h3 class="rate-percentage">{{ @$total_guarantees }}</h3>
                                             </p>
                                         </div>

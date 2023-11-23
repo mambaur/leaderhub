@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Login - Leaderhub</title>
+    <title>Login - {{ get_company_name() }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/vendors/feather/feather.css">
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -32,8 +32,8 @@
                             <div class="brand-logo">
                                 <img src="{{ get_logo() }}" alt="logo">
                             </div>
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="fw-light">Sign in to continue.</h6>
+                            <h4>Hello!</h4>
+                            <h6 class="fw-light">Login untuk melanjutkan.</h6>
                             <form class="pt-3" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
@@ -64,13 +64,13 @@
                                         <label class="form-check-label text-muted">
                                             <input type="checkbox" class="form-check-input" name="show_password"
                                                 id="show_password">
-                                            Show Password
+                                            Tampilkan password
                                         </label>
                                     </div>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOG
                                         IN</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
@@ -82,7 +82,7 @@
                                         </label>
                                     </div>
                                     @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}" class="auth-link text-black">Forgot
+                                        <a href="{{ route('password.request') }}" class="auth-link text-black">Lupa
                                             password?</a>
                                     @endif
                                 </div>

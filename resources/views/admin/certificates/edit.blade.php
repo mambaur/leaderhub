@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => @$certificate->title ?? 'Edit Certificate', 'menu' => 'certificates', 'submenu' => 'certificate-list'])
+@extends('admin.layouts.main', ['title' => @$certificate->title ?? 'Edit Sertifikat', 'menu' => 'certificates', 'submenu' => 'certificate-list'])
 
 @section('content')
     <div class="content-wrapper">
@@ -6,16 +6,16 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit Certificate</h4>
+                        <h4 class="card-title">Edit Sertifikat</h4>
                         <form class="forms-sample" method="post" enctype="multipart/form-data"
                             action="{{ route('certificate_update', @$certificate->id) }}">
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Judul</label>
                                 <input type="text" class="form-control h-100 @error('title') is-invalid @enderror"
                                     id="title" value="{{ old('title') ?? @$certificate->title }}" name="title"
-                                    placeholder="Title..." required>
+                                    placeholder="Judul..." required>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -42,9 +42,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="url">Description</label>
+                                <label for="url">Deskripsi</label>
                                 <textarea name="description" id="description" class="form-control h-100 @error('description') is-invalid @enderror"
-                                    rows="5" placeholder="Description...">{{ old('description') ?? @$certificate->description }}</textarea>
+                                    rows="5" placeholder="Deskripsi...">{{ old('description') ?? @$certificate->description }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>

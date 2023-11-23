@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Create Service', 'menu' => 'services', 'submenu' => 'service-create'])
+@extends('admin.layouts.main', ['title' => 'Tambah Layanan', 'menu' => 'services', 'submenu' => 'service-create'])
 
 @section('content')
     <div class="content-wrapper">
@@ -6,14 +6,14 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create Service</h4>
+                        <h4 class="card-title">Tambah Layanan</h4>
                         <form class="forms-sample" method="post" action="{{ route('service_store') }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Judul</label>
                                 <input type="text" class="form-control h-100 @error('title') is-invalid @enderror"
-                                    id="title" value="{{ old('title') }}" name="title" placeholder="Title..."
+                                    id="title" value="{{ old('title') }}" name="title" placeholder="Judul..."
                                     required>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -34,9 +34,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="url">Description</label>
+                                <label for="url">Deskripsi</label>
                                 <textarea name="description" id="description" class="form-control h-100 @error('description') is-invalid @enderror"
-                                    rows="5" placeholder="Description...">{{ old('description') }}</textarea>
+                                    rows="5" placeholder="Deskripsi...">{{ old('description') }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>

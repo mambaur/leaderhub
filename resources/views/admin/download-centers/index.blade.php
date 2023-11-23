@@ -13,10 +13,10 @@
                         <div class="d-sm-flex justify-content-between align-items-start">
                             <div>
                                 <h4 class="card-title card-title-dash">Download Center</h4>
-                                <p class="card-subtitle card-subtitle-dash">List of download centers</p>
+                                <p class="card-subtitle card-subtitle-dash">Daftar download centers</p>
                             </div>
                             <div>
-                                <a href="{{ route('download_center_create') }}" class="btn btn-primary btn-sm">+ Add
+                                <a href="{{ route('download_center_create') }}" class="btn btn-primary btn-sm">+ Tambah
                                     Download Center</a>
                             </div>
                         </div>
@@ -24,11 +24,11 @@
                             <table class="table select-table">
                                 <thead>
                                     <tr>
-                                        <th class="w-50">Name</th>
+                                        <th class="w-50">Nama</th>
                                         <th class="w-50">Url</th>
-                                        <th>Created At</th>
-                                        <th>Updated At</th>
-                                        <th class="w-25 text-end">Action</th>
+                                        <th>Dibuat</th>
+                                        <th>Diupdate</th>
+                                        <th class="w-25 text-end">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -39,7 +39,7 @@
                                             </td>
                                             <td>
                                                 <h6>
-                                                    <a href="{{ $item->url }}" target="_blank">Open Link</a>
+                                                    <a href="{{ $item->url }}" target="_blank">Buka Tautan</a>
                                                 </h6>
                                             </td>
                                             <td>
@@ -55,7 +55,7 @@
                                                 <a href="#" class="btn btn-danger btn-delete py-1"
                                                     data-bs-toggle="modal" data-bs-target="#deleteModal"
                                                     data-url="{{ route('download_center_delete', $item->id) }}">
-                                                    Delete</a>
+                                                    Hapus</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -76,15 +76,15 @@
                 @method('delete')
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Warning!</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">Peringatan!</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Are you sure want to delete?
+                        Apakah anda yakin ingin menghapus?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
                     </div>
                 </div>
             </form>

@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ __('Confirm Password') }}</title>
+    <title>{{ __('Konfirmasi Password') }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/vendors/feather/feather.css">
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/vendors/mdi/css/materialdesignicons.min.css">
@@ -38,8 +38,8 @@
                             <div class="brand-logo">
                                 <img src="{{ get_logo() }}" alt="logo">
                             </div>
-                            <h4>{{ __('Confirm Password') }}</h4>
-                            <h6 class="fw-light">{{ __('Please confirm your password before continuing.') }}</h6>
+                            <h4>{{ __('Konfirmasi Password') }}</h4>
+                            <h6 class="fw-light">{{ __('Harap konfirmasi kata sandi Anda sebelum melanjutkan.') }}</h6>
                             <form class="pt-3" method="POST" action="{{ route('password.confirm') }}">
                                 @csrf
 
@@ -57,7 +57,7 @@
 
                                 <div class="mt-3">
                                     <button type="submit"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">{{ __('Confirm Password') }}</button>
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">{{ __('Konfirmasi Password') }}</button>
                                 </div>
                                 <div class="my-2 d-flex justify-content-between align-items-center">
                                     <div class="form-check">
@@ -68,7 +68,7 @@
                                         </label>
                                     </div>
                                     @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}" class="auth-link text-black">Forgot
+                                        <a href="{{ route('password.request') }}" class="auth-link text-black">Lupa
                                             password?</a>
                                     @endif
                                 </div>
@@ -98,55 +98,3 @@
 </body>
 
 </html>
-
-
-@section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Confirm Password') }}</div>
-
-                    <div class="card-body">
-                        {{ __('Please confirm your password before continuing.') }}
-
-                        <form method="POST" action="{{ route('password.confirm') }}">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Confirm Password') }}
-                                    </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection

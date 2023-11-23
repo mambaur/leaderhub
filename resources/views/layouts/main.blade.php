@@ -3,6 +3,12 @@
 
 <head>
     @include('layouts.head', ['title' => @$title])
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Indonesia">
+    <meta name="revisit-after" content="5 days">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ url()->full() }}" />
+    @yield('meta')
     @yield('styles')
 </head>
 

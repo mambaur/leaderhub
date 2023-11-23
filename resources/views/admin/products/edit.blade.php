@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Edit Product', 'menu' => 'products', 'submenu' => 'product-list'])
+@extends('admin.layouts.main', ['title' => 'Edit Produk', 'menu' => 'products', 'submenu' => 'product-list'])
 
 @section('styles')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -12,16 +12,16 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit Product</h4>
+                        <h4 class="card-title">Edit Produk</h4>
                         <form class="forms-sample" method="post" action="{{ route('product_update', $product->id) }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Nama</label>
                                 <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
                                     id="name" value="{{ old('name') ?? $product->name }}" name="name"
-                                    placeholder="Product Name..." required>
+                                    placeholder="Nama Produk..." required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="product_category_id">Category</label>
+                                <label for="product_category_id">Kategori</label>
                                 <select class="form-control @error('product_category_id') is-invalid @enderror"
                                     style="height: 46px" name="product_category_id" id="product_category_id">
                                     @foreach ($product_categories as $item)
@@ -53,12 +53,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="gallery_description">Gallery Description</label>
+                                <label for="gallery_description">Deskripsi Gallery</label>
                                 <input type="text"
                                     class="form-control h-100 @error('gallery_description') is-invalid @enderror"
                                     id="gallery_description"
                                     value="{{ old('gallery_description') ?? $product->gallery_description }}"
-                                    name="gallery_description" placeholder="Gallery Description..." required>
+                                    name="gallery_description" placeholder="Deskripsi Gallery..." required>
                                 @error('gallery_description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
                                         <label for="url[]" class="col-md-1">URL</label>
                                         <div class="col-md-3">
                                             <input type="text" class="form-control h-100" id="url_title[]"
-                                                name="url_title[]" placeholder="Title..." value="{{ $item->title }}"
+                                                name="url_title[]" placeholder="Judul..." value="{{ $item->title }}"
                                                 required>
                                         </div>
                                         <div class="col-md-7">
@@ -94,7 +94,7 @@
                                     <label for="url[]" class="col-md-1">URL</label>
                                     <div class="col-md-3">
                                         <input type="text" class="form-control h-100" id="url_title[]" name="url_title[]"
-                                            placeholder="Title...">
+                                            placeholder="Judul...">
                                     </div>
                                     <div class="col-md-7">
                                         <input type="text" class="form-control h-100" id="url[]" name="url[]"
@@ -108,19 +108,19 @@
                                 </div>
                             @endif
                             <div class="text-end mt-3 url">
-                                <button type="button" class="btn btn-outline-primary add-url">+ Add URL</button>
+                                <button type="button" class="btn btn-outline-primary add-url">+ Tambah URL</button>
                             </div>
 
                             <div class="form-group">
                                 <input class="form-check-input" type="checkbox" value="1"
                                     @if ($product->is_active) checked @endif id="is_active" name="is_active">
                                 <label class="form-check-label ms-2" for="is_active">
-                                    Active
+                                    Aktif
                                 </label>
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                     displaySize: true
                 },
             },
-            placeholder: 'Description...',
+            placeholder: 'Deskripsi...',
             theme: "snow"
         }));
 
@@ -228,7 +228,7 @@
                                 <label for="url[]" class="col-md-1">URL</label>
                                 <div class="col-md-3">
                                     <input type="text" class="form-control h-100" id="url_title[]" name="url_title[]"
-                                        placeholder="Title...">
+                                        placeholder="Judul...">
                                 </div>
                                 <div class="col-md-7">
                                     <input type="text" class="form-control h-100" id="url[]" name="url[]"

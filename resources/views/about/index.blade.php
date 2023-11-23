@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Tentang Kami - Leaderhub', 'menu' => 'about'])
+@extends('layouts.main', ['title' => 'Tentang Kami - ' . get_company_name(), 'menu' => 'about'])
+
+@section('meta')
+    <meta name="title" content="Tentang Kami - {{ get_company_name() }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="tentang kami, {{ get_company_name() }}">
+
+    <meta property="og:title" content="Tentang Kami - {{ get_company_name() }}" />
+    <meta property="og:image" content="{{ get_logo() }}" />
+@endsection
 
 @section('styles')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">

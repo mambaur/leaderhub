@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Edit Guarantee', 'menu' => 'guarantees', 'submenu' => 'guarantee-list'])
+@extends('admin.layouts.main', ['title' => 'Edit Garansi', 'menu' => 'guarantees', 'submenu' => 'guarantee-list'])
 
 @section('styles')
     <link rel="stylesheet" href="{{ url('/') }}/admin-assets/css/jquery/jquery-ui.theme.min.css" />
@@ -16,15 +16,15 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit Guarantee</h4>
+                        <h4 class="card-title">Edit Garansi</h4>
                         <form class="forms-sample" method="post" action="{{ route('guarantee_update', $guarantee->id) }}">
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="product_name">Search Product Name</label>
+                                <label for="product_name">Cari Produk</label>
                                 <input type="text" class="form-control h-100 @error('product_name') is-invalid @enderror"
                                     id="product_name" value="{{ old('product_name') ?? @$guarantee->product->name }}"
-                                    name="product_name" placeholder="Product Name..." required>
+                                    name="product_name" placeholder="Nama Produk..." required>
                                 <input type="hidden" id="product_id" name="product_id"
                                     value="{{ old('product_id') ?? @$guarantee->product->id }}">
                                 @error('product_name')
@@ -52,11 +52,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="period">Guarantee Period</label>
+                                        <label for="period">Masa Garansi</label>
                                         <input type="text"
                                             class="form-control h-100 @error('period') is-invalid @enderror" id="period"
                                             value="{{ old('period') ?? @$guarantee->period }}" name="period"
-                                            placeholder="Ex. 1 Year" required>
+                                            placeholder="Contoh: 1 Tahun" required>
                                         @error('period')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -69,12 +69,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="purchase_date">Purchase Date</label>
+                                        <label for="purchase_date">Tanggal Pembelian</label>
                                         <input type="date"
                                             class="form-control h-100 @error('purchase_date') is-invalid @enderror"
                                             id="purchase_date"
                                             value="{{ old('purchase_date') ?? @$guarantee->purchase_date }}"
-                                            name="purchase_date" placeholder="Purchase Date..." required>
+                                            name="purchase_date" placeholder="Tanggal Pembelian..." required>
                                         @error('purchase_date')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -84,12 +84,12 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="expired_date">Expired Date</label>
+                                        <label for="expired_date">Garansi Berakhir</label>
                                         <input type="date"
                                             class="form-control h-100 @error('expired_date') is-invalid @enderror"
                                             id="expired_date"
                                             value="{{ old('expired_date') ?? @$guarantee->expired_date }}"
-                                            name="expired_date" placeholder="Expired Date..." required>
+                                            name="expired_date" placeholder="Garansi Berakhir..." required>
                                         @error('expired_date')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -100,7 +100,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>

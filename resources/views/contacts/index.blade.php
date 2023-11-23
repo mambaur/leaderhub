@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Kontak Kami - Leaderhub', 'menu' => 'contacts'])
+@extends('layouts.main', ['title' => 'Kontak Kami - ' . get_company_name(), 'menu' => 'contacts'])
+
+@section('meta')
+    <meta name="title" content="Kontak Kami - {{ get_company_name() }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="kontak kami, {{ get_company_name() }}">
+
+    <meta property="og:title" content="Kontak Kami - {{ get_company_name() }}" />
+    <meta property="og:image" content="{{ get_logo() }}" />
+@endsection
 
 @section('content')
     <div class="container mt-5 pt-5 mb-5">

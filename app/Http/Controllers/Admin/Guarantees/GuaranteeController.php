@@ -43,7 +43,7 @@ class GuaranteeController extends Controller
                         <a href='#' class='btn btn-danger btn-delete py-1'
                             data-bs-toggle='modal' data-bs-target='#deleteModal'
                             data-url='" . route('guarantee_delete', $item->id) . "'>
-                            Delete</a>
+                            Hapus</a>
                     </div>
                     ";
 
@@ -78,7 +78,7 @@ class GuaranteeController extends Controller
 
         $product = Product::find($request->product_id);
         if (!$product) {
-            toast('Product not found', 'error');
+            toast('Produk tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -92,7 +92,7 @@ class GuaranteeController extends Controller
             'updated_by' => auth()->user()->id,
         ]);
 
-        toast('Guarantee successfully created', 'success');
+        toast('Garansi berhasil ditambahkan.', 'success');
         return redirect()->route('guarantee_list');
     }
 
@@ -103,7 +103,7 @@ class GuaranteeController extends Controller
     {
         $guarantee = Guarantee::find($id);
         if (!$guarantee) {
-            toast('Guarantee not found', 'error');
+            toast('Garansi tidak ditemukan', 'error');
             return back()->withInput();
         }
         return view('admin.guarantees.edit', compact('guarantee'));
@@ -123,13 +123,13 @@ class GuaranteeController extends Controller
 
         $guarantee = Guarantee::find($id);
         if (!$guarantee) {
-            toast('Guarantee not found', 'error');
+            toast('Garansi tidak ditemukan', 'error');
             return back()->withInput();
         }
 
         $product = Product::find($request->product_id);
         if (!$product) {
-            toast('Product not found', 'error');
+            toast('Produk tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -141,7 +141,7 @@ class GuaranteeController extends Controller
         $guarantee->updated_by = auth()->user()->id;
         $guarantee->save();
 
-        toast('Guarantee successfully updated', 'success');
+        toast('Garansi berhasil diupdate.', 'success');
         return redirect()->route('guarantee_list');
     }
 
@@ -152,7 +152,7 @@ class GuaranteeController extends Controller
     {
         $guarantee = Guarantee::find($id);
         if (!$guarantee) {
-            toast('Guarantee not found', 'error');
+            toast('Garansi tidak ditemukan', 'error');
             return back()->withInput();
         }
 
@@ -165,7 +165,7 @@ class GuaranteeController extends Controller
 
         DB::commit();
 
-        toast('Your post successfully deleted', 'success');
+        toast('Garansi berhasil dihapus.', 'success');
         return redirect()->route('guarantee_list');
     }
 }

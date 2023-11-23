@@ -47,7 +47,7 @@ class ProfileController extends Controller
             $user->syncRoles([$request->role]);
         }
 
-        toast('Profile successfully updated', 'success');
+        toast('Profil berhasil diupdate.', 'success');
         return redirect()->route('profile_update');
     }
 }

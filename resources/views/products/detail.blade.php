@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Product - Leaderhub', 'menu' => 'products'])
+@extends('layouts.main', ['title' => 'Product - ' . get_company_name(), 'menu' => 'products'])
+
+@section('meta')
+    <meta name="title" content="{{ @$product->name }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="berita, {{ get_company_name() }}">
+
+    <meta property="og:title" content="{{ @$product->name }}" />
+    <meta property="og:image" content="{{ get_logo() }}" />
+@endsection
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />

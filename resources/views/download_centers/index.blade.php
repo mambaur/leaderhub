@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Download Center - Leaderhub', 'menu' => 'download_centers'])
+@extends('layouts.main', ['title' => 'Download Center - ' . get_company_name(), 'menu' => 'download_centers'])
+
+@section('meta')
+    <meta name="title" content="Download Center - {{ get_company_name() }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="download center, {{ get_company_name() }}">
+
+    <meta property="og:title" content="Download Center - {{ get_company_name() }}" />
+    <meta property="og:image" content="{{ get_logo() }}" />
+@endsection
 
 @section('content')
     <div class="container mt-5 pt-5 mb-5">

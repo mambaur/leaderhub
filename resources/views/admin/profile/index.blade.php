@@ -6,15 +6,15 @@
             <div class="col-md-6 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Profile</h4>
+                        <h4 class="card-title">Profil</h4>
                         <form class="forms-sample" method="post" action="{{ route('profile_update', $user->id) }}">
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Nama</label>
                                 <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
                                     id="name" value="{{ old('name') ?? @$user->name }}" name="name"
-                                    placeholder="Name..." required>
+                                    placeholder="Nama..." required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -78,7 +78,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>

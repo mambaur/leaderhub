@@ -73,7 +73,7 @@ class ServiceController extends Controller
 
         DB::commit();
 
-        toast('Service successfully created', 'success');
+        toast('Layanan berhasil ditambahkan.', 'success');
         return redirect()->route('service_list');
     }
 
@@ -84,7 +84,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         if (!$service) {
-            toast('Service not found', 'error');
+            toast('Layanan tidak ditemukan', 'error');
             return back()->withInput();
         }
         return view('admin.services.edit', compact('service'));
@@ -102,7 +102,7 @@ class ServiceController extends Controller
 
         $service = Service::find($id);
         if (!$service) {
-            toast('Service not found', 'error');
+            toast('Layanan tidak ditemukan', 'error');
             return back()->withInput();
         }
 
@@ -146,7 +146,7 @@ class ServiceController extends Controller
         }
 
 
-        toast('Service successfully updated', 'success');
+        toast('Layanan berhasil diupdate.', 'success');
         return redirect()->route('service_list');
     }
 
@@ -157,7 +157,7 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         if (!$service) {
-            toast('Service not found', 'error');
+            toast('Layanan tidak ditemukan', 'error');
             return back()->withInput();
         }
 
@@ -181,7 +181,7 @@ class ServiceController extends Controller
 
         DB::commit();
 
-        toast('Service successfully deleted', 'success');
+        toast('Layanan berhasil diupdate.', 'success');
         return redirect()->route('service_list');
     }
 }

@@ -12,10 +12,10 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="name">Title</label>
+                                <label for="name">Judul</label>
                                 <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
                                     id="name" value="{{ old('name') ?? @$download_center->name }}" name="name"
-                                    placeholder="Title..." required>
+                                    placeholder="Judul..." required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -27,7 +27,7 @@
                                 <label for="url">Url</label>
                                 <input type="text" class="form-control h-100 @error('url') is-invalid @enderror"
                                     id="url" value="{{ old('url') ?? @$download_center->url }}" name="url"
-                                    placeholder="URL..." required>
+                                    placeholder="https://example.com" required>
                                 @error('url')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -54,9 +54,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="url">Description</label>
+                                <label for="url">Deskripsi</label>
                                 <textarea name="description" id="description" class="form-control h-100 @error('description') is-invalid @enderror"
-                                    rows="5" placeholder="Description...">{{ old('description') ?? @$download_center->description }}</textarea>
+                                    rows="5" placeholder="Deskripsi...">{{ old('description') ?? @$download_center->description }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -65,7 +65,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>

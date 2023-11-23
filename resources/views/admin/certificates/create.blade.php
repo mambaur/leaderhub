@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Create Certificate', 'menu' => 'certificates', 'submenu' => 'certificate-create'])
+@extends('admin.layouts.main', ['title' => 'Tambah Sertifikat', 'menu' => 'certificates', 'submenu' => 'certificate-create'])
 
 @section('content')
     <div class="content-wrapper">
@@ -6,14 +6,14 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create Certificate</h4>
+                        <h4 class="card-title">Tambah Sertifikat</h4>
                         <form class="forms-sample" method="post" action="{{ route('certificate_store') }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Judul</label>
                                 <input type="text" class="form-control h-100 @error('title') is-invalid @enderror"
-                                    id="title" value="{{ old('title') }}" name="title" placeholder="Title..."
+                                    id="title" value="{{ old('title') }}" name="title" placeholder="Judul..."
                                     required>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -34,9 +34,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="url">Description</label>
+                                <label for="url">Deskripsi</label>
                                 <textarea name="description" id="description" class="form-control h-100 @error('description') is-invalid @enderror"
-                                    rows="5" placeholder="Description...">{{ old('description') }}</textarea>
+                                    rows="5" placeholder="Deskripsi...">{{ old('description') }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

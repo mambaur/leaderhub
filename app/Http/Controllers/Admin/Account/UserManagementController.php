@@ -54,16 +54,8 @@ class UserManagementController extends Controller
             $user->syncRoles([$request->role]);
         }
 
-        toast('New user successfully created', 'success');
+        toast('User baru berhasil ditambahkan.', 'success');
         return redirect()->route('user_management_list');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
     }
 
     /**
@@ -74,12 +66,12 @@ class UserManagementController extends Controller
         $user = User::find($id);
 
         if (!$user) {
-            toast('User not found', 'error');
+            toast('User tidak ditemukan..', 'error');
             return back()->withInput();
         }
 
         if ($user->email == 'garudafiberapp@gmail.com' && auth()->user()->email != 'garudafiberapp@gmail.com') {
-            toast('You have no access to update this user', 'error');
+            toast('Anda tidak memiliki akses untuk mengupdate user ini.', 'error');
             return back()->withInput();
         }
 
@@ -99,7 +91,7 @@ class UserManagementController extends Controller
 
         $user = User::find($id);
         if (!$user) {
-            toast('User not found', 'error');
+            toast('User tidak ditemukan..', 'error');
             return back()->withInput();
         }
 
@@ -112,7 +104,7 @@ class UserManagementController extends Controller
             $user->syncRoles([$request->role]);
         }
 
-        toast('User successfully updated', 'success');
+        toast('User berhasil diupdate.', 'success');
         return redirect()->route('user_management_list');
     }
 
@@ -127,14 +119,14 @@ class UserManagementController extends Controller
 
         $user = User::find($id);
         if (!$user) {
-            toast('User not found', 'error');
+            toast('User tidak ditemukan..', 'error');
             return back()->withInput();
         }
 
         $user->password =  Hash::make($request->password);
         $user->save();
 
-        toast('Password successfully updated', 'success');
+        toast('Password berhasil diupdate.', 'success');
         return redirect()->route('user_management_list');
     }
 
@@ -145,12 +137,12 @@ class UserManagementController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            toast('User not found', 'error');
+            toast('User tidak ditemukan..', 'error');
             return back()->withInput();
         }
 
         if ($user->email == 'garudafiberapp@gmail.com') {
-            toast('This user cannot be deleted', 'error');
+            toast('User ini tidak dapat dihapus.', 'error');
             return back()->withInput();
         }
 
@@ -163,7 +155,7 @@ class UserManagementController extends Controller
 
         DB::commit();
 
-        toast('User successfully deleted', 'success');
+        toast('User berhasil dihapus.', 'success');
         return redirect()->route('user_management_list');
     }
 }

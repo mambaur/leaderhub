@@ -76,7 +76,7 @@ class DownloadCenterController extends Controller
 
         DB::commit();
 
-        toast('Download center successfully created', 'success');
+        toast('Download center berhasil ditambahkan.', 'success');
         return redirect()->route('download_center_list');
     }
 
@@ -87,7 +87,7 @@ class DownloadCenterController extends Controller
     {
         $download_center = DownloadCenter::find($id);
         if (!$download_center) {
-            toast('Download center not found', 'error');
+            toast('Download center tidak ditemukan', 'error');
             return back()->withInput();
         }
         return view('admin.download-centers.edit', compact('download_center'));
@@ -106,7 +106,7 @@ class DownloadCenterController extends Controller
 
         $download_center = DownloadCenter::find($id);
         if (!$download_center) {
-            toast('Download center not found', 'error');
+            toast('Download center tidak ditemukan', 'error');
             return back()->withInput();
         }
 
@@ -151,7 +151,7 @@ class DownloadCenterController extends Controller
         }
 
 
-        toast('Download center successfully updated', 'success');
+        toast('Download center berhasil diupdate.', 'success');
         return redirect()->route('download_center_list');
     }
 
@@ -162,7 +162,7 @@ class DownloadCenterController extends Controller
     {
         $download_center = DownloadCenter::find($id);
         if (!$download_center) {
-            toast('Download center not found', 'error');
+            toast('Download center tidak ditemukan', 'error');
             return back()->withInput();
         }
 
@@ -186,7 +186,7 @@ class DownloadCenterController extends Controller
 
         DB::commit();
 
-        toast('Download center successfully deleted', 'success');
+        toast('Download center berhasil dihapus.', 'success');
         return redirect()->route('download_center_list');
     }
 }

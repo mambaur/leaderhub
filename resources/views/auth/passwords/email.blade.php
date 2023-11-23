@@ -38,8 +38,8 @@
                             <div class="brand-logo">
                                 <img src="{{ get_logo() }}" alt="logo">
                             </div>
-                            <h4>Forgot Password</h4>
-                            <h6 class="fw-light">Enter your email below.</h6>
+                            <h4>Lupa Password</h4>
+                            <h6 class="fw-light">Masukkan email anda dibawah ini.</h6>
                             <form class="pt-3" method="POST" action="{{ route('password.email') }}">
                                 @csrf
                                 <div class="form-group">
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit"
-                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">{{ __('Send Password Reset Link') }}</button>
+                                        class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">{{ __('Kirim Reset Password Link') }}</button>
                                 </div>
                             </form>
                         </div>

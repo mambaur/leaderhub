@@ -30,13 +30,11 @@
                         <p class="fw-light text-muted mb-0">{{ auth()->user()->email }}</p>
                     </div>
                     <a class="dropdown-item" href="{{ route('profile_update') }}"><i
-                            class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
-                        Profile</a>
+                            class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> Profil Saya</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                   document.getElementById('logout-form').submit();"><i
-                            class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign
-                        Out</a>
+                            class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Logout</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>

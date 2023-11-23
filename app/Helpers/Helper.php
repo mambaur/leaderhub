@@ -27,6 +27,16 @@ if (!function_exists('get_company_name')) {
     }
 }
 
+if (!function_exists('get_company_description')) {
+    function get_company_description()
+    {
+        $company = Company::where('key', 'about')->first();
+        $desc = @strip_tags(@$company->value ?? '');
+        return @$desc;
+    }
+}
+
+
 if (!function_exists('get_logo')) {
     function get_logo()
     {

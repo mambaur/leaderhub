@@ -28,7 +28,7 @@ class PostController extends Controller
                     return "<h6>$type</h6>";
                 })
                 ->editColumn('is_active', function (Post $post) {
-                    $status = @$post->is_active ? "Active" : "Inactive";
+                    $status = @$post->is_active ? "Aktif" : "Tidak aktif";
                     return "<h6>" . $status . "</h6>";
                 })
                 ->editColumn('published_at', function (Post $item) {
@@ -44,7 +44,7 @@ class PostController extends Controller
                         <a href='#' class='btn btn-danger btn-delete py-1'
                             data-bs-toggle='modal' data-bs-target='#deleteModal'
                             data-url='" . route('post_delete', $item->id) . "'>
-                            Delete</a>
+                            Hapus</a>
                     </div>
                     ";
 
@@ -112,7 +112,7 @@ class PostController extends Controller
 
         DB::commit();
 
-        toast('Your post successfully created', 'success');
+        toast('Berita berhasil ditambahkan.', 'success');
         return redirect()->route('post_list');
     }
 
@@ -123,7 +123,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if (!$post) {
-            toast('Your post not found', 'error');
+            toast('Berita tidak ditemukan.', 'error');
             return back()->withInput();
         }
         return view('admin.posts.edit', compact('post'));
@@ -141,7 +141,7 @@ class PostController extends Controller
 
         $post = Post::find($id);
         if (!$post) {
-            toast('Post not found', 'error');
+            toast('Berita tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -188,7 +188,7 @@ class PostController extends Controller
         }
 
 
-        toast('Your post successfully updated', 'success');
+        toast('Berita anda berhasil diupdate.', 'success');
         return redirect()->route('post_list');
     }
 
@@ -199,7 +199,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if (!$post) {
-            toast('Download center not found', 'error');
+            toast('Berita tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -223,7 +223,7 @@ class PostController extends Controller
 
         DB::commit();
 
-        toast('Your post successfully deleted', 'success');
+        toast('Berita berhasil dihapus.', 'success');
         return redirect()->route('post_list');
     }
 }

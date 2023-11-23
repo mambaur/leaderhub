@@ -73,7 +73,7 @@ class CertificateController extends Controller
 
         DB::commit();
 
-        toast('Certificate successfully created', 'success');
+        toast('Sertifikat berhasil ditambahkan.', 'success');
         return redirect()->route('certificate_list');
     }
 
@@ -84,7 +84,7 @@ class CertificateController extends Controller
     {
         $certificate = Certificate::find($id);
         if (!$certificate) {
-            toast('Certificate not found', 'error');
+            toast('Sertifikat tidak ditemukan', 'error');
             return back()->withInput();
         }
         return view('admin.certificates.edit', compact('certificate'));
@@ -102,7 +102,7 @@ class CertificateController extends Controller
 
         $certificate = Certificate::find($id);
         if (!$certificate) {
-            toast('Certificate not found', 'error');
+            toast('Sertifikat tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -146,7 +146,7 @@ class CertificateController extends Controller
         }
 
 
-        toast('Certificate successfully updated', 'success');
+        toast('Sertifikat berhasil diupdate.', 'success');
         return redirect()->route('certificate_list');
     }
 
@@ -157,7 +157,7 @@ class CertificateController extends Controller
     {
         $certificate = Certificate::find($id);
         if (!$certificate) {
-            toast('Certificate not found', 'error');
+            toast('Sertifikat tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -181,7 +181,7 @@ class CertificateController extends Controller
 
         DB::commit();
 
-        toast('Certificate successfully deleted', 'success');
+        toast('Sertifikat berhasil dihapus.', 'success');
         return redirect()->route('certificate_list');
     }
 }

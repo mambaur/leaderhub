@@ -72,7 +72,7 @@
                                 <div class="form-group">
                                     <input type="password"
                                         class="form-control form-control-lg  @error('password-confirm') is-invalid @enderror"
-                                        id="password-confirm" placeholder="Confirm Password"
+                                        id="password-confirm" placeholder="Konfirmasi Password"
                                         name="password_confirmation" required autocomplete="new-password" autofocus>
                                 </div>
 

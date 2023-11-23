@@ -147,7 +147,7 @@ class AboutController extends Controller
             $company->save();
         }
 
-        toast('Company information successfully updated', 'success');
+        toast('Informasi perusahaan berhasil diupdate.', 'success');
         return redirect()->route('company');
     }
 
@@ -214,7 +214,7 @@ class AboutController extends Controller
 
         DB::commit();
 
-        toast('Company location successfully updated', 'success');
+        toast('Lokasi perusahaan berhasil diupdate.', 'success');
         return redirect()->route('location');
     }
 
@@ -235,7 +235,7 @@ class AboutController extends Controller
 
         $slider = Company::where('key', 'sliders')->first();
         if (!$slider) {
-            toast('Sliders not found', 'error');
+            toast('Slider tidak ditemukan', 'error');
             return back()->withInput();
         }
 
@@ -277,7 +277,7 @@ class AboutController extends Controller
 
         DB::commit();
 
-        toast('Sliders successfully updated', 'success');
+        toast('Slider berhasil diupdate', 'success');
         return redirect()->route('sliders');
     }
 }

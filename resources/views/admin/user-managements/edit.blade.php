@@ -11,10 +11,10 @@
                             @csrf
                             @method('put')
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Nama</label>
                                 <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
                                     id="name" value="{{ old('name') ?? @$user->name }}" name="name"
-                                    placeholder="Name..." required>
+                                    placeholder="Nama..." required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -36,8 +36,8 @@
 
                             <div class="form-group">
                                 <label for="role">Role</label>
-                                <select name="role" class="form-control @error('role') is-invalid @enderror" style="height: 46px"
-                                    id="role">
+                                <select name="role" class="form-control @error('role') is-invalid @enderror"
+                                    style="height: 46px" id="role">
                                     <option value="superadmin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'superadmin') selected @endif>Super Admin
                                     </option>
                                     <option value="admin" @if ((old('role') ?? @$user->getRoleNames()[0]) == 'admin') selected @endif>Admin</option>
@@ -50,7 +50,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
             <div class="col-md-6 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Change Password</h4>
+                        <h4 class="card-title">Ganti Password</h4>
                         <form class="forms-sample" method="post"
                             action="{{ route('user_management_change_password', $user->id) }}">
                             @csrf
@@ -90,7 +90,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>

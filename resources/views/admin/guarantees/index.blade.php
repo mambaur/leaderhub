@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Guarantees', 'menu' => 'guarantees', 'submenu' => 'guarantee-list'])
+@extends('admin.layouts.main', ['title' => 'Garansi', 'menu' => 'guarantees', 'submenu' => 'guarantee-list'])
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap4.min.css">
@@ -12,11 +12,11 @@
                     <div class="card-body">
                         <div class="d-sm-flex justify-content-between align-items-start mb-3">
                             <div>
-                                <h4 class="card-title card-title-dash">Guarantee</h4>
+                                <h4 class="card-title card-title-dash">Garansi</h4>
                             </div>
                             <div>
-                                <a href="{{ route('guarantee_create') }}" class="btn btn-primary btn-sm">+ Add
-                                    Guarantee</a>
+                                <a href="{{ route('guarantee_create') }}" class="btn btn-primary btn-sm">+ Tambah
+                                    Garansi</a>
                             </div>
                         </div>
                         <div class="table-responsive  mt-1">
@@ -24,10 +24,10 @@
                                 <thead>
                                     <tr>
                                         <th>Serial Number</th>
-                                        <th>Product Name</th>
-                                        <th>Expired Date</th>
-                                        <th style="width: 10%">Update At</th>
-                                        <th class="w-25 text-end">Action</th>
+                                        <th>Nama Produk</th>
+                                        <th>Garansi Berakhir</th>
+                                        <th style="width: 10%">Diupdate</th>
+                                        <th class="w-25 text-end">Aksi</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -46,15 +46,15 @@
                 @method('delete')
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Warning!</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">Peringatan!</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Are you sure want to delete?
+                        Apakah anda yakin ingin menghapus?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-danger">Hapus</button>
                     </div>
                 </div>
             </form>

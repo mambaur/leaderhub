@@ -26,7 +26,7 @@ class ProductController extends Controller
                     return "<h6>$product->name</h6>";
                 })
                 ->editColumn('is_active', function (Product $product) {
-                    $status = @$product->is_active ? "Active" : "Inactive";
+                    $status = @$product->is_active ? "Aktif" : "Tidak aktif";
                     return "<h6>" . $status . "</h6>";
                 })
                 ->editColumn('created_at', function (Product $product) {
@@ -44,7 +44,7 @@ class ProductController extends Controller
                         <a href='#' class='btn btn-danger btn-delete py-1'
                             data-bs-toggle='modal' data-bs-target='#deleteModal'
                             data-url='" . route('product_delete', $product->id) . "'>
-                            Delete</a>
+                            Hapus</a>
                     </div>
                     ";
 
@@ -129,7 +129,7 @@ class ProductController extends Controller
 
         DB::commit();
 
-        toast('Product successfully created', 'success');
+        toast('Produk berhasil ditambahkan.', 'success');
         return redirect()->route('product_list');
     }
 
@@ -141,7 +141,7 @@ class ProductController extends Controller
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
         $product = Product::find($id);
         if (!$product) {
-            toast('Product not found', 'error');
+            toast('Produk tidak ditemukan.', 'error');
             return back();
         }
 
@@ -160,7 +160,7 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         if (!$product) {
-            toast('Product not found', 'error');
+            toast('Produk tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -224,7 +224,7 @@ class ProductController extends Controller
 
         DB::commit();
 
-        toast('Product successfully updated', 'success');
+        toast('Produk berhasil diupdate.', 'success');
         return redirect()->route('product_list');
     }
 
@@ -248,7 +248,7 @@ class ProductController extends Controller
         if (!count($data)) {
             $data[] = [
                 'id' => null,
-                'value' => "Product not found",
+                'value' => "Produk tidak ditemukan.",
             ];
         }
         return $data;
@@ -261,7 +261,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         if (!$product) {
-            toast('Product not found', 'error');
+            toast('Produk tidak ditemukan.', 'error');
             return back()->withInput();
         }
 
@@ -285,7 +285,7 @@ class ProductController extends Controller
 
         DB::commit();
 
-        toast('Download center successfully deleted', 'success');
+        toast('Produk berhasil dihapus.', 'success');
         return redirect()->route('product_list');
     }
 }

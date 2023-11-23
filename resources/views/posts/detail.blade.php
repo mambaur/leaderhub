@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Berita - Leaderhub', 'menu' => 'posts'])
+@extends('layouts.main', ['title' => 'Berita - ' . get_company_name(), 'menu' => 'posts'])
+
+@section('meta')
+    <meta name="title" content="{{ $post->title }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="garansi, {{ get_company_name() }}">
+
+    <meta property="og:title" content="{{ $post->title }}" />
+    <meta property="og:image" content="{{ asset('storage/' . @$post->media[0]->url) }}" />
+@endsection
 
 @section('styles')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -21,7 +30,7 @@
                 <span class="h4 fw-bold">Berita</span>
                 <div class="text-center py-3">
                     <img class="w-100 rounded" src="{{ asset('storage/' . @$post->media[0]->url) }}"
-                        alt="{{ @$post->media[0]->url }}" />
+                        alt="{{ @$post->media[0]->alt }}" />
                 </div>
                 <h1 class="h4 fw-bold">{{ $post->title }}</h1>
                 <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">

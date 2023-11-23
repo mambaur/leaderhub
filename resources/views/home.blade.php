@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Selamat Datang! - Leaderhub', 'menu' => 'dashboard'])
+@extends('layouts.main', ['title' => 'Selamat Datang! - ' . get_company_name(), 'menu' => 'dashboard'])
+
+@section('meta')
+    <meta name="title" content="Selamat Datang! - {{ get_company_name() }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="landing page, beranda, {{ get_company_name() }}">
+
+    <meta property="og:title" content="Selamat Datang! - {{ get_company_name() }}" />
+    <meta property="og:image" content="{{ asset('storage/' . @$company['sliders'][0]->media[0]->url) }}" />
+@endsection
 
 @section('content')
     <!-- Carousel -->
@@ -32,7 +41,7 @@
     @if (@$post)
         <article class="container my-5">
             <div class="row d-flex align-items-center">
-                <div class="col-md-6 col-12 pe-md-5 pe-0">
+                <div class="col-md-6 col-12 pe-md-5 pe-0 order-md-1 order-2 mb-4">
                     <h2>{{ @$post->title }}</h2>
                     <p>{!! \Illuminate\Support\Str::limit(@$post->body ?? '', 200) !!}</p>
                     <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">
@@ -41,10 +50,10 @@
                         style="background-color: #00CCD9">Baca
                         Selengkapnya</a>
                 </div>
-                <div class="col-md-6 col-12 p-3">
+                <div class="col-md-6 col-12 p-3 order-md-2 order-1 mb-4">
                     <img class="w-100 rounded"
-                        src="https://image.benq.com/is/image/benqco/re01-teach-your-way?$ResponsivePreset$"
-                        alt="" />
+                        src="{{ @$post->media[0] ? asset('storage/' . @$post->media[0]->url) : url('/') . '/images/empty.jpg' }}"
+                        alt="{{ @$post->media[0]->alt ?? @$post->title }}" />
                 </div>
             </div>
         </article>

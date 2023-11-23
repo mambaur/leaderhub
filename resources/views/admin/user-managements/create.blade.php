@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Create New User', 'menu' => 'user-managements', 'submenu' => 'user-management-create'])
+@extends('admin.layouts.main', ['title' => 'Tambah User Baru', 'menu' => 'user-managements', 'submenu' => 'user-management-create'])
 
 @section('content')
     <div class="content-wrapper">
@@ -6,13 +6,13 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create New User</h4>
+                        <h4 class="card-title">Tambah User Baru</h4>
                         <form class="forms-sample" method="post" action="{{ route('user_management_store') }}">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Nama</label>
                                 <input type="text" class="form-control h-100 @error('name') is-invalid @enderror"
-                                    id="name" value="{{ old('name') }}" name="name" placeholder="Name..."
+                                    id="name" value="{{ old('name') }}" name="name" placeholder="Nama..."
                                     required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -60,8 +60,8 @@
 
                             <div class="form-group">
                                 <label for="role">Role</label>
-                                <select name="role" class="form-control @error('role') is-invalid @enderror" style="height: 46px"
-                                    id="role">
+                                <select name="role" class="form-control @error('role') is-invalid @enderror"
+                                    style="height: 46px" id="role">
                                     <option value="superadmin" @if (old('role') == 'superadmin') selected @endif>Super Admin
                                     </option>
                                     <option value="admin" @if (old('role') == 'admin') selected @endif>Admin</option>
@@ -74,7 +74,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>

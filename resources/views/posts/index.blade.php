@@ -1,4 +1,13 @@
-@extends('layouts.main', ['title' => 'Berita - Leaderhub', 'menu' => 'posts'])
+@extends('layouts.main', ['title' => 'Berita - ' . get_company_name(), 'menu' => 'posts'])
+
+@section('meta')
+    <meta name="title" content="Berita - {{ get_company_name() }}">
+    <meta name="description" content="{{ get_company_description() }}">
+    <meta name="keywords" content="berita, {{ get_company_name() }}">
+
+    <meta property="og:title" content="Berita - {{ get_company_name() }}" />
+    <meta property="og:image" content="{{ get_logo() }}" />
+@endsection
 
 @section('content')
     <div class="container mt-5 pt-5 mb-5">

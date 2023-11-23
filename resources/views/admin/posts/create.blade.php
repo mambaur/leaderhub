@@ -1,4 +1,4 @@
-@extends('admin.layouts.main', ['title' => 'Create Post', 'menu' => 'posts', 'submenu' => 'post-create'])
+@extends('admin.layouts.main', ['title' => 'Tambah Berita', 'menu' => 'posts', 'submenu' => 'post-create'])
 
 @section('styles')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -10,14 +10,14 @@
             <div class="col-md-10 col-lg-10 col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create Post</h4>
+                        <h4 class="card-title">Tambah Berita</h4>
                         <form class="forms-sample" method="post" action="{{ route('post_store') }}"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Judul</label>
                                 <input type="text" class="form-control h-100 @error('title') is-invalid @enderror"
-                                    id="title" value="{{ old('title') }}" name="title" placeholder="Post Title..."
+                                    id="title" value="{{ old('title') }}" name="title" placeholder="Judul Berita..."
                                     required>
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="image">Featured Image</label>
+                                <label for="image">Gambar/Foto Utama</label>
                                 <input type="file" class="form-control h-100 @error('image') is-invalid @enderror"
                                     name="image" id="image">
                                 @error('image')
@@ -43,7 +43,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="type">Type</label>
+                                        <label for="type">Tipe</label>
                                         <select class="form-control @error('type') is-invalid @enderror"
                                             style="height: 46px" name="type" id="type">
                                             <option value="published">Publish</option>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="date">Date</label>
+                                        <label for="date">Tanggal</label>
                                         <input type="date" class="form-control h-100 @error('date') is-invalid @enderror"
                                             id="date" value="{{ old('date') ?? date('Y-m-d') }}" name="date"
                                             placeholder="Post date..." required>
@@ -75,12 +75,12 @@
                                 <input class="form-check-input" type="checkbox" value="1" checked id="is_active"
                                     name="is_active">
                                 <label class="form-check-label ms-2" for="is_active">
-                                    Active
+                                    Aktif
                                 </label>
                             </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
-                            <a href="{{ url()->previous() }}" class="btn btn-light">Cancel</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-light">Batal</a>
                         </form>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                     displaySize: true
                 },
             },
-            placeholder: 'Description...',
+            placeholder: 'Deskripsi Berita...',
             theme: "snow"
         }));
 
