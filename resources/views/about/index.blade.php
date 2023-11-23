@@ -64,7 +64,7 @@
                         <h2 class="h4 fw-bold text-center text-light mb-5">Sertifikasi</h2>
                         <div class="row d-flex justify-content-center">
                             @foreach ($certificates as $item)
-                                <div class="col-md-2">
+                                <div class="col-md-2 mb-3">
                                     <div class="w-100 bg-light">
                                         <img class="w-100" style="object-fit:contain"
                                             src="{{ asset('storage/' . @$item->media[0]->url) }}"
