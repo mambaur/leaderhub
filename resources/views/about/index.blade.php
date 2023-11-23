@@ -60,7 +60,7 @@
         <div class="px-3 px-md-0 mb-4 py-5" style="background-color: #00CCD9">
             <div class="container py-5">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-md-8 col-12">
+                    <div class="col-md-12 col-12">
                         <h2 class="h4 fw-bold text-center text-light mb-5">Sertifikasi</h2>
                         <div class="row d-flex justify-content-center">
                             @foreach ($certificates as $item)
