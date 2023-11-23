@@ -102,7 +102,9 @@
                 <div class="d-flex align-items-center">
                     <img class="mb-2" src="{{ get_logo() }}" height="24" alt="Logo Leaderhub" />
                     <i class="fa-solid fa-chevron-right mx-3" style="color: #00CCD9"></i>
-                    <h1 class="h4 fw-bold d-inline-block mt-1">Products</span>
+                    <h1 class="h4 fw-bold d-inline-block mt-1">{{ @$product->product_category->name }}</span>
+                        <i class="fa-solid fa-chevron-right mx-3" style="color: #00CCD9"></i>
+                        <h1 class="h4 fw-bold d-inline-block mt-1">Products</span>
                 </div>
 
                 @if (count(@$product->media ?? []))
