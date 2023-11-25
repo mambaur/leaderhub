@@ -107,7 +107,7 @@
                     <h1 class="h4 fw-bold d-inline-block mt-1">{{ @$product->name }}</h1>
                 </div>
 
-                @if (count(@$product->media ?? []))
+                @if (count(@$product->media ?? []) > 1)
                     <div class="w-100 my-4">
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                             class="swiper mySwiper2">
