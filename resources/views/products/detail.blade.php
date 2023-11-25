@@ -120,22 +120,24 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div thumbsSlider="" class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                                @foreach ($product->media as $item)
-                                    <div class="swiper-slide">
-                                        <img src="{{ asset('storage/' . @$item->url) }}" alt="{{ @$item->alt }}"
-                                            title="{{ @$item->title }}" />
-                                    </div>
-                                @endforeach
+                        @if (count(@$product->media ?? []))
+                            <div thumbsSlider="" class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    @foreach ($product->media as $item)
+                                        <div class="swiper-slide">
+                                            <img src="{{ asset('storage/' . @$item->url) }}" alt="{{ @$item->alt }}"
+                                                title="{{ @$item->title }}" />
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="swiper-button-next">
+                                    <i class="fa-solid fa-chevron-right" style="color: #0A9AA4"></i>
+                                </div>
+                                <div class="swiper-button-prev">
+                                    <i class="fa-solid fa-chevron-left" style="color: #0A9AA4"></i>
+                                </div>
                             </div>
-                            <div class="swiper-button-next">
-                                <i class="fa-solid fa-chevron-right" style="color: #0A9AA4"></i>
-                            </div>
-                            <div class="swiper-button-prev">
-                                <i class="fa-solid fa-chevron-left" style="color: #0A9AA4"></i>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 @endif
 
