@@ -120,8 +120,8 @@
                                 @endforeach
                             </div>
                         </div>
-                        @if (count(@$product->media ?? []))
-                            <div thumbsSlider="" class="swiper mySwiper">
+                        <div thumbsSlider="" class="swiper mySwiper">
+                            @if (count(@$product->media ?? []))
                                 <div class="swiper-wrapper">
                                     @foreach ($product->media as $item)
                                         <div class="swiper-slide">
@@ -136,8 +136,8 @@
                                 <div class="swiper-button-prev">
                                     <i class="fa-solid fa-chevron-left" style="color: #0A9AA4"></i>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
+                        </div>
                     </div>
                 @endif
 
