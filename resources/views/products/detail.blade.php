@@ -107,7 +107,7 @@
                     <h1 class="h4 fw-bold d-inline-block mt-1">{{ @$product->name }}</h1>
                 </div>
 
-                @if (count(@$product->media ?? []) > 1)
+                @if (count(@$product->media ?? []))
                     <div class="w-100 my-4">
                         <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                             class="swiper mySwiper2">
@@ -120,8 +120,8 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div thumbsSlider="" class="swiper mySwiper">
-                            @if (count(@$product->media ?? []))
+                        @if (count(@$product->media ?? []) > 1)
+                            <div thumbsSlider="" class="swiper mySwiper">
                                 <div class="swiper-wrapper">
                                     @foreach ($product->media as $item)
                                         <div class="swiper-slide">
@@ -136,8 +136,8 @@
                                 <div class="swiper-button-prev">
                                     <i class="fa-solid fa-chevron-left" style="color: #0A9AA4"></i>
                                 </div>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                     </div>
                 @endif
 
