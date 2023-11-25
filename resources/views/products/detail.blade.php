@@ -142,7 +142,7 @@
                 @if (@$product->gallery_description)
                     <p class="h5 text-muted text-center fst-italic mb-4">{{ @$product->gallery_description }}</p>
                 @endif
-                <h2 class="h4 fw-bold">{{ @$product->name }}</h2>
+                {{-- <h2 class="h4 fw-bold">{{ @$product->name }}</h2> --}}
 
                 {!! @$product->description !!}
 
