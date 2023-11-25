@@ -98,13 +98,13 @@
     <div class="container mt-5 pt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 col-12">
-                <div class="d-flex align-items-center">
+                <div class="d-md-flex align-items-center d-block">
                     <img class="mb-2" src="{{ get_logo() }}" height="24" alt="Logo Leaderhub" />
                     <i class="fa-solid fa-chevron-right mx-3 d-none d-md-block" style="color: #00CCD9"></i>
                     <h1 class="h4 fw-bold d-inline-block mt-1 d-none d-md-block">{{ @$product->product_category->name }}
                     </h1>
-                    <i class="fa-solid fa-chevron-right mx-md-3 mx-2" style="color: #00CCD9"></i>
-                    <h1 class="h4 fw-bold d-inline-block mt-1">{{ @$product->name }}</h1>
+                    <i class="fa-solid fa-chevron-right mx-md-3 mx-2 d-none d-md-block" style="color: #00CCD9"></i>
+                    <h1 class="h4 fw-bold d-md-inline-block d-block mt-1">{{ @$product->name }}</h1>
                 </div>
 
                 @if (count(@$product->media ?? []))
