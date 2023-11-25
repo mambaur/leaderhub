@@ -172,8 +172,6 @@
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 10,
             slidesPerView: 6,
-            centeredSlides: true,
-            // centerInsufficientSlides: true,
             freeMode: true,
             navigation: {
                 nextEl: ".swiper-button-next",
