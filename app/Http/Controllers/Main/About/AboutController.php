@@ -18,7 +18,6 @@ class AboutController extends Controller
         $about = Company::where('key', 'about')->first();
         $services = Service::latest()->get();
         $certificates = Certificate::latest()->get();
-        $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('about.index', compact('product_categories', 'about', 'services', 'certificates'));
+        return view('about.index', compact('about', 'services', 'certificates'));
     }
 }

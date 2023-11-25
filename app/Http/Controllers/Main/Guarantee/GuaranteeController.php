@@ -21,7 +21,6 @@ class GuaranteeController extends Controller
             $guarantee = Guarantee::where('serial_number', $serial_number)->first();
         }
 
-        $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('guarantees.index', compact('product_categories', 'serial_number', 'guarantee'));
+        return view('guarantees.index', compact('serial_number', 'guarantee'));
     }
 }

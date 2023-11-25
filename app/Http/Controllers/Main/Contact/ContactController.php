@@ -15,7 +15,6 @@ class ContactController extends Controller
     public function index()
     {
         $company = Company::all()->groupBy('key');
-        $product_categories = ProductCategory::orderBy('name', 'asc')->get();
 
         $src = null;
         $map = @$company['map'][0]->value;
@@ -26,6 +25,6 @@ class ContactController extends Controller
             $src = substr($map, $start, $end - $start); // Ambil nilai src dari string HTML
         }
 
-        return view('contacts.index', compact('product_categories', 'company', 'src'));
+        return view('contacts.index', compact('company', 'src'));
     }
 }

@@ -30,7 +30,6 @@ class PostController extends Controller
             return abort(404);
         }
 
-        $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('posts.detail', compact('product_categories', 'post'));
+        return view('posts.detail', compact('post'));
     }
 }

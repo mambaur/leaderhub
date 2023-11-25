@@ -15,7 +15,6 @@ class DownloadCenterController extends Controller
     public function index()
     {
         $downloads = DownloadCenter::latest()->get();
-        $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('download_centers.index', compact('product_categories', 'downloads'));
+        return view('download_centers.index', compact('downloads'));
     }
 }

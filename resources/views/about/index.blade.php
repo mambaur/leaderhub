@@ -9,19 +9,6 @@
     <meta property="og:image" content="{{ get_logo() }}" />
 @endsection
 
-@section('styles')
-    <style>
-        .product-item {
-            color: black;
-        }
-
-        .product-item:hover {
-            background-color: #00CCD9;
-            color: white;
-        }
-    </style>
-@endsection
-
 @section('content')
     <div class="container mt-5 pt-5">
         <div class="row d-flex justify-content-center">
@@ -75,5 +62,5 @@
         </div>
     @endif
 
-    @include('shared.product_category', ['product_categories' => @$product_categories])
+    @include('shared.product_category')
 @endsection

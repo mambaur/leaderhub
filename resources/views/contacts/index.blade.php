@@ -37,5 +37,5 @@
 
     @include('shared.jumbotron')
 
-    @include('shared.product_category', ['product_categories' => @$product_categories])
+    @include('shared.product_category')
 @endsection

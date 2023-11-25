@@ -152,7 +152,7 @@
                     <div class="w-100 d-flex justify-content-center">
                         <div class="mt-4">
                             @foreach ($product->urls as $item)
-                                <a class="btn btn-primary rounded-0 border-0 me-2" href="{{ $item->url }}"
+                                <a class="btn btn-primary rounded-0 border-0 me-2 mb-3" href="{{ $item->url }}"
                                     style="background-color: #00CCD9">{{ $item->title }}</a>
                             @endforeach
                         </div>
@@ -162,11 +162,7 @@
         </div>
     </div>
 
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-6 col-12">
-            @include('shared.product_category', ['product_categories' => @$product_categories])
-        </div>
-    </div>
+    @include('shared.product_category')
 @endsection
 
 @section('scripts')
@@ -176,6 +172,8 @@
         var swiper = new Swiper(".mySwiper", {
             spaceBetween: 10,
             slidesPerView: 6,
+            centeredSlides: true,
+            // centerInsufficientSlides: true,
             freeMode: true,
             navigation: {
                 nextEl: ".swiper-button-next",

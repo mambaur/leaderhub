@@ -32,4 +32,13 @@
     .ui-autocomplete-loading {
         background: url(http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/images/ui-anim_basic_16x16.gif) no-repeat right center
     }
+
+    .product-item {
+        color: black;
+    }
+
+    .product-item:hover {
+        background-color: #00CCD9;
+        color: white;
+    }
 </style>

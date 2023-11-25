@@ -34,7 +34,7 @@
     </div>
     {{-- End Carousel --}}
 
-    @include('shared.product_category', ['product_categories' => @$product_categories])
+    @include('shared.product_category')
 
     @include('shared.jumbotron')
 

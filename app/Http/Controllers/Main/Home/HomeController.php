@@ -17,7 +17,6 @@ class HomeController extends Controller
     {
         $company = Company::all()->groupBy('key');
         $post = Post::latest()->first();
-        $product_categories = ProductCategory::orderBy('name', 'asc')->get();
-        return view('home', compact('product_categories', 'company', 'post'));
+        return view('home', compact('company', 'post'));
     }
 }
