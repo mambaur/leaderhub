@@ -43,7 +43,7 @@
             <div class="row d-flex align-items-center">
                 <div class="col-md-6 col-12 pe-md-5 pe-0 order-md-1 order-2 mb-4">
                     <h2>{{ @$post->title }}</h2>
-                    <p>{!! \Illuminate\Support\Str::limit(@$post->body ?? '', 200) !!}</p>
+                    <p>{!! \Illuminate\Support\Str::limit(@$post->body ? strip_tags($post->body) : '', 200) !!}</p>
                     <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">
                         {{ @$post->published_at != null ? @$post->published_at->format('d F Y') : '' }}</div>
                     <a href="{{ route('show_post', $post->slug) }}" class="btn btn-primary rounded-0 border-0"

@@ -1,8 +1,8 @@
 @extends('admin.layouts.main', ['title' => 'Edit Produk', 'menu' => 'products', 'submenu' => 'product-list'])
 
 @section('styles')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.snow.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/quill-table-ui@1.0.5/dist/index.css" rel="stylesheet">
+    {{-- Summernote --}}
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <link type="text/css" rel="stylesheet"
         href="{{ url('/') }}/admin-assets/vendors/image-uploader/dist/image-uploader.min.css">
 @endsection
@@ -67,8 +67,9 @@
                                 @enderror
                             </div>
 
-                            <div id="editor" class="mb-4" style="min-height: 400px">{!! $product->description !!}</div>
-                            <input type="hidden" name="description" id="description" value="">
+                            <div class="mb-4">
+                                <textarea name="description" id="summernote" style="display: none;">{!! old('description') ?? $product->description !!}</textarea>
+                            </div>
 
                             @if (count(@$product->urls ?? []))
                                 @foreach (@$product->urls as $item)
@@ -131,87 +132,50 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.min.js" type="text/javascript"></script>
-    <script src="https://unpkg.com/quill-table-ui@1.0.5/dist/umd/index.js" type="text/javascript"></script>
+    {{-- Summernote --}}
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <script type="text/javascript"
         src="{{ url('/') }}/admin-assets/vendors/image-uploader/dist/image-uploader.min.js"></script>
 
     <script>
-        Quill.register({
-            'modules/tableUI': quillTableUI.default
-        }, true)
+        $(function() {
+            $('#summernote').summernote({
+                placeholder: 'Deskripsi',
+                tabsize: 2,
+                minHeight: 400,
+                callbacks: {
+                    onImageUpload: function(files) {
+                        var formData = new FormData();
+                        formData.append('image', files[0]);
 
-        var quill;
-        $("#editor").length && (quill = new Quill("#editor", {
-            modules: {
-                toolbar: [
-                    [{
-                        header: [1, 2, 3, !1]
-                    }],
-                    [{
-                        font: []
-                    }],
-                    ["bold", "italic", "underline", "strike"],
-                    [{
-                        list: "ordered"
-                    }, {
-                        list: "bullet"
-                    }],
-                    [{
-                        color: []
-                    }, {
-                        background: []
-                    }, {
-                        align: []
-                    }],
-                    ["link", "image", "code-block", "video"],
-                    ["table"]
-                ],
-                table: true,
-                tableUI: true
-            },
-            placeholder: 'Deskripsi...',
-            theme: "snow"
-        }));
+                        var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-        quill.getModule('toolbar').addHandler('image', function() {
-            var fileInput = document.createElement('input');
-            fileInput.setAttribute('type', 'file');
-            fileInput.setAttribute('accept', 'image/*');
-            fileInput.click();
-
-            fileInput.onchange = function() {
-                var file = fileInput.files[0];
-                var formData = new FormData();
-                formData.append('image', file);
-
-                var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-                $.ajax({
-                    url: '/upload-image',
-                    type: 'POST',
-                    data: formData,
-                    headers: {
-                        'X-CSRF-TOKEN': csrfToken,
-                    },
-                    processData: false,
-                    contentType: false,
-                    success: function(data) {
-                        quill.focus();
-                        const range = quill.getSelection();
-                        quill.insertEmbed(range.index, 'image', data.file);
-                    },
-                    error: function(error) {
-                        console.error(error);
+                        $.ajax({
+                            url: '/upload-image',
+                            method: 'POST',
+                            data: formData,
+                            headers: {
+                                'X-CSRF-TOKEN': csrfToken,
+                            },
+                            processData: false,
+                            contentType: false,
+                            success: function(response) {
+                                $('#summernote').summernote('insertImage', response
+                                    .file
+                                );
+                            },
+                            error: function(err) {
+                                console.error('Upload gagal:', err);
+                            }
+                        });
                     }
-                });
-            };
-        });
-
-        document.getElementById('description').value = quill.root.innerHTML;
-        quill.on('text-change', function() {
-            document.getElementById('description').value = quill.root.innerHTML;
+                },
+                onInit: function() {
+                    $('#summernote')
+                        .show();
+                }
+            });
         });
 
         $.ajax({

@@ -11,9 +11,6 @@
 
 @section('styles')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    {{-- <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> --}}
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.snow.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/quill-table-ui@1.0.5/dist/index.css" rel="stylesheet">
     <style>
         html,
         body {
@@ -146,11 +143,8 @@
                     <p class="h5 text-muted text-center fst-italic mb-4">{{ @$product->gallery_description }}</p>
                 @endif
                 <h2 class="h4 fw-bold">{{ @$product->name }}</h2>
-                <div class="ql-snow">
-                    <div class="ql-editor" style="white-space:normal; padding-left: 0px; padding-right: 0px">
-                        {!! @$product->description !!}
-                    </div>
-                </div>
+
+                {!! @$product->description !!}
 
                 @if (count(@$product->urls ?? []))
                     <div class="w-100 d-flex justify-content-center">
@@ -175,10 +169,6 @@
 
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    {{-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> --}}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/2.0.0-dev.3/quill.min.js" type="text/javascript"></script>
-    <script src="https://unpkg.com/quill-table-ui@1.0.5/dist/umd/index.js" type="text/javascript"></script>
 
     <script>
         var swiper = new Swiper(".mySwiper", {

@@ -18,8 +18,9 @@
                     <div class="row d-flex align-items-start mb-4 mt-4">
                         <div class="col-md-4">
                             <div class="text-center pt-1">
-                                <img class="w-100 rounded" src="{{ asset('storage/' . @$item->media[0]->url) }}"
-                                    alt="{{ @$item->media[0]->alt }}" />
+                                <img class="w-100 rounded"
+                                    src="{{ @$item->media[0]->url ? asset('storage/' . @$item->media[0]->url) : url('/') . '/images/empty.jpg' }}"
+                                    alt="{{ @$item->media[0]->alt ?? $item->title }}" />
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -27,7 +28,7 @@
                             <div class="text-muted mb-1" style="font-style: italic; font-size: 14px">
                                 {{ @$item->published_at != null ? @$item->published_at->format('d F Y') : '' }}</div>
                             <p>
-                                {!! \Illuminate\Support\Str::limit(@$item->body ?? '', 130) !!}
+                                {!! \Illuminate\Support\Str::limit(@$item->body ? strip_tags($item->body) : '', 130) !!}
                             </p>
 
                             <a href="{{ route('show_post', $item->slug) }}" class="btn btn-primary rounded-0 border-0"

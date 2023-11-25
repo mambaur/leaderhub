@@ -10,7 +10,6 @@
 @endsection
 
 @section('styles')
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>
         .product-item {
             color: black;
@@ -35,18 +34,11 @@
                 <h1 class="h4 fw-bold">{{ $post->title }}</h1>
                 <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">
                     {{ @$post->published_at != null ? @$post->published_at->format('d F Y') : '' }}</div>
-                <div class="ql-snow">
-                    <div class="ql-editor" style="white-space:normal; padding-left: 0px; padding-right: 0px">
-                        {!! $post->body !!}
-                    </div>
-                </div>
+
+                {!! $post->body !!}
             </div>
         </div>
     </div>
 
     @include('shared.product_category', ['product_categories' => @$product_categories])
-@endsection
-
-@section('scripts')
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 @endsection
