@@ -18,7 +18,7 @@
                     <img class="w-100 rounded" src="{{ asset('storage/' . @$post->media[0]->url) }}"
                         alt="{{ @$post->media[0]->alt }}" />
                 </div>
-                <h1 class="h4 fw-bold mt-4">{{ $post->title }}</h1>
+                <h1 class="fw-bold mt-4">{{ $post->title }}</h1>
                 <div class="text-muted mb-3" style="font-style: italic; font-size: 14px">
                     {{ @$post->published_at != null ? @$post->published_at->format('d F Y') : '' }}</div>
 
