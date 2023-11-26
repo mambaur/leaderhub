@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <h2 class="h5 fw-bold">{{ $item->title }}</h2>
+                            <h2 class="h5 fw-bold mt-3 mt-md-0">{{ $item->title }}</h2>
                             <div class="text-muted mb-1" style="font-style: italic; font-size: 14px">
                                 {{ @$item->published_at != null ? @$item->published_at->format('d F Y') : '' }}</div>
                             <p>
