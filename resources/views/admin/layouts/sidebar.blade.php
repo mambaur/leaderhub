@@ -45,25 +45,29 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item @if (@$menu == 'download-centers') active @endif">
-            <a class="nav-link" data-bs-toggle="collapse" href="#download-centers" aria-expanded="false"
-                aria-controls="download-centers">
-                <i class="menu-icon mdi mdi-download"></i>
-                <span class="menu-title">Download Center</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse @if (@$menu == 'download-centers') show @endif" id="download-centers">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-list') active @endif"
-                            href="{{ route('download_center_list') }}">Daftar
-                            Download Centers</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-create') active @endif"
-                            href="{{ route('download_center_create') }}">Tambah Download Center</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+
+        @if (auth()->user()->hasRole(['superadmin']))
+            <li class="nav-item @if (@$menu == 'download-centers') active @endif">
+                <a class="nav-link" data-bs-toggle="collapse" href="#download-centers" aria-expanded="false"
+                    aria-controls="download-centers">
+                    <i class="menu-icon mdi mdi-download"></i>
+                    <span class="menu-title">Download Center</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse @if (@$menu == 'download-centers') show @endif" id="download-centers">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-list') active @endif"
+                                href="{{ route('download_center_list') }}">Daftar
+                                Download Centers</a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'download-center-create') active @endif"
+                                href="{{ route('download_center_create') }}">Tambah Download Center</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        @endif
+
         <li class="nav-item @if (@$menu == 'posts') active @endif">
             <a class="nav-link" data-bs-toggle="collapse" href="#posts" aria-expanded="false" aria-controls="posts">
                 <i class="menu-icon mdi mdi-pencil-box-outline"></i>
@@ -99,61 +103,64 @@
                 </ul>
             </div>
         </li>
-        <li class="nav-item nav-category">Tentang</li>
-        <li class="nav-item @if (@$menu == 'sliders') active @endif">
-            <a class="nav-link" href="{{ route('sliders') }}">
-                <i class="menu-icon mdi mdi-image-multiple"></i>
-                <span class="menu-title">Sliders</span>
-            </a>
-        </li>
-        <li class="nav-item @if (@$menu == 'services') active @endif">
-            <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false"
-                aria-controls="services">
-                <i class="menu-icon mdi mdi-face-agent"></i>
-                <span class="menu-title">Layanan</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse @if (@$menu == 'services') show @endif" id="services">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-list') active @endif"
-                            href="{{ route('service_list') }}">Daftar Layanan</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-create') active @endif"
-                            href="{{ route('service_create') }}">Tambah Layanan</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item @if (@$menu == 'certificates') active @endif">
-            <a class="nav-link" data-bs-toggle="collapse" href="#certificates" aria-expanded="false"
-                aria-controls="certificates">
-                <i class="menu-icon mdi mdi-certificate"></i>
-                <span class="menu-title">Sertifikat</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse @if (@$menu == 'certificates') show @endif" id="certificates">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-list') active @endif"
-                            href="{{ route('certificate_list') }}">Daftar Sertifikat</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-create') active @endif"
-                            href="{{ route('certificate_create') }}">Tambah Sertifikat</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item @if (@$menu == 'company') active @endif">
-            <a class="nav-link" href="{{ route('company') }}">
-                <i class="menu-icon mdi mdi-domain"></i>
-                <span class="menu-title">Perusahaan</span>
-            </a>
-        </li>
-        <li class="nav-item @if (@$menu == 'locations') active @endif">
-            <a class="nav-link" href="{{ route('location') }}">
-                <i class="menu-icon mdi mdi-map-marker"></i>
-                <span class="menu-title">Lokasi</span>
-            </a>
-        </li>
+
+        @if (auth()->user()->hasRole(['superadmin']))
+            <li class="nav-item nav-category">Tentang</li>
+            <li class="nav-item @if (@$menu == 'sliders') active @endif">
+                <a class="nav-link" href="{{ route('sliders') }}">
+                    <i class="menu-icon mdi mdi-image-multiple"></i>
+                    <span class="menu-title">Sliders</span>
+                </a>
+            </li>
+            <li class="nav-item @if (@$menu == 'services') active @endif">
+                <a class="nav-link" data-bs-toggle="collapse" href="#services" aria-expanded="false"
+                    aria-controls="services">
+                    <i class="menu-icon mdi mdi-face-agent"></i>
+                    <span class="menu-title">Layanan</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse @if (@$menu == 'services') show @endif" id="services">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-list') active @endif"
+                                href="{{ route('service_list') }}">Daftar Layanan</a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'service-create') active @endif"
+                                href="{{ route('service_create') }}">Tambah Layanan</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item @if (@$menu == 'certificates') active @endif">
+                <a class="nav-link" data-bs-toggle="collapse" href="#certificates" aria-expanded="false"
+                    aria-controls="certificates">
+                    <i class="menu-icon mdi mdi-certificate"></i>
+                    <span class="menu-title">Sertifikat</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse @if (@$menu == 'certificates') show @endif" id="certificates">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-list') active @endif"
+                                href="{{ route('certificate_list') }}">Daftar Sertifikat</a>
+                        </li>
+                        <li class="nav-item"> <a class="nav-link @if (@$submenu == 'certificate-create') active @endif"
+                                href="{{ route('certificate_create') }}">Tambah Sertifikat</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item @if (@$menu == 'company') active @endif">
+                <a class="nav-link" href="{{ route('company') }}">
+                    <i class="menu-icon mdi mdi-domain"></i>
+                    <span class="menu-title">Perusahaan</span>
+                </a>
+            </li>
+            <li class="nav-item @if (@$menu == 'locations') active @endif">
+                <a class="nav-link" href="{{ route('location') }}">
+                    <i class="menu-icon mdi mdi-map-marker"></i>
+                    <span class="menu-title">Lokasi</span>
+                </a>
+            </li>
+        @endif
         <li class="nav-item nav-category">Akun</li>
         @if (auth()->user()->hasRole(['superadmin']))
             <li class="nav-item @if (@$menu == 'user-managements') active @endif">

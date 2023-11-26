@@ -21,7 +21,7 @@ class PostController extends Controller
             $data = Post::query();
             return DataTables::eloquent($data)
                 ->editColumn('title', function (Post $item) {
-                    return "<h6>$item->title</h6>";
+                    return "<h6><a class='text-decoration-none text-dark' href='" . route('show_post', $item->slug) . "'>$item->title</a></h6>";
                 })
                 ->editColumn('type', function (Post $item) {
                     $type = ucfirst($item->type);

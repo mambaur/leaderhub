@@ -100,25 +100,6 @@ Route::middleware(['auth'])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Guarantees Routes
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    Route::get('/admin/guarantees', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'index'])->name('guarantee_list');
-
-    Route::get('/admin/guarantee/create', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'create'])->name('guarantee_create');
-
-    Route::post('/admin/guarantee/create', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'store'])->name('guarantee_store');
-
-    Route::get('/admin/guarantee/{id}', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'edit'])->name('guarantee_edit');
-
-    Route::put('/admin/guarantee/{id}', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'update'])->name('guarantee_update');
-
-    Route::delete('/admin/guarantee/delete/{id}', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'destroy'])->name('guarantee_delete');
-
-    /*
-    |--------------------------------------------------------------------------
     | Product Categories Routes
     |--------------------------------------------------------------------------
     |
@@ -138,88 +119,33 @@ Route::middleware(['auth'])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Download Centers Routes
+    | Guarantees Routes
     |--------------------------------------------------------------------------
     |
     */
 
-    Route::get('/admin/download-centers', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'index'])->name('download_center_list');
+    Route::get('/admin/guarantees', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'index'])->name('guarantee_list');
 
-    Route::get('/admin/download-center/create', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'create'])->name('download_center_create');
+    Route::get('/admin/guarantee/create', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'create'])->name('guarantee_create');
 
-    Route::post('/admin/download-center/create', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'store'])->name('download_center_store');
+    Route::post('/admin/guarantee/create', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'store'])->name('guarantee_store');
 
-    Route::get('/admin/download-center/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'edit'])->name('download_center_edit');
+    Route::get('/admin/guarantee/{id}', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'edit'])->name('guarantee_edit');
 
-    Route::put('/admin/download-center/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'update'])->name('download_center_update');
+    Route::put('/admin/guarantee/{id}', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'update'])->name('guarantee_update');
 
-    Route::delete('/admin/download-center/delete/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'destroy'])->name('download_center_delete');
+    Route::delete('/admin/guarantee/delete/{id}', [App\Http\Controllers\Admin\Guarantees\GuaranteeController::class, 'destroy'])->name('guarantee_delete');
 
-    /*
-    |--------------------------------------------------------------------------
-    | About Routes
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    Route::get('/admin/company', [App\Http\Controllers\Admin\About\AboutController::class, 'company'])->name('company');
-
-    Route::post('/admin/company', [App\Http\Controllers\Admin\About\AboutController::class, 'updateCompany'])->name('company_store');
-
-    Route::get('/admin/location', [App\Http\Controllers\Admin\About\AboutController::class, 'location'])->name('location');
-
-    Route::post('/admin/location', [App\Http\Controllers\Admin\About\AboutController::class, 'updateLocation'])->name('location_store');
-
-    Route::get('/admin/sliders', [App\Http\Controllers\Admin\About\AboutController::class, 'sliders'])->name('sliders');
-
-    Route::put('/admin/sliders', [App\Http\Controllers\Admin\About\AboutController::class, 'updateSliders'])->name('sliders_update');
-
-    /*
-    |--------------------------------------------------------------------------
-    | Certificates Routes
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    Route::get('/admin/certificates', [App\Http\Controllers\Admin\About\CertificateController::class, 'index'])->name('certificate_list');
-
-    Route::get('/admin/certificate/create', [App\Http\Controllers\Admin\About\CertificateController::class, 'create'])->name('certificate_create');
-
-    Route::post('/admin/certificate/create', [App\Http\Controllers\Admin\About\CertificateController::class, 'store'])->name('certificate_store');
-
-    Route::get('/admin/certificate/{id}', [App\Http\Controllers\Admin\About\CertificateController::class, 'edit'])->name('certificate_edit');
-
-    Route::put('/admin/certificate/{id}', [App\Http\Controllers\Admin\About\CertificateController::class, 'update'])->name('certificate_update');
-
-    Route::delete('/admin/certificate/delete/{id}', [App\Http\Controllers\Admin\About\CertificateController::class, 'destroy'])->name('certificate_delete');
-
-    /*
-    |--------------------------------------------------------------------------
-    | Services Routes
-    |--------------------------------------------------------------------------
-    |
-    */
-
-    Route::get('/admin/services', [App\Http\Controllers\Admin\About\ServiceController::class, 'index'])->name('service_list');
-
-    Route::get('/admin/service/create', [App\Http\Controllers\Admin\About\ServiceController::class, 'create'])->name('service_create');
-
-    Route::post('/admin/service/create', [App\Http\Controllers\Admin\About\ServiceController::class, 'store'])->name('service_store');
-
-    Route::get('/admin/service/{id}', [App\Http\Controllers\Admin\About\ServiceController::class, 'edit'])->name('service_edit');
-
-    Route::put('/admin/service/{id}', [App\Http\Controllers\Admin\About\ServiceController::class, 'update'])->name('service_update');
-
-    Route::delete('/admin/service/delete/{id}', [App\Http\Controllers\Admin\About\ServiceController::class, 'destroy'])->name('service_delete');
-
-    /*
-    |--------------------------------------------------------------------------
-    | Users Routes
-    |--------------------------------------------------------------------------
-    |
-    */
 
     Route::middleware('role:superadmin')->group(function () {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Users Routes
+        |--------------------------------------------------------------------------
+        |
+        */
+
         Route::get('/admin/user-managements', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'index'])->name('user_management_list');
 
         Route::get('/admin/user-management/create', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'create'])->name('user_management_create');
@@ -233,6 +159,82 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/admin/user-management/change-password/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'changePassword'])->name('user_management_change_password');
 
         Route::delete('/admin/user-management/delete/{id}', [App\Http\Controllers\Admin\Account\UserManagementController::class, 'destroy'])->name('user_management_delete');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Download Centers Routes
+        |--------------------------------------------------------------------------
+        |
+        */
+
+        Route::get('/admin/download-centers', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'index'])->name('download_center_list');
+
+        Route::get('/admin/download-center/create', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'create'])->name('download_center_create');
+
+        Route::post('/admin/download-center/create', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'store'])->name('download_center_store');
+
+        Route::get('/admin/download-center/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'edit'])->name('download_center_edit');
+
+        Route::put('/admin/download-center/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'update'])->name('download_center_update');
+
+        Route::delete('/admin/download-center/delete/{id}', [App\Http\Controllers\Admin\DownloadCenter\DownloadCenterController::class, 'destroy'])->name('download_center_delete');
+
+        /*
+        |--------------------------------------------------------------------------
+        | About Routes
+        |--------------------------------------------------------------------------
+        |
+        */
+
+        Route::get('/admin/company', [App\Http\Controllers\Admin\About\AboutController::class, 'company'])->name('company');
+
+        Route::post('/admin/company', [App\Http\Controllers\Admin\About\AboutController::class, 'updateCompany'])->name('company_store');
+
+        Route::get('/admin/location', [App\Http\Controllers\Admin\About\AboutController::class, 'location'])->name('location');
+
+        Route::post('/admin/location', [App\Http\Controllers\Admin\About\AboutController::class, 'updateLocation'])->name('location_store');
+
+        Route::get('/admin/sliders', [App\Http\Controllers\Admin\About\AboutController::class, 'sliders'])->name('sliders');
+
+        Route::put('/admin/sliders', [App\Http\Controllers\Admin\About\AboutController::class, 'updateSliders'])->name('sliders_update');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Certificates Routes
+        |--------------------------------------------------------------------------
+        |
+        */
+
+        Route::get('/admin/certificates', [App\Http\Controllers\Admin\About\CertificateController::class, 'index'])->name('certificate_list');
+
+        Route::get('/admin/certificate/create', [App\Http\Controllers\Admin\About\CertificateController::class, 'create'])->name('certificate_create');
+
+        Route::post('/admin/certificate/create', [App\Http\Controllers\Admin\About\CertificateController::class, 'store'])->name('certificate_store');
+
+        Route::get('/admin/certificate/{id}', [App\Http\Controllers\Admin\About\CertificateController::class, 'edit'])->name('certificate_edit');
+
+        Route::put('/admin/certificate/{id}', [App\Http\Controllers\Admin\About\CertificateController::class, 'update'])->name('certificate_update');
+
+        Route::delete('/admin/certificate/delete/{id}', [App\Http\Controllers\Admin\About\CertificateController::class, 'destroy'])->name('certificate_delete');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Services Routes
+        |--------------------------------------------------------------------------
+        |
+        */
+
+        Route::get('/admin/services', [App\Http\Controllers\Admin\About\ServiceController::class, 'index'])->name('service_list');
+
+        Route::get('/admin/service/create', [App\Http\Controllers\Admin\About\ServiceController::class, 'create'])->name('service_create');
+
+        Route::post('/admin/service/create', [App\Http\Controllers\Admin\About\ServiceController::class, 'store'])->name('service_store');
+
+        Route::get('/admin/service/{id}', [App\Http\Controllers\Admin\About\ServiceController::class, 'edit'])->name('service_edit');
+
+        Route::put('/admin/service/{id}', [App\Http\Controllers\Admin\About\ServiceController::class, 'update'])->name('service_update');
+
+        Route::delete('/admin/service/delete/{id}', [App\Http\Controllers\Admin\About\ServiceController::class, 'destroy'])->name('service_delete');
     });
 
     Route::get('/admin/profile', [App\Http\Controllers\Admin\Account\ProfileController::class, 'index'])->name('profile_update');

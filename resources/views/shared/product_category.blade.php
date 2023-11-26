@@ -12,8 +12,9 @@
                 <div class="row d-flex justify-content-center">
                     @foreach (get_product_categories() as $item)
                         <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4 position-relative">
-                            <a href="#" class="text-decoration-none"
-                                @if (count(@$item->products ?? [])) data-bs-toggle="dropdown"
+                            <a href="{{ count(@$item->products ?? []) == 1 ? route('product_show', @$item->products[0]->slug) : '#' }}"
+                                class="text-decoration-none"
+                                @if (count(@$item->products ?? []) > 1) data-bs-toggle="dropdown"
                                 aria-expanded="false" @endif>
                                 <div class="product-item border rounded text-center fw-bold d-flex align-items-center justify-content-center"
                                     style="height: 100px">

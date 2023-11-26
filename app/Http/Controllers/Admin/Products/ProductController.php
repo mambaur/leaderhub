@@ -23,7 +23,7 @@ class ProductController extends Controller
             $products = Product::select('products.*')->with(['product_category']);
             return DataTables::eloquent($products)
                 ->editColumn('name', function (Product $product) {
-                    return "<h6>$product->name</h6>";
+                    return "<h6><a class='text-decoration-none text-dark' href='" . route('product_show', $product->slug) . "'>$product->name</a></h6>";
                 })
                 ->editColumn('is_active', function (Product $product) {
                     $status = @$product->is_active ? "Aktif" : "Tidak aktif";
