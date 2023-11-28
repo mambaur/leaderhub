@@ -110,6 +110,12 @@ class DownloadCenterController extends Controller
             return back()->withInput();
         }
 
+        if ($download_center->url != $request->url) {
+            if (Storage::exists(@$download_center->url)) {
+                Storage::delete(@$download_center->url);
+            }
+        }
+
         $download_center->name = $request->name;
         $download_center->url = $request->url;
         $download_center->description = $request->description;

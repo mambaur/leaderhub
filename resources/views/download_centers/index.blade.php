@@ -22,7 +22,8 @@
                                 alt="{{ @$item->media[0]->alt }}">
                             {{-- <i class="fa-brands fa-apple my-5" style="font-size: 150px"></i> --}}
                             <h2 class="h5">{{ $item->name }}<br />{{ $item->description }}</h2>
-                            <a href="{{ $item->url }}" class="btn btn-outline-primary rounded-pill mt-3"
+                            <a href="{{ @$item->url ? asset('storage/' . @$item->url) : '' }}"
+                                class="btn btn-outline-primary rounded-pill mt-3"
                                 style="background-color: transparent; color:#00CCD9;
                             border-color: #00CCD9;">Driver
                                 Download</a>

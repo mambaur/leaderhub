@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/upload-image', [App\Http\Controllers\Admin\Images\ImageController::class, 'uploadImage']);
 
+    Route::post('/upload-image-large', [App\Http\Controllers\Admin\Images\ImageController::class, 'uploadLargeFiles']);
+
     Route::get('/get-images/{id}', [App\Http\Controllers\Admin\Images\ImageController::class, 'getImages']);
 
     /*
