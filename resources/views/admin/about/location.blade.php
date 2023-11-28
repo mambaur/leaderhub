@@ -40,7 +40,7 @@
                                 <input type="text" class="form-control h-100 @error('map') is-invalid @enderror"
                                     id="map" value="{{ old('map') ?? @$map->value }}" name="map"
                                     placeholder="Map URL..." required>
-                                <small>Example: <span
+                                <small>Contoh: <span
                                         class="text-muted fw-bold fst-italic">{{ '<iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>' }}</span>
                                 </small>
                                 @error('map')
