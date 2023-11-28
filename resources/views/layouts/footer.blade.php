@@ -17,7 +17,7 @@
                 </ul>
                 <h5 class="text-white">Layanan Pelanggan</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="tel:{{ get_contacts() }}"
+                    <li class="nav-item mb-2"><a href="https://wa.me/{{ telp_format(get_contacts()) }}"
                             class="nav-link p-0 text-muted">{{ get_contacts() }}</a></li>
                 </ul>
             </div>

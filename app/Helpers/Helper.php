@@ -67,3 +67,16 @@ if (!function_exists('get_product_categories')) {
         return @$product_categories ?? [];
     }
 }
+
+if (!function_exists('telp_format')) {
+    function telp_format($text = '')
+    {
+        $replacements = [
+            "+" => "",
+            " " => "",
+            "-" => "",
+            "_" => "",
+        ];
+        return strtr($text, $replacements);
+    }
+}

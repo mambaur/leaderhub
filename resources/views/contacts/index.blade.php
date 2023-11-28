@@ -29,7 +29,8 @@
                     Layanan Pelanggan
                 </h2>
                 <p class="text-center">
-                    {{ @$company['contact'][0]->value }}
+                    <a href="https://wa.me/{{ telp_format(get_contacts()) }}"
+                        class="text-dark text-decoration-none">{{ get_contacts() }}</a>
                 </p>
             </div>
         </div>

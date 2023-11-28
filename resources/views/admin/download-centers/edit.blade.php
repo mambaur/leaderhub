@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="url">Deskripsi</label>
+                                <label for="description">Deskripsi</label>
                                 <textarea name="description" id="description" class="form-control h-100 @error('description') is-invalid @enderror"
                                     rows="5" placeholder="Deskripsi...">{{ old('description') ?? @$download_center->description }}</textarea>
                                 @error('description')

@@ -4,7 +4,9 @@
         <div class="d-flex justify-content-center align-items-center h-100">
             <div class="text-white">
                 <h2 class="mb-3 d-md-inline-flex align-items-center d-block px-4">Dapatkan Produk <img class="px-2"
-                        src="{{ get_logo() }}" height="24" alt="Logo Leaderhub" /> Disini</h2>
+                        src="{{ get_logo() }}" height="24" alt="Logo Leaderhub" /> <a
+                        href="https://wa.me/{{ telp_format(get_contacts()) }}"
+                        class="text-white text-decoration-none here-url">Disini</a></h2>
             </div>
         </div>
     </div>
