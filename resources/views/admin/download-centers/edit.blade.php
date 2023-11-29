@@ -24,12 +24,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="url">File Download</label>
-                                <input type="hidden" class="form-control h-100 @error('url') is-invalid @enderror"
+                                <label for="url">URL File Download</label>
+                                <input type="text" class="form-control h-100 @error('url') is-invalid @enderror"
                                     id="url" value="{{ old('url') ?? @$download_center->url }}" name="url"
                                     placeholder="https://example.com" required>
 
-                                <div id="upload-container">
+                                {{-- <div id="upload-container">
                                     <button id="browseFile" type="button" class="btn btn-outline-secondary">Choose
                                         file</button>
                                 </div>
@@ -43,7 +43,7 @@
                                 <div class="mt-2">
                                     <a href="{{ @$download_center->url ? asset('storage/' . @$download_center->url) : '' }}"
                                         class="file-result">{{ @$download_center->url ? str_replace('files/', '', @$download_center->url) : '' }}</a>
-                                </div>
+                                </div> --}}
 
                                 @error('url')
                                     <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/resumablejs@1.1.0/resumable.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/resumablejs@1.1.0/resumable.min.js"></script>
     <script>
         let browseFile = $('#browseFile');
         let resumable = new Resumable({
@@ -110,17 +110,17 @@
 
         resumable.assignBrowse(browseFile[0]);
 
-        resumable.on('fileAdded', function(file) { // trigger when file picked
+        resumable.on('fileAdded', function(file) {
             showProgress();
             console.log('upload')
-            resumable.upload() // to actually start uploading.
+            resumable.upload()
         });
 
-        resumable.on('fileProgress', function(file) { // trigger when file progress update
+        resumable.on('fileProgress', function(file) {
             updateProgress(Math.floor(file.progress() * 100));
         });
 
-        resumable.on('fileSuccess', function(file, response) { // trigger when file upload complete
+        resumable.on('fileSuccess', function(file, response) {
             response = JSON.parse(response)
             console.log(response);
             resumable.removeFile(file);
@@ -133,7 +133,7 @@
 
         });
 
-        resumable.on('fileError', function(file, response) { // trigger when there is any error
+        resumable.on('fileError', function(file, response) {
             alert('Upload file gagal, silahkan coba kembali.')
         });
 
@@ -155,5 +155,5 @@
         function hideProgress() {
             progress.hide();
         }
-    </script>
+    </script> --}}
 @endsection
